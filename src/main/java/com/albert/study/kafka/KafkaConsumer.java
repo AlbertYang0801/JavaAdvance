@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 /**
+ * kafka的消费者
  * @author Albert
  * @date 2020/7/27 20:19
  */
@@ -18,6 +19,12 @@ import java.util.Optional;
 @Slf4j
 public class KafkaConsumer {
 
+    /**
+     * kafka监听器，监听指定的topic
+     * @param record
+     * @param ack
+     * @param topic
+     */
     @KafkaListener(topics = KafkaProducer.TOPIC_TEST, groupId = KafkaProducer.TOPIC_GROUP1)
     public void topic_test(ConsumerRecord<?, ?> record, Acknowledgment ack, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
 
