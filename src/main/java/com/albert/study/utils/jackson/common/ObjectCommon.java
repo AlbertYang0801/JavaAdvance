@@ -1,7 +1,7 @@
-package com.albert.study.jackson.common;
+package com.albert.study.utils.jackson.common;
 
-import com.albert.study.jackson.po.GroupPO;
-import com.albert.study.jackson.po.UserPO;
+import com.albert.study.utils.jackson.po.GroupPO;
+import com.albert.study.utils.jackson.po.UserPO;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,10 +1,10 @@
 package com.albert.study.test.jackson;
 
 import com.albert.study.TestApplication;
-import com.albert.study.jackson.common.ObjectCommon;
-import com.albert.study.jackson.po.GroupPO;
-import com.albert.study.jackson.po.UserPO;
-import com.albert.study.jackson.utils.JsonUtil;
+import com.albert.study.utils.jackson.common.ObjectCommon;
+import com.albert.study.utils.jackson.po.GroupPO;
+import com.albert.study.utils.jackson.po.UserPO;
+import com.albert.study.utils.jackson.utils.JsonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

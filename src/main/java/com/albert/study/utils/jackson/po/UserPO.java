@@ -1,4 +1,4 @@
-package com.albert.study.jackson.po;
+package com.albert.study.utils.jackson.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

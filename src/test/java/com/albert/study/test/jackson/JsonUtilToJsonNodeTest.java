@@ -1,10 +1,10 @@
 package com.albert.study.test.jackson;
 
 import com.albert.study.TestApplication;
-import com.albert.study.jackson.common.ObjectCommon;
-import com.albert.study.jackson.po.GroupPO;
-import com.albert.study.jackson.po.UserPO;
-import com.albert.study.jackson.utils.JsonUtil;
+import com.albert.study.utils.jackson.common.ObjectCommon;
+import com.albert.study.utils.jackson.po.GroupPO;
+import com.albert.study.utils.jackson.po.UserPO;
+import com.albert.study.utils.jackson.utils.JsonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
