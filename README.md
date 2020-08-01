@@ -1,22 +1,20 @@
 # Java学习基础项目
 
-        本项目是作者把自己平时学习、开发项目遇到的问题，和不熟悉的组件等相关练习记录下来。
-    以Demo练习+记录笔记的形式更好的学习Java以及Java相关的组件。同时也是为了以后开发过程中方便
-    各个组件的整合，达到各个组件拿来即用的目的。
+        本项目是作者把自己平时学习、开发项目遇到的问题，和不熟悉的组件等相关练习记录下来。以Demo练习+记录笔记的形式更好的学习Java以及Java相关的组件。同时也是为了以后开发过程中方便各个组件的整合，达到各个组件拿来即用的目的。
 
 
 ### 项目组件简介
 
-    * jdk 1.8.0_152
-    * SpringBoot 2.3.2
-    * mysql 5.7.29
-    * mybatis 2.1.3
-    * redis 4.0.11
-    * kafka 2.1.12
-    * jackson
-    * fastjson
-    * SpringTask
-    * Guava
+   * jdk 1.8.0_152
+   * SpringBoot 2.3.2
+   * mysql 5.7.29
+   * mybatis 2.1.3
+   * redis 4.0.11
+   * kafka 2.1.12
+   * jackson
+   * fastjson
+   * SpringTask
+   * Guava
     
 
 ### 练习计划以及练习日期
