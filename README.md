@@ -2,18 +2,28 @@
 
         本项目是作者把自己平时学习、开发项目遇到的问题，和不熟悉的组件等相关练习记录下来。
     以Demo练习+记录笔记的形式更好的学习Java以及Java相关的组件。
+    
 
-### 练习java知识点的基础项目
+
+### 项目组件简介
+
+
+
+### 练习计划以及练习日期
 
 * Java Thread CountDownLatch学习和练习 2020-7-26
 
 * SpringBoot集成kafka的练习 2020-7-28
 
-* Json解析之Jackson的练习
+* SpringBoot集成redis的练习  2020-7-31
+
+* Json解析之Jackson的练习 2020-7-31 2020-8-01
+
+
+
+
 
 * Json解析之fastJson的练习
-
-* SpringBoot集成redis的练习
 
 * SpringTask的使用和练习
 

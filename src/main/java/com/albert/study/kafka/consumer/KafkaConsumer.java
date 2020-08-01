@@ -1,5 +1,6 @@
-package com.albert.study.kafka;
+package com.albert.study.kafka.consumer;
 
+import com.albert.study.kafka.producer.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;

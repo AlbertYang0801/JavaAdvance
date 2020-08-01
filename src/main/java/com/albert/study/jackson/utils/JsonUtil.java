@@ -1,159 +1,116 @@
 package com.albert.study.jackson.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-//Nullable需要引入spring-web包
+import java.util.Objects;
 
 /**
- * @author Johnson
- * jackson处理json相关的工具类
+ * @author Albert
+ * @date 2020/7/30 15:55
  */
 @Slf4j
 public class JsonUtil {
+
     public static final ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * 对象转换为json字符串
-     * @param obj
+     * 对象转换为Json字符串
+     *
+     * @param object
      * @return
      */
     @Nullable
-    public static String toString(Object obj) {
-        if (obj == null) {
+    public static String toString(Object object) {
+        if (Objects.isNull(object)) {
             return null;
         }
-        if (obj.getClass() == String.class) {
-            return (String) obj;
+        if (object.getClass() == String.class) {
+            return (String) object;
         }
         try {
-            return mapper.writeValueAsString(obj);
+            return mapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            log.error("json序列化出错：" + obj, e);
+            e.printStackTrace();
+            log.error("object转换json解析出错：" + object, e);
             return null;
         }
     }
-    
+
+    /**
+     * 将字符串序列化为对象
+     *
+     * @param json
+     * @param tClass
+     * @param <T>
+     * @return
+     */
     @Nullable
     public static <T> T toBean(String json, Class<T> tClass) {
         try {
             return mapper.readValue(json, tClass);
-        } catch (IOException e) {
-            log.error("json解析出错：" + json, e);
+        } catch (JsonProcessingException e) {
+            log.error("json解析出错，json转换为bean出错 ：" + json, e);
             return null;
         }
     }
-    
+
+    /**
+     * 将json字符串转换为jsonnode
+     *
+     * @param json
+     * @return
+     */
+    @Nullable
+    public static JsonNode getJsonNode(String json) {
+        try {
+            return mapper.readTree(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 将object对象转换为map
+     *
+     * @param object
+     * @return
+     */
+    @Nullable
+    public static Map<String, Object> objectToMap(Object object) {
+        Map<String, Object> map = Maps.newHashMap();
+        try {
+            return mapper.convertValue(object, Map.class);
+        } catch (IllegalArgumentException e) {
+            log.error("jackson object to map error : ", e);
+            return null;
+        }
+    }
+
+    /**
+     * 将json字符串转换为list
+     *
+     * @param json
+     * @param eClass
+     * @param <E>
+     * @return
+     */
     @Nullable
     public static <E> List<E> toList(String json, Class<E> eClass) {
         try {
             return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, eClass));
-        } catch (IOException e) {
-            log.error("json解析出错：" + json, e);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
             return null;
         }
     }
 
-    @Nullable
-    public static <K, V> Map<K, V> toMap(String json, Class<K> kClass, Class<V> vClass) {
-        try {
-            return mapper.readValue(json, mapper.getTypeFactory().constructMapType(Map.class, kClass, vClass));
-        } catch (IOException e) {
-            log.error("json解析出错：" + json, e);
-            return null;
-        }
-    }
-
-    @Nullable
-    public static <T> T nativeRead(String json, TypeReference<T> type) {
-        try {
-            return mapper.readValue(json, type);
-        } catch (IOException e) {
-            log.error("json解析出错：" + json, e);
-            return null;
-        }
-    }
-
-    @Nullable
-    public static JsonNode getJsonNode(String json) {
-    	try {
-    		return mapper.readTree(json);
-    	} catch (IOException e) {
-    		log.error("getJsonNode出错：", e);
-    		return null;
-    	}
-    }
-
-    @Nullable
-    public static Map<String, Object> objectToMap (Object obj) {
-
-        Map<String, Object> mappedObject = null;
-        try {
-            mappedObject = mapper.convertValue(obj, Map.class);
-        } catch (IllegalArgumentException e) {
-            log.error("getJsonNode出错：", e);
-            return null;
-        }
-
-        return mappedObject;
-    }
-
-    public static Map<String, Object> parseJsonPath (String jsonPath) {
-        Map<String, Object> map = null;
-        try {
-            File json = new File(jsonPath);
-            map = mapper.readValue(json, Map.class);
-        } catch (IOException e) {
-            log.error("parse jsonFile error：", e);
-            return null;
-        }
-        return map;
-    }
-
-
-        @Data
-    class User{
-        private String name;
-        private Integer age;
-    }
-    public static void main(String[] args) {
-        String json="{\"name\":\"Johnson\",\"age\":\"21\"}";
-        Map<String, String> map = toMap(json, String.class, String.class);
-        log.info("map: "+map);
-        String j="[{\"name\":\"zhuxinjun\",\"age\":\"21\"},{\"name\":\"yangyang\",\"age\":\"32\"}]";
-        List<Map<String, String>> maps = nativeRead(j, new TypeReference<List<Map<String, String>>>() {});
-        for(Map<String, String> map1:maps){
-            System.out.println("map1"+map1);
-        }
-        System.out.println("---------- jn ----------");
-        JsonNode jn = getJsonNode(j);
-        System.out.println(jn);
-        System.out.println(jn.isArray());
-        Iterator<JsonNode> iterator = jn.iterator();
-        while (iterator.hasNext()) {
-			System.out.println(iterator.next());
-		}
-
-        System.out.println("---------- node ----------");
-
-        JsonNode node = getJsonNode(json);
-        System.out.println(node.isArray());
-        JsonNode name = node.get("name");
-        System.out.println(name.textValue());
-        System.out.println(node.has("name"));
-        System.out.println(node.has("test"));
-
-    }
 
 }
