@@ -19,7 +19,7 @@
    * Guava
     
 
-### 练习计划以及练习日期
+### 练习日期
 
 * Java Thread CountDownLatch学习和练习 2020-7-26
 
@@ -29,13 +29,20 @@
 
 * Json解析之Jackson的练习 2020-7-31 2020-8-01
 
+* LettCode 62题和1114题的练习 2020-8-2
 
+
+### 练习计划
+
+* Java Thread Semaphore学习和练习 
+
+* Java BlockingQueue学习和练习
 
 
 
 * Json解析之fastJson的练习
 
-* SpringTask的使用和练习
+* SpringTask的集成和使用
 
 * Guava插件的使用和练习
 
