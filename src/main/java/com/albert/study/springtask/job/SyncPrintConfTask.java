@@ -1,7 +1,6 @@
 package com.albert.study.springtask.job;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * 测试从配置文件获取定时任务的属性规则
- *
+ * 任务同步执行
  * @author Albert
  * @date 2020/8/3 16:02
  */
