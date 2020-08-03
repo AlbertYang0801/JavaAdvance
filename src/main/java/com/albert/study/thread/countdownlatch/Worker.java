@@ -26,7 +26,6 @@ public class Worker implements Runnable {
     public void run() {
         //开始工作
         this.doWorker();
-        log.info(this.workerName+"工人工作结束！");
         //计时器倒数，即计数器减1
         this.countDownLatch.countDown();
     }
@@ -39,6 +38,7 @@ public class Worker implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        log.info(this.workerName+"工人工作结束！");
     }
 
 
