@@ -1,4 +1,4 @@
-package com.albert.study.utils.file;
+package com.albert.study.utils.file.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
+ * 读取文件的工具类
  * @author yjw
  * @date 2020/8/3 21:44
  */

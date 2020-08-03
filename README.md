@@ -33,6 +33,8 @@
 
 * SpringTask的集成和使用 2020-8-3
 
+* 添加.gitignore插件 2020-8-3
+
 
 ### 练习计划
 
@@ -41,6 +43,8 @@
 * Java BlockingQueue学习和练习
 
 * Json解析之fastJson的练习
+
+* Apache文件读取工具类的联系和使用
 
 
 
