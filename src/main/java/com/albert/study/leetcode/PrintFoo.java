@@ -1,6 +1,7 @@
 package com.albert.study.leetcode;
 
-import com.oracle.tools.packager.Log;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
  * @author Albert
  * @date 2020/8/2 20:32
  */
+@Slf4j
 public class PrintFoo {
 
     private CountDownLatch secondCountDownLatch = new CountDownLatch(1);
@@ -23,17 +25,17 @@ public class PrintFoo {
     }
 
     public void one() {
-        Log.info("one");
+        log.info("one");
         System.out.println("one");
     }
 
     public void two() {
-        Log.info("two");
+        log.info("two");
         System.out.println("two");
     }
 
     public void three() {
-        Log.info("three");
+        log.info("three");
         System.out.println("three");
     }
 
