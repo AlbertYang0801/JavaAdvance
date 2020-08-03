@@ -31,6 +31,8 @@
 
 * LettCode 62题和1114题的练习 2020-8-2
 
+* SpringTask的集成和使用 2020-8-3
+
 
 ### 练习计划
 
@@ -38,11 +40,9 @@
 
 * Java BlockingQueue学习和练习
 
-
-
 * Json解析之fastJson的练习
 
-* SpringTask的集成和使用
+
 
 * Guava插件的使用和练习
 
