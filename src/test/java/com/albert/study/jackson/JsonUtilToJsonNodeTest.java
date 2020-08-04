@@ -1,4 +1,4 @@
-package com.albert.study.test.jackson;
+package com.albert.study.jackson;
 
 import com.albert.study.TestApplication;
 import com.albert.study.utils.jackson.common.ObjectCommon;

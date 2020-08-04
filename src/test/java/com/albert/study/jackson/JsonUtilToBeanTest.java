@@ -1,4 +1,4 @@
-package com.albert.study.test.jackson;
+package com.albert.study.jackson;
 
 import com.albert.study.TestApplication;
 import com.albert.study.utils.jackson.common.ObjectCommon;
@@ -6,7 +6,6 @@ import com.albert.study.utils.jackson.po.GroupPO;
 import com.albert.study.utils.jackson.po.UserPO;
 import com.albert.study.utils.jackson.utils.JsonUtil;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * JsonUtil的toString()方法练习
@@ -26,67 +24,50 @@ import java.util.Map;
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
-public class JsonUtilToStringTest {
+public class JsonUtilToBeanTest {
 
     /**
-     * 测试对象转换为json字符串
+     * 测试json字符串转换为Bean
      */
     @Test
-    public void testBeanToString() {
+    public void testStringToBean() {
         String userPoString = JsonUtil.toString(ObjectCommon.getUserPO("测试Jackson的Bean转json字符串"));
-        log.info(userPoString);
+        UserPO userPO = JsonUtil.toBean(userPoString, UserPO.class);
+        log.info(JsonUtil.toString(userPO));
     }
 
     /**
-     * 测试list转换为json字符串
+     * 测试json字符串转换为包含list的bean
      */
     @Test
-    public void testListToString() {
-        List<UserPO> userPOList = Lists.newArrayList();
-        userPOList.add(ObjectCommon.getUserPO("测试Jackson的list转json字符串"));
-        userPOList.add(ObjectCommon.getUserPO("测试Jackson的list转json字符串"));
-        userPOList.add(ObjectCommon.getUserPO("测试Jackson的list转json字符串"));
-        String userPoString = JsonUtil.toString(userPOList);
-        log.info(userPoString);
-    }
-
-
-    /**
-     * 测试map转换为json字符串
-     */
-    @Test
-    public void testMapToString() {
-        Map<Integer, UserPO> userPOMap = Maps.newHashMap();
-        userPOMap.put(1, ObjectCommon.getUserPO("测试Jackson的map转json字符串"));
-        userPOMap.put(2, ObjectCommon.getUserPO("测试Jackson的map转json字符串"));
-        String userPoString = JsonUtil.toString(userPOMap);
-        log.info(userPoString);
-    }
-
-    /**
-     * 测试Bean包含list转json字符串
-     */
-    @Test
-    public void testBeanListToString() {
+    public void testStringListToBean() {
+        //获取包含list的Bean对应的json字符串
         List<UserPO> userPOList = Lists.newArrayList();
         userPOList.add(ObjectCommon.getUserPO("1号"));
         userPOList.add(ObjectCommon.getUserPO("2号"));
         userPOList.add(ObjectCommon.getUserPO("3号"));
         GroupPO group = ObjectCommon.getGroupPO("第一组", userPOList);
-        log.info(JsonUtil.toString(group));
+        String groupString = JsonUtil.toString(group);
+        //将json字符串转换为包含list的Bean
+        GroupPO groupPO = JsonUtil.toBean(groupString, GroupPO.class);
+        log.info(groupPO.toString());
     }
 
     /**
-     * 测试Bean包含map转json字符串
+     * 测试json字符串转换为包含map的bean
      */
     @Test
-    public void testBeanMapToString() {
+    public void testStringMapToBean() {
+        //获取包含list的Bean对应的json字符串
         List<UserPO> userPOList = Lists.newArrayList();
         userPOList.add(ObjectCommon.getUserPO("1号"));
         userPOList.add(ObjectCommon.getUserPO("2号"));
         userPOList.add(ObjectCommon.getUserPO("3号"));
         GroupPO group = ObjectCommon.getGroupPOMap("第一组", userPOList);
-        log.info(JsonUtil.toString(group));
+        String groupString = JsonUtil.toString(group);
+        //将json字符串转换为包含list的Bean
+        GroupPO groupPO = JsonUtil.toBean(groupString, GroupPO.class);
+        log.info(groupPO.toString());
     }
 
 

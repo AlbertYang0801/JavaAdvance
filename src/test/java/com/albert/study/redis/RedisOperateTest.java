@@ -1,4 +1,4 @@
-package com.albert.study.test.redis;
+package com.albert.study.redis;
 
 import com.albert.study.TestApplication;
 import com.albert.study.redis.operate.RedisOperate;

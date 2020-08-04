@@ -1,11 +1,22 @@
-package com.albert.study.lambda;
+package com.albert.study.eightfeatures.lambda;
+
+import com.albert.study.TestApplication;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Lambda简单练习
+ * java8新特性
+ * Lambda语法格式练习
  * @author Albert
  * @date 2020/8/4 09:52
  */
-public class LambdaTest_01 {
+@SpringBootTest(classes = TestApplication.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@Slf4j
+public class LambdaStudy_01 {
 
     /**
      * 函数式接口，只包含一个抽象方法
@@ -26,7 +37,7 @@ public class LambdaTest_01 {
 
     public static void main(String[] args) {
 
-        LambdaTest_01 lambdaTest01 = new LambdaTest_01();
+        LambdaStudy_01 lambdaTest01 = new LambdaStudy_01();
         //声明参数类型
         MathOperation addition = (int a, int b) -> (a + b);
         //不声明参数类型
@@ -60,6 +71,33 @@ public class LambdaTest_01 {
 
     }
 
+    @Test
+    public void testInnerClass(){
+        //接口的匿名类写法
+        MathOperation innerClass = new MathOperation() {
+            @Override
+            public int operation(int a, int b) {
+                return a+b;
+            }
+        };
+        System.out.println("匿名内部类实现接口：  "+innerClass.operation(1,2));
+
+        //lambda表达式写法
+        MathOperation lambda = (a,b)->a+b;
+        System.out.println("lambda表达式实现接口：  "+lambda.operation(1,2));
+
+    }
+
 
 
 }
+
+
+/**
+ * lambda允许把一个函数作为方法的参数
+ * 依赖于函数式接口，接口对应注解为@FunctionalInterface
+ * 函数式接口：
+ *      允许有且只有一个抽象方法
+ *      允许0或多个默认方法
+ *      允许0或多个静态方法
+ */

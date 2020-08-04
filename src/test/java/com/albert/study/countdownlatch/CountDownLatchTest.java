@@ -1,4 +1,4 @@
-package com.albert.study.test.countdownlatch;
+package com.albert.study.countdownlatch;
 
 import com.albert.study.TestApplication;
 import com.albert.study.thread.countdownlatch.Boss;

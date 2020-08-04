@@ -1,4 +1,4 @@
-package com.albert.study.test.stream;
+package com.albert.study.eightfeatures.stream;
 
 import com.albert.study.TestApplication;
 import com.google.common.collect.Lists;

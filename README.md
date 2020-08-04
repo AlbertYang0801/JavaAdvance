@@ -19,26 +19,8 @@
    * Guava
     
 
-### 练习日期
 
-* Java Thread CountDownLatch学习和练习 2020-7-26
-
-* SpringBoot集成kafka的练习 2020-7-28
-
-* SpringBoot集成redis的练习  2020-7-31
-
-* Json解析之Jackson的练习 2020-7-31 2020-8-01
-
-* LettCode 62题和1114题的练习 2020-8-2
-
-* SpringTask的集成和使用 2020-8-3
-
-* 添加.gitignore插件 2020-8-3
-
-* Java 1.8 lambda表达式的练习 2020-8-4
-
-
-### 练习计划
+###1. 练习计划
 
 * Java Thread Semaphore学习和练习 
 
@@ -48,8 +30,58 @@
 
 * Apache文件读取工具类的联系和使用
 
-
-
 * Guava插件的使用和练习
 
-* 1.8新特性stream流式算法练习
+
+
+
+
+###2. 组件集成
+
+* SpringBoot集成kafka的练习 2020-7-28
+
+* SpringBoot集成redis的练习  2020-7-31
+
+* SpringTask的集成和使用 2020-8-3
+
+* 添加.gitignore插件 2020-8-3
+
+
+
+
+###3. java相关知识点练习
+
+* Java Thread CountDownLatch学习和练习 2020-7-26
+
+
+
+
+
+###4. 工具类集成练习
+
+* Json解析之Jackson的练习 2020-7-31 2020-8-01
+
+
+
+
+
+###5. java1.8新特性学习
+
+1. lambda表达式    2020-8-4
+
+2. 方法引用
+
+3. 函数式接口
+
+4. java8新增接口默认方法
+
+5. Stream流对象
+
+6. Optional类
+
+7. Date-Time API
+
+
+###6. 题目练习日期
+
+* LettCode 62题和1114题的练习 2020-8-2

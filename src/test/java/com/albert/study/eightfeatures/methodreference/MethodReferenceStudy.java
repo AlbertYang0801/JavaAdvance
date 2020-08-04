@@ -1,4 +1,4 @@
-package com.albert.study.test.number;
+package com.albert.study.eightfeatures.methodreference;
 
 import com.albert.study.TestApplication;
 import lombok.extern.slf4j.Slf4j;
@@ -8,28 +8,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
+ * java8新特性 方法引用练习
  * @author Albert
- * @date 2020/8/1 18:22
+ * @date 2020/8/4 09:52
  */
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
-public class NumberTest {
-
-    /**
-     * 测试Double类型转Int类型
-     *
-     */
-    @Test
-    public void testDoubleToInt(){
-        Double num = 2.99;
-        //强转，只取整数位
-        int i = num.intValue();
-        log.info("double to int : {}",i );
+public class MethodReferenceStudy {
 
 
-    }
 
 
 
 }
+
