@@ -16,6 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Slf4j
 public class NumberTest {
 
+    /**
+     * 测试Double类型转Int类型
+     *
+     */
     @Test
     public void testDoubleToInt(){
         Double num = 2.99;
