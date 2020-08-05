@@ -59,7 +59,10 @@
 
 ###4. 工具类集成练习
 
-* Json解析之Jackson的练习 2020-7-31 2020-8-01
+* Json解析之Jackson的练习 2020-7-31 2020-8-1
+
+* LocalDateTimeUtils的练习 2020-8-5
+
 
 
 
@@ -79,7 +82,7 @@
 
 6. Optional类
 
-7. Date-Time API
+7. Date-Time API    2020-8-4
 
 
 ###6. 题目练习日期
