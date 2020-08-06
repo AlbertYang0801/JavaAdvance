@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 /**
  * java1.8新特性函数式接口
  * Supplier接口的学习
- *
+ * Supplier接口实现延时返回结果，没有入参，返回一个结果
  * @author Albert
  * @date 2020/8/5 16:24
  */
