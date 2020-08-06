@@ -76,12 +76,12 @@
 
 3. 函数式接口 
 
->Supplier接口练习 2020-8-5   
->Consumer接口练习 2020-8-5
->Function接口练习 2020-8-6
->Predicate接口练习 2020-8-6
->BiFunction接口练习 2020-8-6
->BinaryOperator接口练习 2020-8-6
+> Supplier接口练习 2020-8-5   
+> Consumer接口练习 2020-8-5
+> Function接口练习 2020-8-6
+> Predicate接口练习 2020-8-6
+> BiFunction接口练习 2020-8-6
+> BinaryOperator接口练习 2020-8-6
     
     
 4. java8新增接口默认方法
