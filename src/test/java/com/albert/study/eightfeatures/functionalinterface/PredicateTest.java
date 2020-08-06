@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 /**
  * java1.8新特性函数式接口
  * Predicate接口的学习
- * 进行逻辑判断的接口，包含逻辑非、或、与
+ * 进行逻辑判断的接口，包含逻辑非、或、与，返回Boolean类型结果
  * @author Albert
  * @date 2020/8/6 16:26
  */

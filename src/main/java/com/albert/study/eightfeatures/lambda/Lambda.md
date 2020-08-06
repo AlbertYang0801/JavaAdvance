@@ -11,13 +11,13 @@
 
 * 形式2：(parameters) -> { statements; }
  
-* lambda语法格式的练习见/albert-study/src/test/java/com/albert/study/eightfeatures/lambda/LambdaStudy_01.java
+* lambda语法格式的练习见:  /src/test/java/com/albert/study/eightfeatures/lambda/LambdaStudy_01.java
  
 #### 3. lambda表达式的变量作用域
 
 * lambda是闭包的，lambda可以使用的局部变量都必须是不可修改的变量
 
-* lambda的变量作用域的练习见/albert-study/src/test/java/com/albert/study/eightfeatures/lambda/LambdaStudy_02.java
+* lambda的变量作用域的练习见： /src/test/java/com/albert/study/eightfeatures/lambda/LambdaStudy_02.java
 
 
 
