@@ -11,7 +11,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.ToLongBiFunction;
 import java.util.stream.Collectors;
 
 /**
@@ -103,6 +105,18 @@ public class FunctionStudy {
                 .collect(Collectors.toMap(Student::getAge, Function.identity()));
         System.out.println(collect);
     }
+
+    /**
+     * 测试扩展的Function接口-BiFunction接口
+     * 支持传入两个参数，返回一个结果
+     */
+    @Test
+    public void testBiFunction(){
+        BiFunction<Integer,Integer,String> biFunction = (a,b)->String.valueOf(a+b);
+        String apply = biFunction.apply(3, 5);
+        System.out.println(apply);
+    }
+
 
 
 }
