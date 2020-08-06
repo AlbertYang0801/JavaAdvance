@@ -79,6 +79,7 @@
     Supplier接口练习 2020-8-5   
     Consumer接口练习 2020-8-5
     Function接口练习 2020-8-6
+    Predicate接口练习 2020-8-6
     
 4. java8新增接口默认方法
 

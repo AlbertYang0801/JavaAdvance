@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * java1.8新特性函数式接口
  * Function接口的学习
- * Function接口:接受一个入参并产生一个结果的函数
+ * Function接口:接收一个入参并产生一个结果的函数
  *
  * @author Albert
  * @date 2020/8/6 11:09

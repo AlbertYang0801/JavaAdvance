@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 /**
  * java1.8新特性函数式接口
  * Consumer接口的学习
- * Consumer接口定义:接受一个入参并且不返回结果的操作。
+ * Consumer接口定义:接收一个入参并且不返回结果的操作。
  *
  * @author Albert
  * @date 2020/8/5 16:24
