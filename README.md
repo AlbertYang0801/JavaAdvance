@@ -82,15 +82,11 @@
     * BiFunction接口练习 2020-8-6<br>
     * BinaryOperator接口练习 2020-8-6<br>
 
+4. Stream流对象
 
-    
-4. java8新增接口默认方法
+5. Optional类
 
-5. Stream流对象
-
-6. Optional类
-
-7. Date-Time API    2020-8-4
+6. Date-Time API    2020-8-4
 
 
 ### 6. 题目练习日期
