@@ -5,6 +5,7 @@ import com.albert.study.thread.countdownlatch.Boss;
 import com.albert.study.thread.countdownlatch.Read;
 import com.albert.study.thread.countdownlatch.Worker;
 import com.albert.study.thread.countdownlatch.Write;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -13,10 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author Albert
@@ -32,8 +30,14 @@ public class CountDownLatchTest {
      */
     @Test
     public void testBossWatchWorker() {
-        //创建缓存类型的线程池
-        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        //创建自定义线程工厂
+        ThreadFactory myThreadFactory = new ThreadFactoryBuilder().setNameFormat("albert-pool-%d").build();
+
+        //使用线程池的构造函数进行创建线程池
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3,10,
+                0L,TimeUnit.MILLISECONDS,new LinkedBlockingDeque<Runnable>(),
+                myThreadFactory,new ThreadPoolExecutor.DiscardPolicy());
 
         //创建一个为3的计时器
         CountDownLatch countDownLatch = new CountDownLatch(3);
@@ -47,10 +51,10 @@ public class CountDownLatchTest {
         Worker workerC = new Worker(countDownLatch, "杨依惠");
 
         //线程添加到线程池中执行
-        executorService.execute(workerA);
-        executorService.execute(workerB);
-        executorService.execute(workerC);
-        executorService.execute(boss);
+        threadPoolExecutor.execute(workerA);
+        threadPoolExecutor.execute(workerB);
+        threadPoolExecutor.execute(workerC);
+        threadPoolExecutor.execute(boss);
 
         try {
             //线程休眠，休眠结束关闭线程池
@@ -60,7 +64,7 @@ public class CountDownLatchTest {
         }
 
         //关闭线程池
-        executorService.shutdown();
+        threadPoolExecutor.shutdown();
 
     }
 
