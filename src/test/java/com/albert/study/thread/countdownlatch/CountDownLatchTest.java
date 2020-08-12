@@ -1,10 +1,6 @@
-package com.albert.study.countdownlatch;
+package com.albert.study.thread.countdownlatch;
 
 import com.albert.study.TestApplication;
-import com.albert.study.thread.countdownlatch.Boss;
-import com.albert.study.thread.countdownlatch.Read;
-import com.albert.study.thread.countdownlatch.Worker;
-import com.albert.study.thread.countdownlatch.Write;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
