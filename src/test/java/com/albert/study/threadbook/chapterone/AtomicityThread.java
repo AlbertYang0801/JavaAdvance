@@ -77,6 +77,21 @@ public class AtomicityThread {
 }
 
 /**
+ * 多线程的原子性：
+ *
+ *
+ * java中的原子操作：
+ * 1.除了long和double类型的赋值操作
+ *      在32位长度操作系统中，long和double类型的赋值不是原子操作。
+ *      因为long和double都是64位的，在32位系统上，对long和double类型的数据进行读写都要分为两步完成，
+ *      若同时两个线程同时写一个变量内存，一个写低8位，一个写高8位，就会导致无效数据出现。
+ *      解决办法：long和double类型声明为volatile。
+ *          java的内存模型保证声明为volatile的long和double变量的get和set操作是原子的。
+ * 2.所有引用reference的赋值操作（待研究）
+ * 3.java.concurrent.Atomic.* 包中所有类的一切操作
+ */
+
+/**
  * 测试多线程的原子性：
  * 多个线程同时操作一个变量，另外的线程打印变量，多线程的操作具有原子性
  * 即单个线程操作数据的过程中是不会被其他线程所干扰的。
