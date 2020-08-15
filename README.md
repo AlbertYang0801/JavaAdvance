@@ -22,6 +22,8 @@
 
 ### 1. 练习计划
 
+* SpringBoot继承ActiveMQ
+
 * Java 线程池的学习
 
 * Java Thread Semaphore学习和练习 
@@ -33,6 +35,8 @@
 * Apache文件读取工具类的联系和使用
 
 * Guava插件的使用和练习
+
+* SpringBoot继承ActiveMQ
 
 
 
@@ -48,12 +52,15 @@
 
 * 添加.gitignore插件 2020-8-3
 
+* SpringBoot集成Activemq的练习 2020-8-15
+
 
 
 
 ### 3. java相关知识点练习
 
 * Java Thread CountDownLatch学习和练习 2020-7-26
+* Java Thread 多线程基础的复习 2020-8-14
 
 
 
