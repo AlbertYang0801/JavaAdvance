@@ -63,6 +63,7 @@ public class CallableTest {
 
     /**
      * 测试Callable接口和线程池一起使用
+     * Callable接口创建线程的方式
      */
     @SneakyThrows
     @Test
