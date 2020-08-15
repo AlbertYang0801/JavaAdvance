@@ -2,11 +2,10 @@ package com.albert.study.thread.threadpool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.*;
 
 /**
  * 线程池的创建方式
@@ -84,6 +83,36 @@ public class ThreadPoolCreate {
     public ExecutorService getSingleThreadExecutor(ThreadFactory threadFactory) {
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(threadFactory);
         return singleThreadExecutor;
+    }
+
+
+
+
+
+
+
+
+    /**
+     * 创建一个定时的线程池
+     * @param corePoolSize
+     * @return
+     */
+    public ScheduledExecutorService getScheduledThreadPool(int corePoolSize) {
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(corePoolSize);
+        return scheduledExecutorService;
+    }
+
+    /**
+     * 阿里规约推荐的创建定时线程池的方式
+     * @return
+     */
+    public ExecutorService getScheduledThreadPoolByAliBaba(){
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1,
+                      new BasicThreadFactory.Builder()
+                              .namingPattern("albert-schedule-pool-%d")
+                              .daemon(true)
+                              .build());
+        return scheduledExecutorService;
     }
 
 
