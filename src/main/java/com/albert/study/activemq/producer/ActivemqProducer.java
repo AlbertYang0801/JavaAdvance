@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @author Albert
  * @date 2020/8/14 17:49
  */
-@Component
+//@Component
 //@EnableScheduling
 public class ActivemqProducer {
 
