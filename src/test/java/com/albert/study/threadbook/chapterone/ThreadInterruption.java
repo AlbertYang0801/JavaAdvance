@@ -14,8 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
  * 1.interrupt() 中断线程
  * 2.isInterrupted() 判断线程中断的状态
  * 3.interrupted() 判断线程中断的状态，并重置中断标志(实际是调用了isInterrupted()方法，并传入中断标志数据)
- *
+ * <p>
  * 例4：对应39页的例子
+ *
  * @author Albert
  * @date 2020/8/16 19:16
  */
@@ -31,7 +32,7 @@ public class ThreadInterruption {
      */
     @SneakyThrows
     @Test
-    public void testInterruption(){
+    public void testInterruption() {
         //开启新线程
         Thread thread = new Thread(() -> {
             while (true) {
@@ -53,13 +54,13 @@ public class ThreadInterruption {
      */
     @SneakyThrows
     @Test
-    public void testIsInterruption(){
+    public void testIsInterruption() {
         log.info("测试线程中断状态");
         //开启新线程
         Thread interruptionThread = new Thread(() -> {
             while (true) {
                 //判断线程是否被中断
-                if(Thread.currentThread().isInterrupted()){
+                if (Thread.currentThread().isInterrupted()) {
                     log.info("线程终于被中断了，但是线程不会立即停止");
                     break;
                 }
@@ -81,13 +82,13 @@ public class ThreadInterruption {
      */
     @SneakyThrows
     @Test
-    public void testInterrupted(){
+    public void testInterrupted() {
         log.info("测试线程中断状态");
         //开启新线程
         Thread interruptionThread = new Thread(() -> {
             while (true) {
                 //判断线程是否被中断
-                if(Thread.interrupted()){
+                if (Thread.interrupted()) {
                     log.info("线程终于被中断了，但是线程不会立即停止");
                     break;
                 }
@@ -101,6 +102,36 @@ public class ThreadInterruption {
         interruptionThread.interrupt();
         log.info("线程进行了中断操作，线程内的操作（日志打印）不会继续");
         Thread.sleep(100);
+    }
+
+    /**
+     * 测试sleep()方法
+     * 捕获sleep()方法的异常，并设置线程中断
+     */
+    @SneakyThrows
+    @Test
+    public void testSleep() {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                if (Thread.currentThread().isInterrupted()) {
+                    log.info("线程中断");
+                    break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    //sleep()方法需要捕获 线程中断异常
+                    e.printStackTrace();
+                    //设置中断标志（捕获到异常之后，中断线程，使方法体不再继续执行）
+                    Thread.currentThread().interrupt();
+                }
+                Thread.yield();
+            }
+        });
+        thread.start();
+        Thread.sleep(1000);
+        //设置线程中断
+        thread.interrupt();
     }
 
 
