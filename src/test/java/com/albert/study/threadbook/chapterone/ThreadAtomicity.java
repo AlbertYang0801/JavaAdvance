@@ -1,9 +1,6 @@
 package com.albert.study.threadbook.chapterone;
 
 import com.albert.study.TestApplication;
-import com.albert.study.utils.jackson.po.UserPO;
-import com.albert.study.utils.jackson.utils.JsonUtil;
-import com.albert.study.utils.localdatetime.utils.LocalDateTimeUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -15,7 +12,7 @@ import java.util.concurrent.*;
 
 /**
  * 测试多线程的原子性
- * 对应19页的例子
+ * 例1：对应19页的例子
  *
  * @author Albert
  * @date 2020/8/15 16:38
@@ -23,7 +20,7 @@ import java.util.concurrent.*;
 @Slf4j
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
-public class AtomicityThread {
+public class ThreadAtomicity {
     private static long v = 0;
 
     public static class ChangeV implements Runnable {
@@ -37,7 +34,7 @@ public class AtomicityThread {
         public void run() {
             while (true) {
                 //线程启动赋值全局变量
-                AtomicityThread.v = oper;
+                ThreadAtomicity.v = oper;
                 //让出线程资源
                 Thread.yield();
             }
@@ -49,7 +46,7 @@ public class AtomicityThread {
         public void run() {
             while (true) {
                 //读取全局变量
-                long temp = AtomicityThread.v;
+                long temp = ThreadAtomicity.v;
                 if (temp != 111L & temp != 222L & temp != 333L) {
                     log.info(String.valueOf(temp));
                     System.out.println(temp);
