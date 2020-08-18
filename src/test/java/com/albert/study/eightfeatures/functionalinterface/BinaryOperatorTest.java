@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Comparator;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
 /**
  * java1.8新特性函数式接口
@@ -38,8 +39,25 @@ public class BinaryOperatorTest {
      */
     @Test
     public void testBinaryOperatorMaxBy() {
+        Function<Integer,Integer> function = num->{
+          if(num==4) return 0;
+          else return num;
+        };
         //比较传入类型的大小，返回大的值
         BinaryOperator<Integer> binaryOperator = BinaryOperator.maxBy(Comparator.naturalOrder());
+        Integer apply = binaryOperator.apply(3, 4);
+        System.out.println(apply);
+    }
+
+    @Test
+    public void testBinaryOperatorMaxByComparing() {
+        //对传入比较器的参数进行处理
+        Function<Integer,Integer> function = num->{
+            if(num==4) return 0;
+            else return num;
+        };
+        //比较传入类型的大小，返回大的值（自定义比较器）
+        BinaryOperator<Integer> binaryOperator = BinaryOperator.maxBy(Comparator.comparing(function));
         Integer apply = binaryOperator.apply(3, 4);
         System.out.println(apply);
     }

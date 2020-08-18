@@ -3,6 +3,7 @@ package com.albert.study.eightfeatures.localdatetime;
 import com.albert.study.utils.localdatetime.utils.LocalDateTimeUtils;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -70,6 +71,32 @@ public class TestLocalDateTimeUtils {
         List<String> hourList = LocalDateTimeUtils.getTimeList(LocalDateTime.now().withHour(10), ChronoUnit.HOURS, "HH", true);
         //[10, 11, 12, 13, 14, 15, 16]
         System.out.println(hourList);
+    }
+
+    /**
+     * 获取本月的日期集合
+     */
+    @Test
+    public void testGetMonthDayList(){
+        //当月第一天
+        LocalDateTime date = LocalDateTime.now().withDayOfMonth(1);
+        System.out.println(date);
+        List<String> minuteList = LocalDateTimeUtils.getTimeList( date,ChronoUnit.DAYS, "yyyy-MM-dd", true);
+        //[2020-08-01, 2020-08-02, 2020-08-03, 2020-08-04, 2020-08-05, 2020-08-06, 2020-08-07]
+        System.out.println(minuteList);
+    }
+
+    /**
+     * 获取指定日期到今天的的日期集合
+     */
+    @Test
+    public void testGetMoreMonthDayList(){
+        //设置开始时间为5个月前的第一天
+        LocalDateTime date = LocalDateTime.now().minusMonths(5).withDayOfMonth(1);
+        System.out.println(date);
+        List<String> minuteList = LocalDateTimeUtils.getTimeList( date,ChronoUnit.DAYS, "yyyy-MM-dd", true);
+        //[2020-07-01, 2020-07-02, 2020-07-03, 2020-07-04, 2020-07-05]
+        System.out.println(minuteList);
     }
 
     /**
@@ -175,6 +202,8 @@ public class TestLocalDateTimeUtils {
         boolean b = LocalDateTimeUtils.judgePassedTimeLine(10);
         System.out.println(b);
     }
+
+
 
 
 }

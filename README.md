@@ -64,12 +64,12 @@
 2. 方法引用
 
 3. 函数式接口 <br>
-    * Supplier接口练习  2020-8-5<br>
-    * Consumer接口练习 2020-8-5<br>
-    * Function接口练习 2020-8-6<br>
-    * Predicate接口练习 2020-8-6<br>
-    * BiFunction接口练习 2020-8-6<br>
-    * BinaryOperator接口练习 2020-8-6<br>
+    * Supplier接口练习  2020-8-5 2020-8-17<br>
+    * Consumer接口练习 2020-8-5 2020-8-17<br>
+    * Function接口练习 2020-8-6 2020-8-17<br>
+    * Predicate接口练习 2020-8-6 2020-8-17<br>
+    * BiFunction接口练习 2020-8-6 2020-8-17<br>
+    * BinaryOperator接口练习 2020-8-6 2020-8-17<br>
 
 4. Stream流对象
 

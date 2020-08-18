@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class FunctionStudy {
     @Test
     public void testFunctionParseInt() {
         Function<String, Integer> function = num -> {
+            //Function.identity() 代表Function对象本身
             System.out.println(Function.identity().apply("30"));
             return Integer.parseInt(num);
         };
@@ -50,7 +52,8 @@ public class FunctionStudy {
 
     /**
      * 测试Function接口的andThen()方法
-     * andThen()方法，操作数据的时候，入参，首先进行一个操作，然后再做一个操作。
+     * andThen()方法，
+     * 先进行第一个操作，再根据第一个操作的返回值进行第二个操作（括号里的）。
      */
     @Test
     public void testFunctionAndThen() {
@@ -87,7 +90,6 @@ public class FunctionStudy {
         Function<Integer, Integer> twoFunction = num -> num*10;
         Integer apply = twoFunction.compose(oneFunction).apply("10");
         System.out.println(apply);
-
     }
 
     /**

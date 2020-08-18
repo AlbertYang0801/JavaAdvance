@@ -6,6 +6,7 @@ package com.albert.study.eightfeatures.functionalinterface.po;
  * @author Albert
  * @date 2020/8/5 16:58
  */
+@FunctionalInterface
 public interface ClassRoom {
 
    void come(Student student);

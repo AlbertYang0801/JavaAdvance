@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -108,6 +109,25 @@ public class JsonUtil {
             return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, eClass));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 将json字符串转换为map
+     * @param json
+     * @param kClass
+     * @param vClass
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    @Nullable
+    public static <K, V> Map<K, V> toMap(String json, Class<K> kClass, Class<V> vClass) {
+        try {
+            return mapper.readValue(json, mapper.getTypeFactory().constructMapType(Map.class, kClass, vClass));
+        } catch (IOException e) {
+            log.error("json解析出错：" + json, e);
             return null;
         }
     }
