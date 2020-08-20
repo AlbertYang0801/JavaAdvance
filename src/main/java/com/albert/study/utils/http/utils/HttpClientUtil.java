@@ -42,6 +42,7 @@ import java.util.Map;
 
 @Slf4j
 public class HttpClientUtil {
+
 	public static CloseableHttpClient getClient(){
 		CookieStore cookieStore  = new BasicCookieStore();
 		CloseableHttpClient httpClient = HttpClients.custom()

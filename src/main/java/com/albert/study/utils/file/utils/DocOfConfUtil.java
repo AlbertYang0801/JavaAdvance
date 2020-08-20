@@ -1,15 +1,9 @@
 package com.albert.study.utils.file.utils;
 
-import com.albert.study.utils.file.model.DoucMenuInfo;
-import com.albert.study.utils.file.model.MenuInfo;
 import com.albert.study.utils.jackson.utils.JsonUtil;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
@@ -18,8 +12,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * 读取文件的工具类

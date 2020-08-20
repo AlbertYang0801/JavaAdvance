@@ -36,8 +36,6 @@
 
 * NumUtils的练习和总结
 
-* DocOfConfUtil的练习和总结
-
 
 
 

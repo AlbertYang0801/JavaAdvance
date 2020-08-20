@@ -33,25 +33,20 @@ public class DocOfConfTest {
 
     private static Map<Integer, MenuInfo> menuInfoMap = Maps.newHashMap();
 
-
+    /**
+     * 读取resource下的json文件，并进行处理
+     */
     @Test
     public void testReadConf() {
+        //获取resource目录下的配置文件
         String contentInPath = DocOfConfUtil.getResourceFile("classpath:conf/menu.json");
-
-//        JsonNode menuInfo = JsonUtil.getJsonNode(contentInPath).get("menuInfo");
-//
-//        List<MenuVO> menuVOS = JsonUtil.toList(JsonUtil.toString(menuInfo), MenuVO.class);
-//        System.out.println(menuVOS);
-
         JSONObject parse = (JSONObject) JSONObject.parse(contentInPath);
-
         List<DoucMenuInfo> doucMenuInfoList = Lists.newArrayList();
         //获取菜单菜单
         doucMenuInfoList.addAll(getMenuInfoList(parse));
         //获取按钮信息按钮
         doucMenuInfoList.addAll(getButtonInfoList(parse));
         System.out.println(JsonUtil.toString(doucMenuInfoList));
-
     }
 
     /**
@@ -137,5 +132,6 @@ public class DocOfConfTest {
         //TODO get code
         return "code";
     }
+
 
 }
