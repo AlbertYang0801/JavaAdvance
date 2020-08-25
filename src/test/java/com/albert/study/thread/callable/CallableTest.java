@@ -81,6 +81,8 @@ public class CallableTest {
         Future<UserPO> submit = executorService.submit(userPOCallable);
         UserPO userPO = submit.get();
         log.info(JsonUtil.toString(userPO));
+        //关闭线程池
+        executorService.shutdown();
     }
 
 

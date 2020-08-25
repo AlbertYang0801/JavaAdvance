@@ -39,6 +39,7 @@ public class ThreadImplCreate {
     public void testLambda(){
         new Thread(()->{
             log.info("lambad表达式创建的线程");
+            System.out.println("增加线程内部逻辑");
         }).start();
 
         log.info("这是主线程，异步执行，比新线程执行快");

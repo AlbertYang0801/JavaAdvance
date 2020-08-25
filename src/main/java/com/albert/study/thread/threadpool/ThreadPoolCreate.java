@@ -68,6 +68,7 @@ public class ThreadPoolCreate {
 
     /**
      * 创建一个单线程的线程池
+     *
      * @return
      */
     public ExecutorService getSingleThreadExecutor() {
@@ -77,6 +78,7 @@ public class ThreadPoolCreate {
 
     /**
      * 创建一个单线程的线程池
+     *
      * @param threadFactory 自定义线程工厂
      * @return
      */
@@ -85,15 +87,9 @@ public class ThreadPoolCreate {
         return singleThreadExecutor;
     }
 
-
-
-
-
-
-
-
     /**
      * 创建一个定时的线程池
+     *
      * @param corePoolSize
      * @return
      */
@@ -104,17 +100,78 @@ public class ThreadPoolCreate {
 
     /**
      * 阿里规约推荐的创建定时线程池的方式
+     *
      * @return
      */
-    public ExecutorService getScheduledThreadPoolByAliBaba(){
+    public ExecutorService getScheduledThreadPoolByAliBaba() {
         ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1,
-                      new BasicThreadFactory.Builder()
-                              .namingPattern("albert-schedule-pool-%d")
-                              .daemon(true)
-                              .build());
+                new BasicThreadFactory.Builder()
+                        .namingPattern("albert-schedule-pool-%d")
+                        .daemon(true)
+                        .build());
         return scheduledExecutorService;
     }
 
+    /**
+     * 阿里规约推荐的手动创建线程池
+     *
+     * @param corePoolSize
+     * @param maximumPoolSize
+     * @return
+     */
+    public ExecutorService getThreadPoolByAlibaba(int corePoolSize, int maximumPoolSize) {
+        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("albert-pool-%d").build();
+        ExecutorService pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+        return pool;
+    }
+
+    /**
+     * 创建一个抢占式的线程池
+     * 1.8新增的线程池类型
+     * @return
+     */
+    public ExecutorService newWorkStealingPool() {
+        ExecutorService executorService = Executors.newWorkStealingPool();
+        return executorService;
+    }
+
+    /**
+     * 创建一个指定并行线程数的抢占式线程池
+     * 1.8新增的线程池类型
+     * @param parallelism
+     * @return
+     */
+    public ExecutorService newWorkStealingPool(int parallelism){
+        ExecutorService executorService = Executors.newWorkStealingPool(parallelism);
+        return executorService;
+    }
+
+
+    /**
+     * 调用线程池的构造方法创建线程池
+     *
+     * @param corePoolSize    最小线程数
+     * @param maximumPoolSize 最大线程数
+     * @param keepAliveTime   线程空闲的销毁时间
+     * @param unit            销毁时间的单位
+     * @param workQueue       任务队列
+     * @param threadFactory   线程工厂
+     * @param handler         任务拒绝策略
+     * @return
+     */
+    public ExecutorService getThreadPoolByParam(int corePoolSize,
+                                                int maximumPoolSize,
+                                                long keepAliveTime,
+                                                TimeUnit unit,
+                                                BlockingQueue<Runnable> workQueue,
+                                                ThreadFactory threadFactory,
+                                                RejectedExecutionHandler handler) {
+        ThreadPoolExecutor threadPoolExecutor =
+                new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
+        return threadPoolExecutor;
+    }
 
 
 }

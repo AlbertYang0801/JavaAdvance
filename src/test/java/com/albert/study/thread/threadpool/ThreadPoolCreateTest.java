@@ -75,7 +75,6 @@ public class ThreadPoolCreateTest {
         log.info("测试SingleThreadExecutor线程池执行任务，结束完成");
     }
 
-
     /**
      * 测试定时线程池-周期执行
      */
@@ -118,33 +117,47 @@ public class ThreadPoolCreateTest {
         ScheduledFuture<String> schedule = scheduledThreadPool.schedule(() -> {
             return "测试返回值";
         }, 5, TimeUnit.SECONDS);
-
-
         try {
+            System.out.println(schedule.get());
             Thread.sleep(10000);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * 测试Callable的返回值
+     * 测试jdk1.8新增的线程池WorkStealingPool
+     * 抢占式线程池，能充分利用CPU资源
+     * 若不指定线程数，则使用的线程数为计算机当前可使用的CPU数量
      */
     @Test
-    public void testCallable(){
-        Callable<String> stringCallable = new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                int i=1;
-                return String.valueOf((++i));
-            }
-        };
-        try {
-            String call = stringCallable.call();
-            System.out.println(call);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void testNewWorkStealingPool(){
+        ExecutorService executorService = threadPoolCreate.newWorkStealingPool();
+        executeTask(executorService);
+    }
+
+    /**
+     * 测试jdk1.8新增的线程池WorkStealingPool
+     * 抢占式线程池，能充分利用CPU资源
+     * 指定线程数，则最大并行数量为指定的数量
+     */
+    @Test
+    public void testNewWorkStealingPoolByParam(){
+        //指定线程最大并行数
+        ExecutorService executorService = threadPoolCreate.newWorkStealingPool(3);
+        executeTask(executorService);
+    }
+
+    /**
+     * 测试手动创建线程池
+     * 通过手动创建线程池可避免OOM(内存泄漏)的发生
+     */
+    @Test
+    public void testAlibabaThreadPool(){
+        //指定线程最小和最大线程数(相当于FixedThreadPool)
+        ExecutorService threadPoolByAlibaba = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        log.info("测试手动创建线程池");
+        executeTask(threadPoolByAlibaba);
     }
 
 
