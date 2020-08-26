@@ -144,6 +144,7 @@ public class ThreadPoolCreate {
      * @return
      */
     public ExecutorService newWorkStealingPool(int parallelism){
+        //指定最大并行线程数
         ExecutorService executorService = Executors.newWorkStealingPool(parallelism);
         return executorService;
     }

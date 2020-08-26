@@ -12,9 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 测试Thread的stop()方法
- * 不推荐使用stop()方法关闭线程，因为stop()方法执行会直接让出线程的锁对象，若多个线程操作同一个对象，则会产生错误数据。
- * 例2：对应36页的例子
+ * 测试Thread的线程退出方法
+ * 通过为线程添加标记变量的方法，来避免使用stop()方法，保证加锁之后的原子性
+ * <p>
+ * 例3：对应38页的例子
  *
  * @author Albert
  * @date 2020/8/15 16:38
@@ -22,7 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
-public class ThreadStop {
+public class ThreadStopResolve_03 {
 
     private static User user = new User();
 
@@ -45,9 +46,21 @@ public class ThreadStop {
      */
     public static class ChangeUser implements Runnable {
 
+        private static boolean stopFlag = false;
+
+        //在需要关闭的线程（写对象操作线程）创建关闭方法
+        private void stopMe() {
+            stopFlag = true;
+        }
+
         @Override
         public void run() {
             while (true) {
+                //退出当前线程
+                if(stopFlag){
+                    System.out.println("exit ChangeUser Thread");
+                    break;
+                }
                 //持有user锁对象
                 synchronized (user) {
                     int id = (int) (System.currentTimeMillis() / 1000);
@@ -94,11 +107,12 @@ public class ThreadStop {
 
         while (true) {
             //循环开启线程，进行写对象操作
-            Thread thread = new Thread(new ChangeUser());
+            ChangeUser changeUser = new ChangeUser();
+            Thread thread = new Thread(changeUser);
             thread.start();
             Thread.sleep(150);
-            //销毁写对象操作的线程（不推荐使用，原因即可能会产生错误数据）
-            thread.stop();
+            //销毁写对象操作的线程(调用线程的线程退出方法)
+            changeUser.stopMe();
         }
     }
 
@@ -107,8 +121,9 @@ public class ThreadStop {
 
 /**
  * Thread的stop()方法：
- *      会直接终止线程，并将该线程拥有的锁对象直接释放（在本例子中对应全局对象user)，其他线程获取该锁对象之后进行写操作，
- *      便可能会造成错误数据的产生（在本例子中会产生id和name不一样的数据）。
+ * 会直接终止线程，并将该线程拥有的锁对象直接释放（在本例子中对应全局对象user)，其他线程获取该锁对象之后进行写操作，
+ * 便可能会造成错误数据的产生（在本例子中会产生id和name不一样的数据）。
  *
- *      stop()会破坏加锁之后的原子性。
+ * 实现线程退出：
+ * 方法内部通过定义标记变量 stopFLag来控制线程的退出（线程没有业务逻辑处理，会在一定时间后自动销毁）
  */

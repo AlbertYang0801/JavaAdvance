@@ -235,6 +235,11 @@ public class LocalDateTimeUtils {
         return LocalDateTime.parse(time, DateTimeFormatter.ofPattern(pattern));
     }
 
+    //解析指定格式的日期（LocalDate）
+    public static LocalDate parseLocalDate(String time, String pattern) {
+        return LocalDate.parse(time, DateTimeFormatter.ofPattern(pattern));
+    }
+
     //获取指定日期的毫秒
     public static Long getMilliByTime(LocalDateTime time) {
         return time.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();

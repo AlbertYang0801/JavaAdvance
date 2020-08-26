@@ -20,7 +20,7 @@ import java.util.concurrent.*;
 @Slf4j
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
-public class ThreadAtomicity {
+public class ThreadAtomicity_01 {
 
     private static long v = 0;
 
@@ -36,7 +36,7 @@ public class ThreadAtomicity {
         public void run() {
             while (true) {
                 //线程启动赋值全局变量
-                ThreadAtomicity.v = oper;
+                ThreadAtomicity_01.v = oper;
                 //让出线程资源
                 Thread.yield();
             }
@@ -48,7 +48,7 @@ public class ThreadAtomicity {
         public void run() {
             while (true) {
                 //读取全局变量
-                long temp = ThreadAtomicity.v;
+                long temp = ThreadAtomicity_01.v;
                 if (temp != 111L & temp != 222L & temp != 333L) {
                     log.info(String.valueOf(temp));
                     System.out.println(temp);
