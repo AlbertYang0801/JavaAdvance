@@ -269,6 +269,27 @@ public class LocalDateTimeUtils {
         return false;
     }
 
+    /**
+     * 将时间戳转换为LocalDateTime
+     * @param timestamp
+     * @return
+     */
+    public static LocalDateTime parseTimestamp(Long timestamp){
+        LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        return localDateTime;
+    }
+
+    /**
+     * 将时间戳解析为指定格式的时间字符串
+     * @param timestamp
+     * @param pattern
+     * @return
+     */
+    public static String parseTimestamp(Long timestamp,String pattern){
+        LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        return LocalDateTimeUtils.formatTime(localDateTime,pattern);
+    }
+
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);

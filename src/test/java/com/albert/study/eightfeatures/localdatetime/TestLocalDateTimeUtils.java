@@ -229,6 +229,18 @@ public class TestLocalDateTimeUtils {
         long time = 1596211200000L;
         LocalDateTime localDateTime = Instant.ofEpochMilli(time).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
         System.out.println(localDateTime);
+        String s = LocalDateTimeUtils.formatTime(localDateTime, "yyyy-MM-dd HH:mm:ss");
+        System.out.println(s);
+    }
+
+    /**
+     * 将时间戳转换为指定日期格式字符串
+     */
+    @Test
+    public void testParseTimestampString(){
+        long time = 1596211200000L;
+        String timeStr = LocalDateTimeUtils.parseTimestamp(time, LocalDateTimeUtils.DATE_TIME);
+        System.out.println(timeStr);
     }
 
 
