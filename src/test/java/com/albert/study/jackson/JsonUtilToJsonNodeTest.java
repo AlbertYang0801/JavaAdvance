@@ -7,6 +7,7 @@ import com.albert.study.utils.jackson.po.UserPO;
 import com.albert.study.utils.jackson.utils.JsonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +28,6 @@ import java.util.Set;
 @Slf4j
 public class JsonUtilToJsonNodeTest {
 
-    private static JsonNode jsonNode;
-
     @Test
     public void testMapToJsonNode() {
         //创建一个list
@@ -44,7 +43,7 @@ public class JsonUtilToJsonNodeTest {
         log.info("jsonNode get map : {}", testJsonNodeGet(jsonNode));
         log.info("jsonNode change : {}", changeJsonNode(jsonNode));
         userPOList = fillJsonNodeToList(jsonNode);
-        log.info("jsonNode to list,{}",userPOList);
+        log.info("jsonNode to list,{}", userPOList);
     }
 
     //测试get方法和map类型相关方法
@@ -92,11 +91,61 @@ public class JsonUtilToJsonNodeTest {
      * 测试jsonNode获取对象属性方法
      */
     @Test
-    public void getJsonNodeAsText(){
+    public void getJsonNodeAsText() {
         UserPO userPO = ObjectCommon.getUserPO("对象属性");
         JsonNode jsonNode = JsonUtil.getJsonNode(JsonUtil.toString(userPO));
         String userId = jsonNode.get("userId").asText();
-        log.info("userId is {}",userId);
+        log.info("userId is {}", userId);
+    }
+
+    /**
+     * 测试jsonNode的findValue()方法
+     */
+    @Test
+    public void testFindJsonNodeAsText() {
+        UserPO userPO = ObjectCommon.getUserPO("对象属性");
+        System.out.println(userPO.toString());
+        JsonNode jsonNode = JsonUtil.getJsonNode(JsonUtil.toString(userPO));
+        String time = jsonNode.findValue("time").asText();
+        System.out.println(time);
+    }
+
+    /**
+     * 使用findValue时，若节点中有多个相同字段，则返回第一个匹配到的字段值
+     */
+    @Test
+    public void testFindJsonNodeRepeated(){
+        Map<Object,Object> map = Maps.newHashMap();
+        map.put("one","one");
+        Map<String,String> stringMap = Maps.newHashMap();
+        stringMap.put("one","1");
+        map.put("map",stringMap);
+        String mapStr = JsonUtil.toString(map);
+        System.out.println(mapStr);
+
+        JsonNode jsonNode = JsonUtil.getJsonNode(mapStr);
+        //返回第一个匹配到的value值
+        String one = jsonNode.findValue("one").asText();
+        System.out.println(one);
+    }
+
+    /**
+     * 测试JsonNode的方法会不会报异常
+     */
+    @Test
+    public void testGetJsonNode() {
+        Map<String, String> map = Maps.newHashMap();
+        map.put("name", "测试");
+        map.put("age", "10");
+        map.put("sex", "男");
+        String s = JsonUtil.toString(map);
+        JsonNode jsonNode = JsonUtil.getJsonNode(s);
+        JsonNode a = jsonNode.get("a");
+        System.out.println(a == null ? "1" : a.textValue());
+        //属性不存在，会报空指针异常
+        System.out.println(a.isNull());
+        System.out.println(a.isEmpty());
+        System.out.println(a.textValue());
     }
 
 

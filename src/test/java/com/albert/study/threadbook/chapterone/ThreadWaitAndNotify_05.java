@@ -62,7 +62,7 @@ public class ThreadWaitAndNotify_05 {
 
     @SneakyThrows
     @Test
-    public void testInterruption() {
+    public void testNotify() {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 2, 0,
                 TimeUnit.SECONDS, new LinkedBlockingDeque<>());
         threadPoolExecutor.execute(new waitClass());
