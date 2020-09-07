@@ -67,10 +67,22 @@ public class TestLocalDateTimeUtils {
     @Test
     public void testHourListContainNow() {
         //获取指定时间到当前时间之间的小时列表(包含当前小时)
-        List<String> hourList = LocalDateTimeUtils.getTimeList(LocalDateTime.now().withHour(10), ChronoUnit.HOURS, "HH", true);
+        List<String> hourList = LocalDateTimeUtils.getTimeList(LocalDateTime.now().withHour(10), ChronoUnit.HOURS, "yyyy-MM-dd HH:00", true);
         //[10, 11, 12, 13, 14, 15, 16]
         System.out.println(hourList);
     }
+
+    /**
+     * 获取包含当前小时的集合
+     */
+    @Test
+    public void testHourListbetweenTwoTime() {
+        //获取指定时间到当前时间之间的小时列表(包含当前小时)
+        List<String> hourList = LocalDateTimeUtils.getTimeList(LocalDateTime.now().withHour(10), ChronoUnit.HOURS, "yyyy-MM-dd HH:mm:ss", true);
+        //[10, 11, 12, 13, 14, 15, 16]
+        System.out.println(hourList);
+    }
+
 
     /**
      * 获取本月的日期集合
@@ -151,10 +163,32 @@ public class TestLocalDateTimeUtils {
      */
     @Test
     public void testBetweenTwoTime() {
-        LocalDateTime startTime = LocalDateTime.of(2020, 8, 1, 0, 0, 0);
+        LocalDateTime startTime = LocalDateTime.of(2020, 9, 1, 0, 0, 0);
         LocalDateTime endTime = LocalDateTime.now();
-        long hours = LocalDateTimeUtils.betweenTwoTime(startTime, endTime, ChronoUnit.MINUTES);
+        long hours = LocalDateTimeUtils.betweenTwoTime(startTime, endTime, ChronoUnit.HOURS);
         System.out.println(hours);
+    }
+
+    /**
+     * 测试两个指定时间的时间戳列表
+     */
+    @Test
+    public void testBetweenLocalDateTime(){
+        LocalDateTime startTime = LocalDateTime.of(2020, 9, 2, 15, 0, 0);
+        LocalDateTime endTime = LocalDateTime.now();
+        List<String> timeList = LocalDateTimeUtils.getTimeList(startTime, endTime, ChronoUnit.HOURS,"yyyy-MM-dd HH:00");
+        System.out.println(timeList);
+    }
+
+    /**
+     * 测试两个指定时间的时间戳列表
+     */
+    @Test
+    public void testBetweenTwoTimeTimestamp(){
+        LocalDateTime startTime = LocalDateTime.of(2020, 9, 2, 15, 0, 0);
+        LocalDateTime endTime = LocalDateTime.now();
+        List<Long> timestampBetweenTwoTime = LocalDateTimeUtils.getTimestampBetweenTwoTime(startTime, endTime, ChronoUnit.HOURS);
+        System.out.println(timestampBetweenTwoTime);
     }
 
     /**

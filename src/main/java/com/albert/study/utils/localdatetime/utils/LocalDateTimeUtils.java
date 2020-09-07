@@ -1,6 +1,7 @@
 package com.albert.study.utils.localdatetime.utils;
 
 import com.google.common.collect.Lists;
+import sun.util.resources.LocaleData;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -112,9 +113,9 @@ public class LocalDateTimeUtils {
         for (long i = 0; i < total; i++) {
             list.add(formatTime(plus(beginTime, i, field), format));
         }
-
         return list;
     }
+
 
     public static List<String> getTimeList(ChronoField field, int interval, ChronoUnit fieldUnit, int number, String format) {
         List<String> list = Lists.newArrayList();
@@ -128,6 +129,42 @@ public class LocalDateTimeUtils {
         }
 
         return list;
+    }
+
+    /**
+     * 获取两个时间之间的时间列表，根据指定格式格式化
+     * @param beginTime
+     * @param endTime
+     * @param field
+     * @param format
+     * @return
+     */
+    public static List<String> getTimeList(LocalDateTime beginTime, LocalDateTime endTime,ChronoUnit field, String format) {
+        List<String> list = Lists.newArrayList();
+        long diffTwoTime = betweenTwoTime(beginTime, endTime, field);
+        long total = diffTwoTime;
+        for (long i = 0; i <= total; i++) {
+            list.add(formatTime(plus(beginTime, i, field), format));
+        }
+
+        return list;
+    }
+
+    /**
+     * 获取两个时间之间的时间戳集合
+     * @param startTime
+     * @param endTime
+     * @param chronoUnit
+     * @return
+     */
+    public static List<Long> getTimestampBetweenTwoTime(LocalDateTime startTime,LocalDateTime endTime,ChronoUnit chronoUnit){
+        List<Long> timeList = Lists.newArrayList();
+        long hours = LocalDateTimeUtils.betweenTwoTime(startTime, endTime, chronoUnit);
+        for(int i=0;i<=hours;i++){
+            LocalDateTime plus = LocalDateTimeUtils.plus(startTime, i, chronoUnit);
+            timeList.add(getMilliByTime(plus));
+        }
+        return timeList;
     }
 
     @Deprecated
@@ -186,6 +223,8 @@ public class LocalDateTimeUtils {
         LocalDateTime firstDayOfCurrentMonth = LocalDateTime.of(firstDay, weeHour);
         return getMilliByTime(firstDayOfCurrentMonth);
     }
+
+
 
     //获取当年第一天的凌晨
 //    public static LocalDateTime getDayStartThisYear() {
