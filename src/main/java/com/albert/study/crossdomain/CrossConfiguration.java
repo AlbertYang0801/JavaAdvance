@@ -17,6 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //@Configuration
 public class CrossConfiguration {
 
+    /**
+     * 注入WebMvcConfigurer
+     * @return
+     */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -31,6 +35,10 @@ public class CrossConfiguration {
         };
     }
 
+    /**
+     * 添加跨域过滤器
+     * @return
+     */
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
