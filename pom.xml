@@ -9,10 +9,25 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>practice</artifactId>
+    <artifactId>albert-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>practice</name>
+    <name>albert-study</name>
     <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>activemq-demo</module>
+        <module>concurrent-practice</module>
+        <module>eightfeatures-practice</module>
+        <module>filter-demo</module>
+        <module>kafka-demo</module>
+        <module>leetcode-practice</module>
+        <module>logging-demo</module>
+        <module>mysql-demo</module>
+        <module>redis-demo</module>
+        <module>springtask-demo</module>
+        <module>utils-module</module>
+
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
@@ -35,6 +50,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
         </dependency>
 
     </dependencies>

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 测试启动类
  *
- * @author ricardo
- * @date 2020-06-23 11:28
+ * @author Albert
+ * @date 2020-09-10 11:28
  **/
 @SpringBootApplication
 public class TestApplication {
