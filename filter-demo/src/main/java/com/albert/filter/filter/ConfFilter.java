@@ -9,7 +9,7 @@ import java.util.Enumeration;
 import java.util.Map;
 
 /**
- * 第二种过滤器配置方式：使用配置累
+ * 第二种过滤器配置方式：使用配置类
  * @author Albert
  * @date 2020/9/7 16:24
  */
