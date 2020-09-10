@@ -202,6 +202,16 @@ public class TestLocalDateTimeUtils {
     }
 
     /**
+     * 测试分钟加上一个数字
+     */
+    @Test
+    public void testPlusMin() {
+        LocalDateTime startTime = LocalDateTime.of(2020, 8, 1, 0, 10, 0);
+        LocalDateTime plus = LocalDateTimeUtils.plus(startTime, -5, ChronoUnit.MINUTES);
+        System.out.println(plus);
+    }
+
+    /**
      * 测试日期减上一个数，具体减的单位根据ChronoUnit枚举的值进行对应
      */
     @Test
