@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>eightfeatures</artifactId>
+    <artifactId>eightfeatures-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>eightfeatures</name>
     <description>Demo project for Spring Boot</description>

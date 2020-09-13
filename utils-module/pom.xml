@@ -10,7 +10,7 @@
     <groupId>com.albert</groupId>
     <artifactId>utils</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>utils</name>
+    <name>utils-module</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

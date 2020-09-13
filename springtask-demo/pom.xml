@@ -11,7 +11,7 @@
     <groupId>com.albert</groupId>
     <artifactId>springtask</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springtask</name>
+    <name>springtask-demo</name>
     <description>Demo project for Spring Task</description>
 
     <properties>

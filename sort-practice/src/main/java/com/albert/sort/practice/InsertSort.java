@@ -25,7 +25,7 @@ public class InsertSort {
      */
     public static int[] sort(int[] arr) {
         //临时变量
-        int temp = 0;
+        int temp;
         for (int i = 1; i < arr.length; i++) {
             //从第一个开始和之前的元素比较
             for(int j =0;j<i;j++){

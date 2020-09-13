@@ -11,7 +11,7 @@
     <groupId>com.albert</groupId>
     <artifactId>redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>redis</name>
+    <name>redis-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
