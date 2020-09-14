@@ -16,14 +16,16 @@ public class BubbleSort {
 
     /**
      * 冒泡排序：
-     * 1.从第一个元素开始遍历，遍历次数为n-1
-     * 2.若元素比后一位元素值大，则交换位置
+     * 1.外层循环n-1次，代表需要循环n-1次
+     * 2.内层循环：比较为排序的字段列表，相邻元素进行比较，大的元素排在后面
+     *
      * @param arr
      * @return
      */
     public static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i-1; j++) {
+            //对未排序的列表进行排序
+            for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     //交换元素位置
                     int temp;
@@ -32,13 +34,13 @@ public class BubbleSort {
                     arr[j + 1] = temp;
                 }
             }
-            log.info("第{}次排序后：{}", i+1, Arrays.toString(arr));
+            log.info("第{}次排序后：{}", i + 1, Arrays.toString(arr));
         }
         return arr;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,5,4,9,1};
+        int[] arr = {2, 5, 4, 9, 1};
         int[] ints = bubbleSort(arr);
         log.info(Arrays.toString(ints));
     }
