@@ -30,13 +30,12 @@ public class KafkaProducer {
     /**
      * 发送消息
      *
-     * @param obj
+     * @param msg
      */
-    public void send(Object obj) {
-        String msg = JsonUtil.toString(obj);
+    public void send(String msg) {
         log.info("准备发送到kafka的消息为：{}", msg);
         //发送消息
-        ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(msg, obj);
+        ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(TOPIC_TEST, msg);
 
         //生产者对消息发送结果的处理
         future.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
@@ -48,7 +47,7 @@ public class KafkaProducer {
             @Override
             public void onSuccess(SendResult<String, Object> stringObjectSendResult) {
                 //发送成功
-                log.info("生产者发送消息失败，topic:{},错误信息为:{}", TOPIC_TEST, stringObjectSendResult.toString());
+                log.info("生产者发送消息成功，topic:{},返回信息为:{}", TOPIC_TEST, stringObjectSendResult.toString());
             }
         });
     }
