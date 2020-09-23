@@ -25,7 +25,7 @@
 
 * SpringBoot集成redis的练习  2020-7-31
 
-* SpringTask的集成和使用 2020-8-3
+* SpringTask的集成和使用 2020-8-3 2020-9-23
 
 * 添加.gitignore插件 2020-8-3
 
