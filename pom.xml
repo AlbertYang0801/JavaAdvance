@@ -27,6 +27,7 @@
         <module>redis-demo</module>
         <module>springtask-demo</module>
         <module>sort-practice</module>
+        <module>mail-demo</module>
 
     </modules>
 
