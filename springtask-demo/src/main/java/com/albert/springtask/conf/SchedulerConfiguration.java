@@ -17,6 +17,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
  */
 @Configuration
 @EnableScheduling
+@EnableAsync
 public class SchedulerConfiguration implements SchedulingConfigurer {
 
     /**

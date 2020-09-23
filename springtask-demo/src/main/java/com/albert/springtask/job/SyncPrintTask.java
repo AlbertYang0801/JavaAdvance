@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
  * @date 2020/8/3 11:35
  */
 @Slf4j
-@Component
+//@Component
 public class SyncPrintTask {
 
     /**
