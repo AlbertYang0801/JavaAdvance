@@ -56,7 +56,6 @@ public class MailUtil {
         properties.setProperty("mail.smtp.port", port);
         // 使用smtp身份验证
         properties.put("mail.smtp.auth", "true");
-        // 开启安全协议,使用SSL,企业邮箱必需 start
         MailSSLSocketFactory mailSslSocketFactory = null;
         try {
             mailSslSocketFactory = new MailSSLSocketFactory();
@@ -65,6 +64,7 @@ public class MailUtil {
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         }
+        // 开启安全协议,使用SSL,企业邮箱必需 start
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.ssl.socketFactory", mailSslSocketFactory);
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
@@ -76,7 +76,6 @@ public class MailUtil {
                 return new PasswordAuthentication(account, password);
             }
         });
-        // 使用SSL,企业邮箱必需 end
         // TODO 显示debug信息 正式环境注释掉
         session.setDebug(true);
         return new MimeMessage(session);
