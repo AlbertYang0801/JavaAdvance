@@ -2,16 +2,21 @@ package com.albert.concurrentpractice.thread.callable;
 
 import com.albert.concurrentpractice.TestApplication;
 import com.albert.concurrentpractice.po.UserPO;
+import com.albert.concurrentpractice.practice.threadpool.ThreadPoolCreate;
 import com.albert.concurrentpractice.utils.JsonUtil;
 import com.albert.concurrentpractice.utils.LocalDateTimeUtils;
+import com.google.common.collect.Lists;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 /**
  * 测试java多线程两大接口之一：Callable
@@ -23,6 +28,9 @@ import java.util.concurrent.*;
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
 public class CallableTest {
+
+    @Autowired
+    private ThreadPoolCreate threadPoolCreate;
 
     /**
      * 测试Callable的返回值,使用匿名内部类
@@ -83,6 +91,39 @@ public class CallableTest {
         log.info(JsonUtil.toString(userPO));
         //关闭线程池
         executorService.shutdown();
+    }
+
+    /**
+     * 测试线程池的invokeALl()方法，提交全部Callable任务
+     */
+    @SneakyThrows
+    @Test
+    public void testThreadPoolInvokeAllTask() {
+        //1.创建任务列表
+        List<Callable<List<String>>> taskList = Lists.newArrayList();
+        for (int i = 0; i < 10; i++) {
+            List<Integer> list = Lists.newArrayList();
+            for (int j = 0; j < 10; j++) {
+                list.add(i * 10 + j);
+            }
+            //2.使用lambda表达式，创建callable线程
+            Callable<List<String>> fillListThread = () -> list.stream().map(num -> String.valueOf(num * 10)).collect(Collectors.toList());
+            taskList.add(fillListThread);
+        }
+        //3.创建线程池
+        ExecutorService executorService = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        List<String> list = Lists.newArrayList();
+        //4.使用线程池提交所有任务
+        List<Future<List<String>>> futures = executorService.invokeAll(taskList);
+        //5.遍历任务返回结果
+        futures.forEach(future -> {
+            //6.获取任务返回结果
+            List<String> data = future.get();
+            list.addAll(data);
+        });
+        //7.关闭线程池
+        executorService.shutdown();
+        System.out.println(JsonUtil.toString(list));
     }
 
 

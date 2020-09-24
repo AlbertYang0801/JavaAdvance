@@ -1,7 +1,8 @@
 package com.albert.concurrentpractice.common;
 
-import com.albert.study.utils.jackson.po.GroupPO;
-import com.albert.study.utils.jackson.po.UserPO;
+
+import com.albert.concurrentpractice.po.GroupPO;
+import com.albert.concurrentpractice.po.UserPO;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
