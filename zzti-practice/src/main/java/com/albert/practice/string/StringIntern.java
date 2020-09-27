@@ -9,6 +9,9 @@ package com.albert.practice.string;
 public class StringIntern {
 
     public static void main(String[] args) {
+        String regionId ="123456";
+
+
 
     }
 

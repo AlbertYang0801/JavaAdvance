@@ -28,6 +28,7 @@
         <module>springtask-demo</module>
         <module>sort-practice</module>
         <module>mail-demo</module>
+        <module>file-demo</module>
 
     </modules>
 

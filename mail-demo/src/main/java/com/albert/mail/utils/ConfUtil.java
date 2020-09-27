@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Data
 public class ConfUtil {
 
-    @Value("${mail.account}")
-    private String account;
+    @Value("${mail.userName}")
+    private String userName;
 
     @Value("${mail.password}")
     private String password;
@@ -25,6 +25,12 @@ public class ConfUtil {
 
     @Value("${mail.protocol}")
     private String protocol;
+
+    @Value("${mail.isSsl}")
+    private Boolean isSsl;
+
+    @Value("${mail.debug}")
+    private Boolean mailDebug;
 
 
 }
