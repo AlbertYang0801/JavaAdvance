@@ -1,4 +1,4 @@
-package com.albert.practice.string;
+package com.albert.string.practice;
 
 /**
  * 联系String的intern方法
@@ -9,10 +9,9 @@ package com.albert.practice.string;
 public class StringIntern {
 
     public static void main(String[] args) {
-        String regionId ="123456";
-
-
-
+        String regionId ="abc123";
+        String intern = regionId.intern();
+        System.out.println(intern);
     }
 
 
