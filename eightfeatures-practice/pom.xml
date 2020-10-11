@@ -10,7 +10,7 @@
     <groupId>com.albert</groupId>
     <artifactId>eightfeatures-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eightfeatures</name>
+    <name>eightfeatures-practice</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

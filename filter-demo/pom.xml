@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>filter</artifactId>
+    <artifactId>filter-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>filter-demo</name>
     <description>Demo project for Spring Filter</description>

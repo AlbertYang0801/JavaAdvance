@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>practice</artifactId>
+    <artifactId>zzti-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>zzti-practice</name>
     <description>Demo project for Spring Boot</description>

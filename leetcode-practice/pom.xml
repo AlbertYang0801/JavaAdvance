@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>leetcode</artifactId>
+    <artifactId>leetcode-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>leetcode-practice</name>
     <description>Demo project for Leetcode</description>

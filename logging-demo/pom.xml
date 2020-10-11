@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>logging</artifactId>
+    <artifactId>logging-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>logging-demo</name>
     <description>Demo project for Spring Boot</description>

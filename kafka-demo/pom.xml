@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>kafka</artifactId>
+    <artifactId>kafka-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>kafka-demo</name>
     <description>Demo project for Spring Boot and Kafka</description>

@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>com.albert</groupId>
-    <artifactId>redis</artifactId>
+    <artifactId>redis-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>redis-demo</name>
     <description>Demo project for Spring Boot</description>
