@@ -19,6 +19,9 @@ import java.io.IOException;
 @RestController
 public class FileUploadController {
 
+    /**
+     * 文件上传路径
+     */
     @Value("${file.upload.path}")
     private String uploadPath;
 

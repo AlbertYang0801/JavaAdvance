@@ -132,13 +132,14 @@ public class LocalDateTimeUtils {
 
     /**
      * 获取两个时间之间的时间列表，根据指定格式格式化
+     *
      * @param beginTime
      * @param endTime
      * @param field
      * @param format
      * @return
      */
-    public static List<String> getTimeList(LocalDateTime beginTime, LocalDateTime endTime,ChronoUnit field, String format) {
+    public static List<String> getTimeList(LocalDateTime beginTime, LocalDateTime endTime, ChronoUnit field, String format) {
         List<String> list = Lists.newArrayList();
         long diffTwoTime = betweenTwoTime(beginTime, endTime, field);
         long total = diffTwoTime;
@@ -151,15 +152,16 @@ public class LocalDateTimeUtils {
 
     /**
      * 获取两个时间之间的时间戳集合
+     *
      * @param startTime
      * @param endTime
      * @param chronoUnit
      * @return
      */
-    public static List<Long> getTimestampBetweenTwoTime(LocalDateTime startTime,LocalDateTime endTime,ChronoUnit chronoUnit){
+    public static List<Long> getTimestampBetweenTwoTime(LocalDateTime startTime, LocalDateTime endTime, ChronoUnit chronoUnit) {
         List<Long> timeList = Lists.newArrayList();
         long hours = LocalDateTimeUtils.betweenTwoTime(startTime, endTime, chronoUnit);
-        for(int i=0;i<=hours;i++){
+        for (int i = 0; i <= hours; i++) {
             LocalDateTime plus = LocalDateTimeUtils.plus(startTime, i, chronoUnit);
             timeList.add(getMilliByTime(plus));
         }
@@ -224,7 +226,6 @@ public class LocalDateTimeUtils {
     }
 
 
-
     //获取当年第一天的凌晨
 //    public static LocalDateTime getDayStartThisYear() {
 //		LocalDateTime firstDay = (LocalDateTime) com.cloudwise.project.yiling.utils.LocalDateTimeUtils.getCopyDateToWant(LocalDateTime.now(), TemporalAdjusters.firstDayOfYear());
@@ -235,8 +236,12 @@ public class LocalDateTimeUtils {
     //获取两个日期的差  field参数为ChronoUnit.*
     public static long betweenTwoTime(LocalDateTime startTime, LocalDateTime endTime, ChronoUnit field) {
         Period period = Period.between(LocalDate.from(startTime), LocalDate.from(endTime));
-        if (field == ChronoUnit.YEARS){ return period.getYears();}
-        if (field == ChronoUnit.MONTHS) {return period.getYears() * 12 + period.getMonths();}
+        if (field == ChronoUnit.YEARS) {
+            return period.getYears();
+        }
+        if (field == ChronoUnit.MONTHS) {
+            return period.getYears() * 12 + period.getMonths();
+        }
         return field.between(startTime, endTime);
     }
 
@@ -307,26 +312,30 @@ public class LocalDateTimeUtils {
         return false;
     }
 
-    /**
-     * 将时间戳转换为LocalDateTime
-     * @param timestamp
-     * @return
-     */
-    public static LocalDateTime parseTimestamp(Long timestamp){
+    //将毫米时间戳转换为LocalDateTime
+    public static LocalDateTime parseTimestamp(Long timestamp) {
         LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
         return localDateTime;
     }
 
-    /**
-     * 将时间戳解析为指定格式的时间字符串
-     * @param timestamp
-     * @param pattern
-     * @return
-     */
-    public static String parseTimestamp(Long timestamp,String pattern){
-        LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
-        return LocalDateTimeUtils.formatTime(localDateTime,pattern);
+    //解析秒时间戳
+    public static LocalDateTime parseSecondTimestamp(Long timestatmp) {
+        return Instant.ofEpochSecond(timestatmp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
     }
+
+    //将毫秒时间戳解析为指定格式的时间字符串
+    public static String parseTimestamp(Long timestamp, String pattern) {
+        LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        return LocalDateTimeUtils.formatTime(localDateTime, pattern);
+    }
+
+    //将秒时间戳解析为指定格式的时间字符串
+    public static String parseSecondTimestamp(Long timestamp, String pattern) {
+        LocalDateTime localDateTime = Instant.ofEpochSecond(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        return LocalDateTimeUtils.formatTime(localDateTime, pattern);
+    }
+
+
 
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();

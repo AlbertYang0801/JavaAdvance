@@ -49,7 +49,6 @@ public class JsonUtilToStringTest {
         log.info(userPoString);
     }
 
-
     /**
      * 测试map转换为json字符串
      */

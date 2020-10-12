@@ -176,7 +176,7 @@ public class TestLocalDateTimeUtils {
     public void testBetweenLocalDateTime(){
         LocalDateTime startTime = LocalDateTime.of(2020, 9, 2, 15, 0, 0);
         LocalDateTime endTime = LocalDateTime.now();
-        List<String> timeList = LocalDateTimeUtils.getTimeList(startTime, endTime, ChronoUnit.HOURS,"yyyy-MM-dd HH:00");
+        List<String> timeList = LocalDateTimeUtils.getTimeList(startTime, endTime, ChronoUnit.MINUTES,"yyyy-MM-dd HH:mm:ss");
         System.out.println(timeList);
     }
 
@@ -188,6 +188,17 @@ public class TestLocalDateTimeUtils {
         LocalDateTime startTime = LocalDateTime.of(2020, 9, 2, 15, 0, 0);
         LocalDateTime endTime = LocalDateTime.now();
         List<Long> timestampBetweenTwoTime = LocalDateTimeUtils.getTimestampBetweenTwoTime(startTime, endTime, ChronoUnit.HOURS);
+        System.out.println(timestampBetweenTwoTime);
+    }
+
+    /**
+     * 测试两个指定时间的时间戳列表
+     */
+    @Test
+    public void testGetTimeListByTimeGranularity(){
+        LocalDateTime startTime = LocalDateTime.of(2020, 9, 27, 22, 10, 0);
+        LocalDateTime endTime = LocalDateTime.now();
+        List<String> timestampBetweenTwoTime = LocalDateTimeUtils.getTimeListByTimeGranularity(startTime, endTime, ChronoUnit.MINUTES,2,"yyyy-MM-dd HH:mm:ss");
         System.out.println(timestampBetweenTwoTime);
     }
 
@@ -270,7 +281,7 @@ public class TestLocalDateTimeUtils {
      */
     @Test
     public void testParseTimestamp(){
-        long time = 1596211200000L;
+        long time = 1596211200L;
         LocalDateTime localDateTime = Instant.ofEpochMilli(time).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
         System.out.println(localDateTime);
         String s = LocalDateTimeUtils.formatTime(localDateTime, "yyyy-MM-dd HH:mm:ss");

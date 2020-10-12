@@ -127,7 +127,6 @@ public class DocOfConfTest {
      * @return
      */
     private String pathToCode(String path) {
-        //TODO get code
         return "code";
     }
 
