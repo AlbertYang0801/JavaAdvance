@@ -7,11 +7,10 @@
 *.iml
 
 out
-gen
+
 target/
 logs/
 
 .mvn/
 mvnw
 mvnw.cmd
-file/
