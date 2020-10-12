@@ -14,3 +14,4 @@ logs/
 .mvn/
 mvnw
 mvnw.cmd
+/file-demo/file/
