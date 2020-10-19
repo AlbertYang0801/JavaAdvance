@@ -27,7 +27,7 @@ public class FileUploadController {
 
     /**
      * Content-type为multipart/form-data类型的文件上传
-     *
+     * 表单提交
      * @param multipartFile
      * @return
      */

@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  */
 @Slf4j
 //@Component
-public class SyncPrintConfTask {
+public class ExecuteTaskForConf {
 
     /**
      * 第一次任务延时1m执行

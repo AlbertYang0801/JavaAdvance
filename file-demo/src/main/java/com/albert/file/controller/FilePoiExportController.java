@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.openxmlformats.schemas.drawingml.x2006.chart.STBarGrouping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,20 +20,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 文件导出
+ * 使用Poi进行Excel文件导出
  *
  * @author Albert
  * @date 2020/10/9 11:00
  */
 @RestController
 @Slf4j
-public class FileExportController {
+public class FilePoiExportController {
+
+    @GetMapping("/export/excel")
+    public void exportExcel(HttpServletResponse response){
+
+    }
+
 
     /**
      * 导出excel,带图表
      */
-    @PostMapping("/export/excel")
-    public void exportExcel(HttpServletResponse response) {
+    @GetMapping("/export/excel")
+    public void exportExcelChar(HttpServletResponse response) {
 
         // 字段名
         List<String> fldNameArr = new ArrayList<String>();
