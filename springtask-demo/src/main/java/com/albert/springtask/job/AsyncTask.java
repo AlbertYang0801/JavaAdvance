@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  * @date 2020/9/23 16:10
  */
 @Slf4j
-@Component
+//@Component
 public class AsyncTask {
 
     /**

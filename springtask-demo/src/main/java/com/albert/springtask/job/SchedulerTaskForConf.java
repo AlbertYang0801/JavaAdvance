@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  */
 @Slf4j
 //@Component
-public class ExecuteTaskForConf {
+public class SchedulerTaskForConf {
 
     /**
      * 第一次任务延时1m执行
