@@ -58,6 +58,17 @@ public class SendMailTask implements Runnable {
     }
 
     @Override
+    public String toString() {
+        return "SendMailTask{" +
+                "sender='" + sender + '\'' +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", pathList=" + pathList +
+                '}';
+    }
+
+    @Override
     public void run() {
         log.info("开始执行定时发送的任务");
         //发送邮件

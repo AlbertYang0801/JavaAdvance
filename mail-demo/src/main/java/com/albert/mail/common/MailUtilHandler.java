@@ -2,20 +2,19 @@ package com.albert.mail.common;
 
 import com.albert.mail.job.SendMailTask;
 import com.albert.mail.utils.ConfUtil;
-import com.albert.mail.utils.MailUtil;
 import com.albert.utils.jackson.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
  * 使用定时线程池发送邮件
+ *
  * @author Albert
  * @date 2020/10/19 20:45
  */
@@ -38,7 +37,7 @@ public class MailUtilHandler {
         //创建定时线程池
         scheduledExecutorService = new ScheduledThreadPoolExecutor(CORE_POOL_SIZE,
                 new BasicThreadFactory.Builder()
-                        .namingPattern("cmdb-schedule-pool-%d")
+                        .namingPattern("albert-schedule-pool-%d")
                         .daemon(true)
                         .build());
     }
