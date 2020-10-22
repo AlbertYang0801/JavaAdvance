@@ -13,6 +13,15 @@ public class LocalDateTimeUtils {
     public static final String DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_HOUR_TIME = "yyyy-MM-dd HH";
 
+    //获取当前时间的毫秒值
+    public static long getNowMillis() {
+        return getMilliByTime(LocalDateTime.now());
+    }
+
+    //获取当前时间的秒值
+    public static long getNowSeconds() {
+        return getSecondsByTime(LocalDateTime.now());
+    }
 
     //获取当日凌晨
     public static LocalDateTime getWeeHour() {

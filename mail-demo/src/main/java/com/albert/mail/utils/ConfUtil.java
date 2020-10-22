@@ -27,10 +27,10 @@ public class ConfUtil {
     private String protocol;
 
     @Value("${mail.isSsl}")
-    private Boolean isSsl;
+    private String isSsl;
 
     @Value("${mail.debug}")
-    private Boolean mailDebug;
+    private String mailDebug;
 
 
 }

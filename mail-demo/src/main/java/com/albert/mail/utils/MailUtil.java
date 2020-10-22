@@ -1,14 +1,17 @@
 package com.albert.mail.utils;
 
 import com.sun.mail.util.MailSSLSocketFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 import java.util.List;
@@ -20,42 +23,41 @@ import java.util.Properties;
  * @author Albert
  * @date 2020/9/23 09:18
  */
+@Slf4j
+@Component
 public class MailUtil {
 
-    private final String userName;
-    private final String password;
-    private final String host;
-    private final String port;
-    private final String protocol;
-    private final Boolean isSsl;
-    private final Boolean mailDebug;
+    @Autowired
+    ConfUtil confUtil;
+
+    private static String userName;
+    private static String password;
+    private static String host;
+    private static String port;
+    private static String protocol;
+    private static Boolean isSsl;
+    private static Boolean mailDebug;
 
     /**
-     * 初始化参数
-     *
-     * @param userName  登录账号
-     * @param password 登录密码
-     * @param host     服务器地址
-     * @param port     端口
-     * @param protocol 协议
-     * @param isSsl    是否支持ssl协议
+     * 初始化赋值
      */
-    public MailUtil(String userName, String password, String host, String port, String protocol, Boolean isSsl, Boolean mailDebug) {
-        this.userName = userName;
-        this.password = password;
-        this.host = host;
-        this.port = port;
-        this.protocol = protocol;
-        this.isSsl = isSsl;
-        this.mailDebug = mailDebug;
+    @PostConstruct
+    public void init() {
+        userName = confUtil.getUserName();
+        password = confUtil.getPassword();
+        host = confUtil.getHost();
+        port = confUtil.getPort();
+        protocol = confUtil.getProtocol();
+        isSsl = Boolean.valueOf(confUtil.getIsSsl());
+        mailDebug = Boolean.valueOf(confUtil.getMailDebug());
     }
 
     /**
      * 创建链接
      *
-     * @return
+     * @return 邮件
      */
-    public MimeMessage initMimeMessage() {
+    private static MimeMessage initMimeMessage() {
         Properties properties = new Properties();
         properties.setProperty("mail.transport.protocol", protocol);
         properties.setProperty("mail.smtp.host", host);
@@ -80,14 +82,12 @@ public class MailUtil {
         properties.put("mail.smtp.ssl.socketFactory", mailSslSocketFactory);
         properties.put("mail.smtp.socketFactory.fallback", "false");
         properties.put("mail.smtp.socketFactory.port", port);
-        //
         Session session = Session.getDefaultInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(userName, password);
             }
         });
-        //显示debug信息 正式环境注释掉
         session.setDebug(mailDebug);
         return new MimeMessage(session);
     }
@@ -101,8 +101,9 @@ public class MailUtil {
      * @param receiverList 接收者列表
      * @param fileSrc      附件地址列表
      */
-    public void SendMail(String sender, String subject, String content, String receiverList, List<String> fileSrc) {
+    public static void sendMail(String sender, String subject, String content, String receiverList, List<String> fileSrc) {
         try {
+            log.info("开始发送邮件");
             //初始化邮件发送类
             MimeMessage mimeMessage = initMimeMessage();
             // 发件人,可以设置发件人的别名
