@@ -1,8 +1,8 @@
 package com.albert.concurrentpractice.thread.threadpool;
 
 import com.albert.concurrentpractice.TestApplication;
-import com.albert.concurrentpractice.practice.threadpool.ThreadPoolCreate;
-import com.albert.concurrentpractice.utils.JsonUtil;
+import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;
+import com.albert.utils.jackson.JsonUtil;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package com.albert.concurrentpractice.thread.threadpool;
 
 import com.albert.concurrentpractice.TestApplication;
-import com.albert.concurrentpractice.practice.threadpool.ThreadPoolCreate;
+import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

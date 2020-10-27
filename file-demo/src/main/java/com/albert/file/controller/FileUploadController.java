@@ -28,8 +28,6 @@ public class FileUploadController {
     /**
      * Content-type为multipart/form-data类型的文件上传
      * 表单提交
-     * @param multipartFile
-     * @return
      */
     @PostMapping("/file/upload")
     public String uploadBillClient(@RequestParam("fileName") MultipartFile multipartFile) {
@@ -40,7 +38,10 @@ public class FileUploadController {
         File file = new File(path);
         //如果上级目录不存在，则创建上级目录
         if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
+            boolean mkdirs = file.getParentFile().mkdirs();
+            if(mkdirs){
+                log.info("上级目录不存在，创建成功！");
+            }
         }
         try {
             //覆盖指定文件
@@ -48,7 +49,7 @@ public class FileUploadController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "发送成功";
+        return "上传成功";
     }
 
 

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class ActivemqProducer {
 
-
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
 
@@ -26,7 +25,7 @@ public class ActivemqProducer {
     /**
      * 定时发送
      */
-//    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 2000)
     public void send(){
         jmsMessagingTemplate.convertAndSend(topic, "生产者发送消息");
     }
@@ -47,7 +46,6 @@ public class ActivemqProducer {
             thread.start();
         }
     }
-
 
 
 }

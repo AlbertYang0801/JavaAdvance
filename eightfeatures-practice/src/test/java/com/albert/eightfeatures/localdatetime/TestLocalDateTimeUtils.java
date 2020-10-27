@@ -1,6 +1,6 @@
 package com.albert.eightfeatures.localdatetime;
 
-import com.albert.eightfeatures.utils.LocalDateTimeUtils;
+import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import org.junit.Test;
 
 import java.time.*;

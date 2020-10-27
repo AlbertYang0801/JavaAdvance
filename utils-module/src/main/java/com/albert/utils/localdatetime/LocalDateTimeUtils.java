@@ -177,6 +177,26 @@ public class LocalDateTimeUtils {
         return timeList;
     }
 
+    /**
+     * 获取两个时间之间的时间列表，根据指定格式格式化，可以指定时间粒度
+     *
+     * @param beginTime
+     * @param endTime
+     * @param field
+     * @param timeGranularity 时间粒度
+     * @param format
+     * @return
+     */
+    public static List<String> getTimeListByTimeGranularity(LocalDateTime beginTime, LocalDateTime endTime, ChronoUnit field, int timeGranularity, String format) {
+        List<String> list = Lists.newArrayList();
+        long diffTwoTime = betweenTwoTime(beginTime, endTime, field);
+        long total = diffTwoTime;
+        for (long i = 0; i <= total; i=i+timeGranularity) {
+            list.add(formatTime(plus(beginTime, i, field), format));
+        }
+        return list;
+    }
+
     @Deprecated
     public static List<String> getMinuteList(int countOfHour, int interval, String format) {
         List<String> list = Lists.newArrayList();

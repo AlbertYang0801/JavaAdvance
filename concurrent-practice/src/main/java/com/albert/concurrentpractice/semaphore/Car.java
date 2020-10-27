@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.practice.semaphore;
+package com.albert.concurrentpractice.semaphore;
 
 import java.util.concurrent.Semaphore;
 

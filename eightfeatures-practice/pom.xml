@@ -7,7 +7,6 @@
         <artifactId>albert-study</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.albert</groupId>
     <artifactId>eightfeatures-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>eightfeatures-practice</name>

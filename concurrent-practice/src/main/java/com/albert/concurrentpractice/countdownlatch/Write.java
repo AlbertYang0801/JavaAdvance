@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.practice.countdownlatch;
+package com.albert.concurrentpractice.countdownlatch;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class Write implements Runnable {
 
-    private CountDownLatch countDownLatch;
+    private final CountDownLatch countDownLatch;
 
     public Write(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;

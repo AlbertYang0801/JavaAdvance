@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.practice.countdownlatch;
+package com.albert.concurrentpractice.countdownlatch;
 
 import lombok.extern.slf4j.Slf4j;
 

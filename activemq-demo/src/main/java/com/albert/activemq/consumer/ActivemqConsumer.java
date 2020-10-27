@@ -25,11 +25,9 @@ public class ActivemqConsumer {
      * @param msg
      */
     @JmsListener(destination = "${activemq.topoc.test}")
-    public void receiveQueue1(String msg) {
+    public void receiveOtherQueue(String msg) {
         System.out.println(msg+"消息已经消费了");
     }
-
-
 
 
 }

@@ -29,12 +29,6 @@ import java.util.Map;
 @Slf4j
 public class FilePoiExportController {
 
-    @GetMapping("/export/excel")
-    public void exportExcel(HttpServletResponse response){
-
-    }
-
-
     /**
      * 导出excel,带图表
      */

@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.practice.threadpool;
+package com.albert.concurrentpractice.threadpool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;

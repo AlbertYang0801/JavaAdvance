@@ -2,9 +2,9 @@ package com.albert.concurrentpractice.thread.callable;
 
 import com.albert.concurrentpractice.TestApplication;
 import com.albert.concurrentpractice.po.UserPO;
-import com.albert.concurrentpractice.practice.threadpool.ThreadPoolCreate;
-import com.albert.concurrentpractice.utils.JsonUtil;
-import com.albert.concurrentpractice.utils.LocalDateTimeUtils;
+import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;
+import com.albert.utils.jackson.JsonUtil;
+import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import com.google.common.collect.Lists;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

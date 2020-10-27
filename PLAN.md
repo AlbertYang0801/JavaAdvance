@@ -66,6 +66,12 @@
 
 * @PostConstruct注解总结
 
+* 方法引用的练习
+
+* optional的练习
+
+* stream的练习总结
+
 
 
 
