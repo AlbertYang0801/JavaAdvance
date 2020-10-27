@@ -34,7 +34,7 @@ public class MailController {
         return "发送成功";
     }
 
-    @PostMapping("/sendpic")
+    @GetMapping("/sendpic")
     public String sendMailPic(@RequestParam("path") String path) {
         log.info("准备发送的图片路径为:{}", path);
         List<String> fileList = Lists.newArrayList();
