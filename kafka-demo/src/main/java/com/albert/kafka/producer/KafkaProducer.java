@@ -29,8 +29,6 @@ public class KafkaProducer {
 
     /**
      * 发送消息
-     *
-     * @param msg
      */
     public void send(String msg) {
         log.info("准备发送到kafka的消息为：{}", msg);
