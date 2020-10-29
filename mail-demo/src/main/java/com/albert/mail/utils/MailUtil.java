@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -27,7 +28,7 @@ import java.util.Properties;
 @Component
 public class MailUtil {
 
-    @Autowired
+    @Resource
     ConfUtil confUtil;
 
     private static String userName;
@@ -39,7 +40,7 @@ public class MailUtil {
     private static Boolean mailDebug;
 
     /**
-     * 初始化赋值
+     * 类初始化赋值
      */
     @PostConstruct
     public void init() {

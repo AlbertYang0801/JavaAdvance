@@ -34,7 +34,7 @@ public class MailController {
         return "发送成功";
     }
 
-    @GetMapping("/sendpic")
+    @GetMapping("/sendPic")
     public String sendMailPic(@RequestParam("path") String path) {
         log.info("准备发送的图片路径为:{}", path);
         List<String> fileList = Lists.newArrayList();
@@ -52,7 +52,7 @@ public class MailController {
                 "albert", "测试定时发送",
                 "这是一封测试定时发送的邮件",
                 "18438049166@163.com", Lists.newArrayList());
-        //指定时间间隔之后执行
+        //指定当前时间间隔之后执行
         long timeInterval = timestamp - LocalDateTimeUtils.getNowMillis();
         //向定时线程池添加任务
         MailUtilHandler.addSendMailTask(sendMailTask, timeInterval);

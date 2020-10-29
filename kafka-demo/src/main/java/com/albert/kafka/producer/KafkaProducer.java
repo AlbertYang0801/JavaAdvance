@@ -1,14 +1,14 @@
 package com.albert.kafka.producer;
 
-import com.albert.kafka.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
+
+import javax.annotation.Resource;
 
 /**
  * kafka的生产者
@@ -21,7 +21,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class KafkaProducer {
 
-    @Autowired
+    @Resource
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Value("${kafka.test.topic}")

@@ -50,6 +50,7 @@ public class MailUtilHandler {
      */
     public static void addSendMailTask(SendMailTask sendMailTask, Long time) {
         log.info("添加任务到定时线程池，sendMailTask：{},time:{}", JsonUtil.toString(sendMailTask), time);
+        //添加任务到定时线程池，任务，时间间隔，时间单位
         scheduledExecutorService.schedule(sendMailTask, time, TimeUnit.MILLISECONDS);
     }
 

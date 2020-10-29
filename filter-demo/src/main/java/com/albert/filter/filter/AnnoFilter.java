@@ -1,6 +1,6 @@
 package com.albert.filter.filter;
 
-import com.albert.filter.utils.JsonUtil;
+import com.albert.utils.jackson.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
+ * 注解方式过滤器
  * @author Albert
  * @date 2020/9/7 17:23
  */
