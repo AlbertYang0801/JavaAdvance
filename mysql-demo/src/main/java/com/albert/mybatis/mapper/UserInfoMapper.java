@@ -1,6 +1,6 @@
-package com.albert.mysql.mapper;
+package com.albert.mybatis.mapper;
 
-import com.albert.mysql.model.po.UserInfoPO;
+import com.albert.mybatis.model.po.UserInfoPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,7 +13,10 @@ import java.util.List;
 @Mapper
 public interface UserInfoMapper {
 
-    @Select("SELECT id,name from user_info")
+    /**
+     * 简单查询
+     */
+    @Select("SELECT id,name,age,timestamp FROM user_info")
     List<UserInfoPO> getUserInfoList();
 
 }

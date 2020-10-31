@@ -1,4 +1,4 @@
-package com.albert.mysql;
+package com.albert.mybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

@@ -30,6 +30,8 @@
         <module>mail-demo</module>
         <module>file-demo</module>
         <module>string-practice</module>
+        <module>sqlserver-demo</module>
+        <module>mybatis-demo</module>
 
     </modules>
 

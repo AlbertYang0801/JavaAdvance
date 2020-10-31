@@ -1,4 +1,4 @@
-package com.albert.mysql;
+package com.albert.mybatis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

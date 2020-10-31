@@ -1,7 +1,7 @@
-package com.albert.mysql.mapper;
+package com.albert.mybatis.mapper;
 
-import com.albert.mysql.TestApplication;
-import com.albert.mysql.model.po.UserInfoPO;
+import com.albert.mybatis.TestApplication;
+import com.albert.mybatis.model.po.UserInfoPO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

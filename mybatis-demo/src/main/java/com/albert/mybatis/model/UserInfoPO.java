@@ -1,4 +1,4 @@
-package com.albert.mysql.model.po;
+package com.albert.mybatis.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +17,9 @@ public class UserInfoPO {
 
     private String id;
     private String name;
+    private Integer age;
+    private Long timestamp;
+
 
 
 }
