@@ -127,7 +127,7 @@ public class MailUtil {
             for (String file : fileSrc) {
                 // 添加图片&附件
                 bodyPart = new MimeBodyPart();
-                bodyPart.attachFile(file);
+                bodyPart.attachFile(file.trim());
                 mimeMultipart.addBodyPart(bodyPart);
             }
             mimeMessage.setContent(mimeMultipart);
