@@ -170,7 +170,7 @@ public class TestLocalDateTimeUtils {
     }
 
     /**
-     * 测试两个指定时间的时间戳列表
+     * 测试两个指定时间的指定格式时间列表
      */
     @Test
     public void testBetweenLocalDateTime(){
@@ -192,7 +192,7 @@ public class TestLocalDateTimeUtils {
     }
 
     /**
-     * 测试两个指定时间的时间戳列表
+     * 测试两个指定时间的指定格式时间列表，可指定数据之间的粒度
      */
     @Test
     public void testGetTimeListByTimeGranularity(){

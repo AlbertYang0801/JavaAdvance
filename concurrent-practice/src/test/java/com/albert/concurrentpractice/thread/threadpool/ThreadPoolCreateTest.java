@@ -24,16 +24,13 @@ import java.util.concurrent.*;
 @RunWith(SpringRunner.class)
 public class ThreadPoolCreateTest {
 
-    @Autowired
-    private ThreadPoolCreate threadPoolCreate;
-
     /**
      * 测试使用CacheThreadPool,缓存类型线程池
      * 根据任务个数扩展线程个数，同时执行，每个任务对应一个线程
      */
     @Test
     public void testCacheThreadPool() {
-        ExecutorService cachedThreadPool = threadPoolCreate.getCachedThreadPool();
+        ExecutorService cachedThreadPool = ThreadPoolCreate.getCachedThreadPool();
         log.info("测试CacheThreadPool线程池执行任务，开始执行");
         executeTask(cachedThreadPool);
         log.info("测试CacheThreadPool线程池执行任务，结束完成");
@@ -45,7 +42,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testFixedThreadPool() {
-        ExecutorService fixedThreadPool = threadPoolCreate.getFixedThreadPool(5);
+        ExecutorService fixedThreadPool = ThreadPoolCreate.getFixedThreadPool(5);
         log.info("测试FixedThreadPool线程池执行任务，开始执行");
         executeTask(fixedThreadPool);
         log.info("测试FixedThreadPool线程池执行任务，结束完成");
@@ -59,7 +56,7 @@ public class ThreadPoolCreateTest {
         //创建自定义线程工厂
         ThreadFactory threadFactory =
                 new ThreadFactoryBuilder().setNameFormat("albert-pool-%d").build();
-        ExecutorService fixedThreadPool = threadPoolCreate.getFixedThreadPool(5, threadFactory);
+        ExecutorService fixedThreadPool = ThreadPoolCreate.getFixedThreadPool(5, threadFactory);
         log.info("测试FixedThreadPool线程池执行任务，开始执行");
         executeTask(fixedThreadPool);
         log.info("测试FixedThreadPool线程池执行任务，结束完成");
@@ -70,7 +67,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testSingleThreadExecutor() {
-        ExecutorService singleThreadExecutor = threadPoolCreate.getSingleThreadExecutor();
+        ExecutorService singleThreadExecutor = ThreadPoolCreate.getSingleThreadExecutor();
         log.info("测试SingleThreadExecutor线程池执行任务，开始执行");
         executeTask(singleThreadExecutor);
         log.info("测试SingleThreadExecutor线程池执行任务，结束完成");
@@ -81,7 +78,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testScheduledThreadPoolPeriod() {
-        ScheduledExecutorService scheduledThreadPool = threadPoolCreate.getScheduledThreadPool(3);
+        ScheduledExecutorService scheduledThreadPool = ThreadPoolCreate.getScheduledThreadPool(3);
         scheduledThreadPool.scheduleAtFixedRate(() -> {
             log.info("每1秒执行一次");
         }, 1, 1, TimeUnit.SECONDS);
@@ -97,7 +94,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testScheduledThreadPoolDelay() {
-        ScheduledExecutorService scheduledThreadPool = threadPoolCreate.getScheduledThreadPool(3);
+        ScheduledExecutorService scheduledThreadPool = ThreadPoolCreate.getScheduledThreadPool(3);
         scheduledThreadPool.schedule(() -> {
             log.info("在系统启动5秒后执行");
         }, 5, TimeUnit.SECONDS);
@@ -113,7 +110,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testScheduledThreadPoolCallable() {
-        ScheduledExecutorService scheduledThreadPool = threadPoolCreate.getScheduledThreadPool(3);
+        ScheduledExecutorService scheduledThreadPool = ThreadPoolCreate.getScheduledThreadPool(3);
         //使用Callable函数式接口，获取返回值
         ScheduledFuture<String> schedule = scheduledThreadPool.schedule(() -> {
             return "测试返回值";
@@ -133,7 +130,7 @@ public class ThreadPoolCreateTest {
      */
     @Test
     public void testNewWorkStealingPool(){
-        ExecutorService executorService = threadPoolCreate.newWorkStealingPool();
+        ExecutorService executorService = ThreadPoolCreate.newWorkStealingPool();
         executeTask(executorService);
     }
 
@@ -145,7 +142,7 @@ public class ThreadPoolCreateTest {
     @Test
     public void testNewWorkStealingPoolByParam(){
         //指定线程最大并行数
-        ExecutorService executorService = threadPoolCreate.newWorkStealingPool(3);
+        ExecutorService executorService = ThreadPoolCreate.newWorkStealingPool(3);
         executeTask(executorService);
     }
 
@@ -156,7 +153,7 @@ public class ThreadPoolCreateTest {
     @Test
     public void testAlibabaThreadPool(){
         //指定线程最小和最大线程数(相当于FixedThreadPool)
-        ExecutorService threadPoolByAlibaba = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        ExecutorService threadPoolByAlibaba = ThreadPoolCreate.getThreadPoolByAlibaba(5, 5);
         log.info("测试手动创建线程池");
         executeTask(threadPoolByAlibaba);
     }

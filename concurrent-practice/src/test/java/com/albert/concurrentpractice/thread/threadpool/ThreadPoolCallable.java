@@ -29,9 +29,6 @@ import java.util.stream.Collectors;
 @RunWith(SpringRunner.class)
 public class ThreadPoolCallable {
 
-    @Autowired
-    private ThreadPoolCreate threadPoolCreate;
-
     /**
      * 创建一个Callable线程类，使用线程池执行所有任务，并获取线程返回结果
      */
@@ -50,7 +47,7 @@ public class ThreadPoolCallable {
             taskList.add(fillListThread);
         }
         //2.创建线程池
-        ExecutorService executorService = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        ExecutorService executorService = ThreadPoolCreate.getThreadPoolByAlibaba(5, 5);
         List<String> list = Lists.newArrayList();
         try {
             //3.使用线程池执行所有任务
@@ -74,6 +71,7 @@ public class ThreadPoolCallable {
     /**
      * 使用lambda表达式创建Callable，添加到任务列表，使用线程池执行
      */
+    @Test
     public void threadPoolLambdaOperateList() {
         //1.创建任务列表
         List<Callable<List<String>>> taskList = Lists.newArrayList();
@@ -87,7 +85,7 @@ public class ThreadPoolCallable {
             taskList.add(fillListThread);
         }
         //3.创建线程池
-        ExecutorService executorService = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        ExecutorService executorService = ThreadPoolCreate.getThreadPoolByAlibaba(5, 5);
         List<String> list = Lists.newArrayList();
         try {
             //4.使用线程池提交所有任务

@@ -341,7 +341,7 @@ public class LocalDateTimeUtils {
         return false;
     }
 
-    //将毫米时间戳转换为LocalDateTime
+    //将毫秒时间戳转换为LocalDateTime
     public static LocalDateTime parseTimestamp(Long timestamp) {
         LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
         return localDateTime;

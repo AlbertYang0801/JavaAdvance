@@ -29,9 +29,6 @@ import java.util.stream.Collectors;
 @RunWith(SpringRunner.class)
 public class CallableTest {
 
-    @Autowired
-    private ThreadPoolCreate threadPoolCreate;
-
     /**
      * 测试Callable的返回值,使用匿名内部类
      */
@@ -111,15 +108,19 @@ public class CallableTest {
             taskList.add(fillListThread);
         }
         //3.创建线程池
-        ExecutorService executorService = threadPoolCreate.getThreadPoolByAlibaba(5, 5);
+        ExecutorService executorService = ThreadPoolCreate.getThreadPoolByAlibaba(5, 5);
         List<String> list = Lists.newArrayList();
         //4.使用线程池提交所有任务
         List<Future<List<String>>> futures = executorService.invokeAll(taskList);
         //5.遍历任务返回结果
         futures.forEach(future -> {
             //6.获取任务返回结果
-            List<String> data = future.get();
-            list.addAll(data);
+            try {
+                List<String> data = future.get();
+                list.addAll(data);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         });
         //7.关闭线程池
         executorService.shutdown();
