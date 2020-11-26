@@ -10,9 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>albert-study</artifactId>
+    <artifactId>java-component-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>albert-study</name>
+    <name>java-component-practice</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
@@ -44,7 +44,7 @@
         <!--工具类模块-->
         <dependency>
             <groupId>com.albert</groupId>
-            <artifactId>utils</artifactId>
+            <artifactId>utils-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

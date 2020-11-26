@@ -28,7 +28,7 @@ public class SchedulerConfiguration implements SchedulingConfigurer {
     /**
      * 定时任务使用线程前缀
      */
-    private static final String THREAD_NAME_PREFI = "albert-study-";
+    private static final String THREAD_NAME_PREFI = "java-component-practice-";
 
     /**
      * 创建定时任务线程池

@@ -4,13 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.albert</groupId>
-        <artifactId>albert-study</artifactId>
+        <artifactId>java-component-practice</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.albert</groupId>
-    <artifactId>zzti-practice</artifactId>
+    <artifactId>albert-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>zzti-practice</name>
+    <name>albert-practice</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
