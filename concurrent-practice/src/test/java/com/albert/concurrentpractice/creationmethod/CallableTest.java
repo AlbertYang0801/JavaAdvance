@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.thread.callable;
+package com.albert.concurrentpractice.creationmethod;
 
 import com.albert.concurrentpractice.TestApplication;
 import com.albert.concurrentpractice.po.UserPO;
@@ -10,6 +10,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.omg.CORBA.TIMEOUT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,7 +20,7 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 /**
- * 测试java多线程两大接口之一：Callable
+ * 线程创建的方式：第三种
  *
  * @author Albert
  * @date 2020/8/12 16:38
@@ -125,6 +126,23 @@ public class CallableTest {
         //7.关闭线程池
         executorService.shutdown();
         System.out.println(JsonUtil.toString(list));
+    }
+
+    /**
+     * 测试线程池的invokeAny()方法，提交所有任务，只返回第一个任务的结果
+     */
+    @SneakyThrows
+    @Test
+    public void testInvokeany(){
+        ExecutorService executorService = new ThreadPoolExecutor(5,10,0L, TimeUnit.MILLISECONDS,new LinkedBlockingDeque<>());
+        Callable<String> oneCallable = ()-> "线程1执行完成";
+        Callable<String> twoCallable = ()-> "线程2执行完成";
+        List<Callable<String>> callableList = Lists.newArrayList();
+        callableList.add(oneCallable);
+
+        callableList.add(twoCallable);
+        String msg = executorService.invokeAny(callableList);
+        System.out.println(msg);
     }
 
 

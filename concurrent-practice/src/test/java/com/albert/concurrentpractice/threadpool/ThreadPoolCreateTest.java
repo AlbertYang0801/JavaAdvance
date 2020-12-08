@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.thread.threadpool;
+package com.albert.concurrentpractice.threadpool;
 
 import com.albert.concurrentpractice.TestApplication;
 import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;

@@ -13,7 +13,6 @@ public class ActivemqConsumer {
 
     /**
      * 监听队列，一个消费者
-     * @param msg
      */
     @JmsListener(destination = "${activemq.topoc.test}")
     public void receiveQueue(String msg) {
@@ -22,7 +21,6 @@ public class ActivemqConsumer {
 
     /**
      * 另一个消费者
-     * @param msg
      */
     @JmsListener(destination = "${activemq.topoc.test}")
     public void receiveOtherQueue(String msg) {

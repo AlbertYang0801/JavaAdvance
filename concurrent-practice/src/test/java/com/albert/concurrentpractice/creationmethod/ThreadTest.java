@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.thread.createthread;
+package com.albert.concurrentpractice.creationmethod;
 
 import com.albert.concurrentpractice.TestApplication;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 测试线程创建的方式
+ * 线程创建的方式：第一种
  * extends Thread
  * @author Albert
  * @date 2020/8/14 10:22
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
 @Slf4j
-public class ThreadExtendsCreate {
+public class ThreadTest {
 
     /**
      * 测试类继承Thread创建线程
@@ -53,12 +53,12 @@ public class ThreadExtendsCreate {
     }
 
 
-    class ThreadExtendsThread extends Thread{
-        @Override
-        public void run() {
-            log.info("这是继承了Thread的run()方法的新线程");
-        }
+}
+
+@Slf4j
+class ThreadExtendsThread extends Thread{
+    @Override
+    public void run() {
+        log.info("这是继承了Thread的run()方法的新线程");
     }
-
-
 }
