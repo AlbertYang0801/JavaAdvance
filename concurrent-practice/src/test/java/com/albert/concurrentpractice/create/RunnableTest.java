@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.creationmethod;
+package com.albert.concurrentpractice.create;
 
 import com.albert.concurrentpractice.TestApplication;
 import lombok.SneakyThrows;

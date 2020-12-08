@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.creationmethod;
+package com.albert.concurrentpractice.create;
 
 import com.albert.concurrentpractice.TestApplication;
 import com.albert.concurrentpractice.po.UserPO;
@@ -10,8 +10,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.omg.CORBA.TIMEOUT;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 

@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.common;
+package com.albert.concurrentpractice.po;
 
 
 import com.albert.concurrentpractice.po.GroupPO;
