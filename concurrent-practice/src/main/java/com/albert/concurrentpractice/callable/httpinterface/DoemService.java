@@ -62,8 +62,7 @@ public class DoemService extends DoemHandler {
     private void concurrentGetIncidentList(List<IncidentDataVO> incidentDataList, Integer pageCount) {
         List<Callable<List<IncidentDataVO>>> taskList = Lists.newArrayList();
         for (int i = 1; i <= pageCount; i++) {
-            IncidentListCallable incidentListCallable =
-                    new IncidentListCallable(i);
+            IncidentListCallable incidentListCallable = new IncidentListCallable(i);
             taskList.add(incidentListCallable);
         }
         //创建线程池

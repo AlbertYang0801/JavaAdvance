@@ -33,7 +33,7 @@ public class DoemHandler {
     public static Long startTime = 0L;
     public static Long endTime = 0L;
 
-    private static String docpHost;
+    public static String docpHost;
 
     /**
      * 类初始化赋值
