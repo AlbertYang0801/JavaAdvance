@@ -35,7 +35,7 @@ public class SchedulerTaskForConf {
     }
 
     /**
-     * 自定义时间
+     * 自定义时间(ms)
      */
     @Scheduled(initialDelayString ="${sync.print.task.num}" , fixedDelayString = "${sync.print.task.num}")
     public void taskNumPrint() {
