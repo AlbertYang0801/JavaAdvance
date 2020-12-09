@@ -2,6 +2,7 @@ package com.albert.springtask.job;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  * @date 2020/8/3 16:02
  */
 @Slf4j
-//@Component
+@Component
 public class SchedulerTaskForConf {
 
     /**
@@ -33,10 +34,20 @@ public class SchedulerTaskForConf {
         printMsg("第2个任务，每分钟的第5s执行");
     }
 
+    /**
+     * 自定义时间
+     */
+    @Scheduled(initialDelayString ="${sync.print.task.num}" , fixedDelayString = "${sync.print.task.num}")
+    public void taskNumPrint() {
+        printMsg("第3个任务，配置文件中使用毫秒值");
+    }
+
     private void printMsg(String taskName) {
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         log.info("{},打印该消息的时间是:{}", taskName, now);
     }
+
+
 
 
 }

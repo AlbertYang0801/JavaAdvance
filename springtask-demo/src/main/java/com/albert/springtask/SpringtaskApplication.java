@@ -3,6 +3,9 @@ package com.albert.springtask;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author Albert
+ */
 @SpringBootApplication
 public class SpringtaskApplication {
 

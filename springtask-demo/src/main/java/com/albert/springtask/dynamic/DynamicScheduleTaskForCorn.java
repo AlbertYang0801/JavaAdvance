@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * @author Albert
  * @date 2020/10/19 10:29
  */
-@Configuration
+//@Configuration
 public class DynamicScheduleTaskForCorn implements SchedulingConfigurer {
 
     public String cron = "0/5 * * * * *";
