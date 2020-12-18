@@ -1,5 +1,6 @@
 package com.albert.concurrentpractice.callable.httpinterface;
 
+import com.albert.utils.bean.FrameSpringBeanUtil;
 import com.albert.utils.jackson.JsonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Lists;
@@ -18,8 +19,15 @@ public class IncidentListCallable extends DoemHandler implements Callable<List<I
 
     private Integer page;
 
+    /**
+     * 线程类中直接注入Bean，会报空指针，无法直接获取到容器中的Bean，需要手动获取
+     */
+    private DoemHandler doemHandler;
+
     public IncidentListCallable(Integer page) {
         this.page = page;
+        //手动获取Bean
+        this.doemHandler = FrameSpringBeanUtil.getBean(DoemHandler.class);
     }
 
     @Override
