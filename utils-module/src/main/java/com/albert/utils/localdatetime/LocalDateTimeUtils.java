@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class LocalDateTimeUtils {
+
     public static final String YEAR_MONTH_DAY = "yyyy-MM-dd";
     public static final String DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_HOUR_TIME = "yyyy-MM-dd HH";

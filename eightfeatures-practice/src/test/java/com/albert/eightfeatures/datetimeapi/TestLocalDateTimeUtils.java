@@ -1,4 +1,4 @@
-package com.albert.eightfeatures.localdatetime;
+package com.albert.eightfeatures.datetimeapi;
 
 import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import org.junit.Test;

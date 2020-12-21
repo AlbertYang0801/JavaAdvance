@@ -1,4 +1,4 @@
-package com.albert.eightfeatures.localdatetime;
+package com.albert.eightfeatures.datetimeapi;
 
 import com.albert.eightfeatures.TestApplication;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * java8新特性
- * Date-Time API
+ * Date-Time API 练习
  * @author Albert
  * @date 2020/8/4 09:52
  */

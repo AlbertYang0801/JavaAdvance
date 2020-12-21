@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.create;
+package com.albert.concurrentpractice.threadcreate;
 
 import com.albert.concurrentpractice.TestApplication;
 import lombok.extern.slf4j.Slf4j;

@@ -21,7 +21,7 @@
 
 #### 4. 练习
 
-* DateTime API的练习见： /src/test/java/com/albert/study/eightfeatures/localdatetime
+* DateTime API的练习见： /src/test/java/com/albert/study/eightfeatures/datetimeapi
 
 
 

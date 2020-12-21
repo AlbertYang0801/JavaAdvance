@@ -48,7 +48,7 @@ public class IncidentListCallable extends DoemHandler implements Callable<List<I
         return incidentDataList;
     }
 
-    private void fillResult(String result, List<IncidentDataVO> incidentDataList) throws Exception {
+    private void fillResult(String result, List<IncidentDataVO> incidentDataList) {
         JsonNode jsonNode = JsonUtil.getJsonNode(result);
         if (Objects.isNull(jsonNode)) {
             return;

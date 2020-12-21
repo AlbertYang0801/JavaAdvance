@@ -1,12 +1,11 @@
-package com.albert.concurrentpractice.create;
+package com.albert.concurrentpractice.threadcreate;
 
 import com.albert.concurrentpractice.TestApplication;
-import com.albert.concurrentpractice.po.UserPO;
 import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;
 import com.albert.utils.jackson.JsonUtil;
 import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import com.google.common.collect.Lists;
-import lombok.SneakyThrows;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +18,8 @@ import java.util.stream.Collectors;
 
 /**
  * 线程创建的方式：第三种
+ * implements Callable
+ * 只能和线程池捆绑使用。
  *
  * @author Albert
  * @date 2020/8/12 16:38
@@ -29,7 +30,8 @@ import java.util.stream.Collectors;
 public class CallableTest {
 
     /**
-     * 测试Callable的返回值,使用匿名内部类
+     * 测试Callable的返回值,使用匿名内部类；
+     * 直接调用call()方法，未开启线程，相当于方法调用
      */
     @SneakyThrows
     @Test
@@ -42,11 +44,28 @@ public class CallableTest {
             }
         };
         try {
+            //没有开启线程，相当于直接方法调用
             String call = stringCallable.call();
             log.info("简单的方法调用，练习Callable接口匿名内部类的创建方式，结果：{}", call);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 使用实现Callable的类
+     */
+    @Test
+    @SneakyThrows
+    public void fillUserCallable(){
+        FillUserCallable fillUserCallable = new FillUserCallable();
+        //开启线程池提交任务
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Future<UserPO> future = executorService.submit(fillUserCallable);
+        //获取返回结果
+        UserPO userPO = future.get();
+        System.out.println(JsonUtil.toString(userPO));
+        executorService.shutdown();
     }
 
     /**
@@ -61,8 +80,13 @@ public class CallableTest {
                     .time(LocalDateTimeUtils.formatNow("yyyyMMddHHmmss"))
                     .build();
         };
-        UserPO callUserPo = userPOCallable.call();
-        log.info("获取Callable接口返回的数据:{}", JsonUtil.toString(callUserPo));
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Future<UserPO> future = executorService.submit(userPOCallable);
+        //获取返回结果
+        UserPO userPO = future.get();
+        System.out.println(JsonUtil.toString(userPO));
+        executorService.shutdown();
+        log.info("获取Callable接口返回的数据:{}", JsonUtil.toString(userPO));
     }
 
     /**
@@ -117,7 +141,7 @@ public class CallableTest {
             try {
                 List<String> data = future.get();
                 list.addAll(data);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -131,10 +155,10 @@ public class CallableTest {
      */
     @SneakyThrows
     @Test
-    public void testInvokeany(){
-        ExecutorService executorService = new ThreadPoolExecutor(5,10,0L, TimeUnit.MILLISECONDS,new LinkedBlockingDeque<>());
-        Callable<String> oneCallable = ()-> "线程1执行完成";
-        Callable<String> twoCallable = ()-> "线程2执行完成";
+    public void testInvokeany() {
+        ExecutorService executorService = new ThreadPoolExecutor(5, 10, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
+        Callable<String> oneCallable = () -> "线程1执行完成";
+        Callable<String> twoCallable = () -> "线程2执行完成";
         List<Callable<String>> callableList = Lists.newArrayList();
         callableList.add(oneCallable);
 
@@ -142,6 +166,35 @@ public class CallableTest {
         String msg = executorService.invokeAny(callableList);
         System.out.println(msg);
     }
+
+
+}
+
+
+/**
+ * 实现Callable的类
+ */
+class FillUserCallable implements Callable<UserPO> {
+
+    @Override
+    public UserPO call() throws Exception {
+        return UserPO.builder()
+                .userId("110")
+                .name("测试实现类创建")
+                .build();
+    }
+}
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+class UserPO {
+
+    private String userId;
+    private String name;
+    private String time;
 
 
 }

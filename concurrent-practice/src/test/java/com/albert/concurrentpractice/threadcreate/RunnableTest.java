@@ -1,4 +1,4 @@
-package com.albert.concurrentpractice.create;
+package com.albert.concurrentpractice.threadcreate;
 
 import com.albert.concurrentpractice.TestApplication;
 import lombok.SneakyThrows;
@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 线程创建的方式：第二种
  * implements Runnable
+ * 可以作为Thread类的参数创建线程，也可以与线程池捆绑使用
  *
  * @author Albert
  * @date 2020/8/14 10:56
@@ -73,7 +74,7 @@ public class RunnableTest {
     public void testExecutorAllRunnable() {
         ExecutorService executorService = new ThreadPoolExecutor(5, 10, 0L, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
         RunnableImpl runnable = new RunnableImpl();
-        //通过原型模式克隆线程
+        //通过原型模式克隆多个线程
         RunnableImpl newRunnable = (RunnableImpl) runnable.clone();
         executorService.submit(runnable);
         executorService.submit(newRunnable);
