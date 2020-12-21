@@ -22,7 +22,7 @@ import java.util.Map;
  * @date 2020/10/12 10:53
  */
 
-public class ExcelChartUtil1 {
+public class ExcelChartUtil {
     private static SXSSFWorkbook wb = new SXSSFWorkbook();
     private SXSSFSheet sheet = null;
 
@@ -77,7 +77,7 @@ public class ExcelChartUtil1 {
         dataList.add(dataMap4);
         dataList.add(dataMap5);
         dataList.add(dataMap6);
-        ExcelChartUtil1 ecu = new ExcelChartUtil1();
+        ExcelChartUtil ecu = new ExcelChartUtil();
         try {
             // 创建柱状图
             ecu.createBarChart(titleArr, fldNameArr, dataList);

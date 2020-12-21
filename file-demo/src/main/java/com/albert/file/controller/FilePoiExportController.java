@@ -1,19 +1,18 @@
 package com.albert.file.controller;
 
 import com.albert.file.utils.FileExportUtils;
-import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.openxmlformats.schemas.drawingml.x2006.chart.STBarGrouping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.time.LocalDateTime;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -93,7 +92,7 @@ public class FilePoiExportController {
         //获取表格数据样式
         List<CellStyle> cellStyleList = FileExportUtils.tableStyle(wb);
 
-        boolean tableResult = FileExportUtils.drawSheetTable(cellStyleList, sheet, titleArr, dataList);
+        FileExportUtils.drawSheetTable(cellStyleList, sheet, titleArr, dataList);
 
         //图表的间隔长度
         int length = 10;
@@ -101,8 +100,8 @@ public class FilePoiExportController {
         Integer verticalLength = FileExportUtils.verticalLength;
         FileOutputStream out = null;
         try {
-            boolean histogramChar = FileExportUtils.createHistogramChar(sheet, STBarGrouping.CLUSTERED, fldNameArr, dataList, dataList.size() + length);
-            boolean line = FileExportUtils.createLineChar(sheet, "line", fldNameArr, dataList, verticalLength + length * 2);
+            FileExportUtils.createHistogramChar(sheet, STBarGrouping.CLUSTERED, fldNameArr, dataList, dataList.size() + length);
+            FileExportUtils.createLineChar(sheet, "line", fldNameArr, dataList, verticalLength + length * 2);
 
             String fileName = "1111.xls";
             FileExportUtils.setResponseHeader(response, fileName);
@@ -115,9 +114,6 @@ public class FilePoiExportController {
         }
 
     }
-
-
-
 
 
 }

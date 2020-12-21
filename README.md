@@ -29,9 +29,11 @@
 
 * SpringTask的集成和使用(springtask-demo) 2020-8-3 2020-9-23
 
-* Spring集成filter的两种方式 2020-9-7
+* Spring集成filter的两种方式(filter-demo) 2020-9-7
 
 * Spring解决跨域问题的三种方式 2020-9-7
+
+* Spring集成logback(logging-demo) 2020-08-25
 
 * Mybatis集成多数据源的练习 2020-10-31
 
@@ -41,10 +43,11 @@
 
 ### 3. java相关知识点练习
 
-* JavaSE &&和&的区别 2020-8-16
+* JavaSE &&和&的区别(javase-practice) 2020-8-16
 
+* JavaSE intern方法的练习(javase-practice) 2020-09-22
 
-
+* 表单提交方式文件上传(file-demo) 2020-09-25
 
 
 ### 4. 工具类集成练习
@@ -61,6 +64,9 @@
 
 * 邮件发送工具类的集成和使用 2020-10-22
 
+* Poi导出带图表的Excel(file-demo) 2020-10-09
+
+* Poi导出带图表的Excel(file-demo) 2020-10-09
 
 
 
@@ -88,16 +94,10 @@
 6. Stream流对象
 
 
-### 6. Lettcode题目练习日期
-
-* 62题的练习 2020-8-2
-* 1114题的练习 2020-8-2
+### 6. Lettcode题目练习(leetcode-parctice)
 
 
-
-
-
-### 9.排序算法的练习（java实现）
+### 9.排序算法的练习(sort-practice)
 
 * 直接插入排序 2020-9-11
 * 冒泡排序 2020-9-13

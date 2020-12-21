@@ -1,4 +1,4 @@
-package com.albert.practice.dowork;
+package com.albert.javase.practice;
 
 /**
  * 类的执行顺序

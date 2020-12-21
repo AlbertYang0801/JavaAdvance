@@ -83,11 +83,11 @@ public class TestExcelChart {
             // 创建柱状图
             ecu.createBarChart(sheet1,titleArr, fldNameArr, dataList);
             // 创建饼状图
-//            ecu.createPieChart(titleArr, fldNameArr, dataList);
+            ecu.createPieChart(titleArr, fldNameArr, dataList);
             // 创建折线图
             ecu.createTimeXYChar(sheet1,titleArr, fldNameArr, dataList);
             // 创建面积图
-//            ecu.createAreaChart(titleArr, fldNameArr, dataList);
+            ecu.createAreaChart(titleArr, fldNameArr, dataList);
             //导出到文件
             FileOutputStream out = new FileOutputStream(new File("/Users/yangjunwei/IdeaProjects/java-component-practice/file-demo/file/2222.xls"));
             wb.write(out);
