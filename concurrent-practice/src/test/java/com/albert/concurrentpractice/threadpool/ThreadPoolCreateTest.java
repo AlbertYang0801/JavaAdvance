@@ -54,8 +54,7 @@ public class ThreadPoolCreateTest {
     @Test
     public void testFixedThreadPoolThreadFactory() {
         //创建自定义线程工厂
-        ThreadFactory threadFactory =
-                new ThreadFactoryBuilder().setNameFormat("albert-pool-%d").build();
+        ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("albert-pool-%d").build();
         ExecutorService fixedThreadPool = ThreadPoolCreate.getFixedThreadPool(5, threadFactory);
         log.info("测试FixedThreadPool线程池执行任务，开始执行");
         executeTask(fixedThreadPool);

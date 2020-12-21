@@ -3,7 +3,6 @@ package com.albert.concurrentpractice.threadpool;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.*;
 
@@ -18,37 +17,27 @@ public class ThreadPoolCreate {
 
     /**
      * 创建一个缓存型的线程池
-     *
-     * @return
      */
     public static ExecutorService getCachedThreadPool() {
         //使用默认的线程工厂
-        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-        return cachedThreadPool;
+        return Executors.newCachedThreadPool();
     }
 
     /**
      * 创建一个缓存型的线程池，使用自定义ThreadFactory
-     *
-     * @param threadFactory 线程工厂
-     * @return
      */
-    private static ExecutorService getCachedThreadPool(ThreadFactory threadFactory) {
+    private static ExecutorService getCachedThreadPoolByThreadFactory() {
         //使用自定义的线程工厂
-        ExecutorService newThreadFactoryExecutorService =
-                Executors.newCachedThreadPool(new ThreadFactoryBuilder().build());
-        return newThreadFactoryExecutorService;
+        return Executors.newCachedThreadPool(new ThreadFactoryBuilder().build());
     }
 
     /**
      * 创建一个定长型的线程池
      *
      * @param nThreads 线程个数
-     * @return
      */
     public static ExecutorService getFixedThreadPool(int nThreads) {
-        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(nThreads);
-        return fixedThreadPool;
+        return Executors.newFixedThreadPool(nThreads);
     }
 
     /**
@@ -56,58 +45,34 @@ public class ThreadPoolCreate {
      *
      * @param nThreads      线程个数
      * @param threadFactory 自定义线程工厂
-     * @return
      */
     public static ExecutorService getFixedThreadPool(int nThreads, ThreadFactory threadFactory) {
         //使用自定义的线程工厂
-        ExecutorService newThreadFactoryExecutorService =
-                Executors.newFixedThreadPool(nThreads, threadFactory);
-        return newThreadFactoryExecutorService;
+        return Executors.newFixedThreadPool(nThreads, threadFactory);
     }
 
     /**
      * 创建一个单线程的线程池
-     *
-     * @return
      */
     public static ExecutorService getSingleThreadExecutor() {
-        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-        return singleThreadExecutor;
+        return Executors.newSingleThreadExecutor();
     }
 
     /**
      * 创建一个单线程的线程池
      *
      * @param threadFactory 自定义线程工厂
-     * @return
      */
     public static ExecutorService getSingleThreadExecutor(ThreadFactory threadFactory) {
-        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(threadFactory);
-        return singleThreadExecutor;
+        return Executors.newSingleThreadExecutor(threadFactory);
     }
 
     /**
      * 创建一个定时的线程池
      *
-     * @param corePoolSize
-     * @return
      */
     public static ScheduledExecutorService getScheduledThreadPool(int corePoolSize) {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(corePoolSize);
-        return scheduledExecutorService;
-    }
-
-    /**
-     * 阿里规约推荐的创建定时线程池的方式
-     *
-     * @return
-     */
-    public static ExecutorService getScheduledThreadPoolByAliBaba() {
-        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1,
-                new BasicThreadFactory.Builder()
-                        .namingPattern("albert-schedule-pool-%d")
-                        .daemon(true)
-                        .build());
         return scheduledExecutorService;
     }
 
@@ -127,9 +92,21 @@ public class ThreadPoolCreate {
     }
 
     /**
+     * 阿里规约推荐的创建定时线程池的方式
+     */
+    public static ExecutorService getScheduledThreadPoolByAliBaba() {
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1,
+                new BasicThreadFactory.Builder()
+                        .namingPattern("albert-schedule-pool-%d")
+                        .daemon(true)
+                        .build());
+        return scheduledExecutorService;
+    }
+
+    /**
      * 创建一个抢占式的线程池
      * 1.8新增的线程池类型
-     * @return
+     *
      */
     public static ExecutorService newWorkStealingPool() {
         ExecutorService executorService = Executors.newWorkStealingPool();
@@ -139,10 +116,9 @@ public class ThreadPoolCreate {
     /**
      * 创建一个指定并行线程数的抢占式线程池
      * 1.8新增的线程池类型
-     * @param parallelism
-     * @return
+     *
      */
-    public static ExecutorService newWorkStealingPool(int parallelism){
+    public static ExecutorService newWorkStealingPool(int parallelism) {
         //指定最大并行线程数
         ExecutorService executorService = Executors.newWorkStealingPool(parallelism);
         return executorService;
@@ -161,12 +137,12 @@ public class ThreadPoolCreate {
      * @return
      */
     public static ExecutorService getThreadPoolByParam(int corePoolSize,
-                                                int maximumPoolSize,
-                                                long keepAliveTime,
-                                                TimeUnit unit,
-                                                BlockingQueue<Runnable> workQueue,
-                                                ThreadFactory threadFactory,
-                                                RejectedExecutionHandler handler) {
+                                                       int maximumPoolSize,
+                                                       long keepAliveTime,
+                                                       TimeUnit unit,
+                                                       BlockingQueue<Runnable> workQueue,
+                                                       ThreadFactory threadFactory,
+                                                       RejectedExecutionHandler handler) {
         ThreadPoolExecutor threadPoolExecutor =
                 new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
         return threadPoolExecutor;
