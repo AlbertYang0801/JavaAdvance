@@ -15,6 +15,7 @@ public class SynchrodizedMethod {
     /**
      * 01_普通方法同步（没有实现线程同步）
      * 锁对象为实例对象，创建线程时传入两个不同的实例，代表的是两把锁对象，无法对这两个线程类实现线程同步
+     *
      * @return
      */
     @SneakyThrows
@@ -31,12 +32,13 @@ public class SynchrodizedMethod {
     /**
      * 02_普通方法同步（实现了线程同步）
      * 使用的是同一个实例对象创建线程
+     *
      * @return
      */
     @SneakyThrows
-    public int numberOperatingSyn(){
-        NumberOperating.i=0;
-        NumberOperating numberOperating= new NumberOperating();
+    public int numberOperatingSyn() {
+        NumberOperating.i = 0;
+        NumberOperating numberOperating = new NumberOperating();
         Thread threadOne = new Thread(numberOperating);
         Thread threadTwo = new Thread(numberOperating);
         threadOne.start();
@@ -48,11 +50,12 @@ public class SynchrodizedMethod {
 
     /**
      * 03_静态方法同步，都能够实现线程同步
+     *
      * @return
      */
     @SneakyThrows
     public int numberOperatingStatic() {
-        NumberOperating.i=0;
+        NumberOperating.i = 0;
         NumberOperatingStatic numberOperatingStatic = new NumberOperatingStatic();
         Thread threadOne = new Thread(numberOperatingStatic);
         Thread threadTwo = new Thread(new NumberOperatingStatic());
@@ -105,15 +108,25 @@ class NumberOperating implements Runnable {
     public void run() {
         for (int j = 0; j < 100000; j++) {
             //调用普通同步方法
+            increaseI();
             increase();
         }
     }
 
     /**
-     * 普通同步方法，锁对象为当前类的实例对象
+     * 普通同步方法，锁对象为当前类的实例对象等同于this
      */
-    public synchronized void increase() {
+    public synchronized void increaseI() {
         i++;
+    }
+
+    /**
+     * 普通同步方法，锁对象为this，等价于上面的方法
+     */
+    public void increase(){
+        synchronized (this){
+            i++;
+        }
     }
 
 
@@ -129,6 +142,7 @@ class NumberOperatingStatic implements Runnable {
     @Override
     public void run() {
         for (int j = 0; j < 100000; j++) {
+            increaseM();
             increase();
         }
     }
@@ -136,8 +150,19 @@ class NumberOperatingStatic implements Runnable {
     /**
      * 静态同步方法,锁对象为类对象
      */
-    private synchronized static void increase() {
-        m++;
+    private synchronized static void increaseM() {
+        synchronized (NumberOperatingStatic.class) {
+            m++;
+        }
+    }
+
+    /**
+     * 静态同步方法,锁对象为类对象,等价于上面的方法
+     */
+    private static void increase() {
+        synchronized (NumberOperatingStatic.class) {
+            m++;
+        }
     }
 
 
