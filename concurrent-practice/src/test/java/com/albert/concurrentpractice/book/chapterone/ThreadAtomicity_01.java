@@ -64,7 +64,7 @@ public class ThreadAtomicity_01 {
     @Test
     public void testAtom() {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5,
-                10L, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
+                10L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(1024));
         threadPoolExecutor.execute(new ChangeV(111L));
         threadPoolExecutor.execute(new ChangeV(222L));
         threadPoolExecutor.execute(new ChangeV(333L));

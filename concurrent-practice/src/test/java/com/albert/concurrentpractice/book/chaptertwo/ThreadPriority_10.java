@@ -13,6 +13,7 @@ import org.junit.Test;
 public class ThreadPriority_10 {
 
     public static class HignPriority implements Runnable {
+
         private static int count = 0;
 
         @Override

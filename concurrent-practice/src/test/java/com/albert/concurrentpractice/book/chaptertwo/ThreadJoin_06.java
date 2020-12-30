@@ -22,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class ThreadJoin_06 {
 
-
     private static int i=0;
 
     public static class ChangeIntValue extends Thread{
