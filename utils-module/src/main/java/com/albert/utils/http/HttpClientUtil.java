@@ -4,17 +4,18 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
+import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContexts;
@@ -27,9 +28,13 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLHandshakeException;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -41,13 +46,60 @@ import java.util.Map;
 
 @Slf4j
 public class HttpClientUtil {
+
+    /**
+     * 重试次数
+     */
+    private static int tryTimes = 3;
+
     public static CloseableHttpClient getClient() {
         CookieStore cookieStore = new BasicCookieStore();
         CloseableHttpClient httpClient = HttpClients.custom()
-                .setDefaultRequestConfig(RequestConfig.custom().setConnectionRequestTimeout(25000)
-                        .setConnectTimeout(25000).setSocketTimeout(25000).build())
-                .setDefaultCookieStore(cookieStore).build();
+                .setDefaultRequestConfig(
+                        RequestConfig.custom().setConnectionRequestTimeout(25000).setConnectTimeout(25000).setSocketTimeout(25000).build())
+                .setDefaultCookieStore(cookieStore)
+                .setRetryHandler(getRetryHandler())
+                .build();
         return httpClient;
+    }
+
+    /**
+     * 重试策略
+     *
+     * @return
+     */
+    private static HttpRequestRetryHandler getRetryHandler() {
+        // 请求重试处理
+        return (exception, executionCount, context) -> {
+            if (executionCount >= tryTimes) {// 如果已经重试了n次，就放弃
+                return false;
+            }
+            if (exception instanceof NoHttpResponseException) {// 如果服务器丢掉了连接，那么就重试
+                return true;
+            }
+            if (exception instanceof SSLHandshakeException) {// 不要重试SSL握手异常
+                return false;
+            }
+            if (exception instanceof UnknownHostException) {// 目标服务器不可达
+                return true;
+            }
+            if (exception instanceof ConnectTimeoutException) {// 连接被拒绝
+                return true;
+            }
+            if (exception instanceof InterruptedIOException) {// 超时
+                return false;
+            }
+            if (exception instanceof SSLException) {// SSL握手异常
+                return false;
+            }
+            HttpClientContext clientContext = HttpClientContext.adapt(context);
+            HttpRequest request = clientContext.getRequest();
+            // 如果请求是幂等的，就再次尝试
+            if (!(request instanceof HttpEntityEnclosingRequest)) {
+                return true;
+            }
+            return false;
+        };
     }
 
     public static String get(CloseableHttpClient httpClient, String url, Map<String, String> headers) throws ClientProtocolException, IOException {
@@ -93,7 +145,7 @@ public class HttpClientUtil {
         if (code >= 299) {
             log.error("status code is {}", code);
         }
-        return EntityUtils.toString(httpResponse.getEntity(),"UTF-8");
+        return EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
     }
 
     public static String post(CloseableHttpClient httpClient, String url, Object params, Map<String, String> headers)
@@ -117,7 +169,7 @@ public class HttpClientUtil {
         if (code >= 299) {
             log.error("status code is {}", code);
         }
-        return EntityUtils.toString(httpResponse.getEntity(),"UTF-8");
+        return EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
     }
 
     public static String postByForm(CloseableHttpClient httpClient, String url, Map<String, Object> params, Map<String, String> headers)
@@ -308,9 +360,6 @@ public class HttpClientUtil {
             httpRequest.addHeader(entry.getKey(), entry.getValue());
         }
     }
-
-
-
 
 
 }
