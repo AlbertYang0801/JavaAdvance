@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 /**
  * 同步代码块
  * 使用this和对象作为锁对象
+ *
  * @author Albert
  * @date 2020/12/29 下午5:10
  */
@@ -40,7 +41,7 @@ class SumNumber implements Runnable {
 
     static int n = 0;
 
-    static Object object=new Object();
+    static final Object OBJECT = new Object();
 
     @Override
     public void run() {
@@ -51,12 +52,12 @@ class SumNumber implements Runnable {
             }
 
             //错误使用对象，新对象作为锁，不是同一个对象锁，无法实现同步
-            synchronized (new Object()){
+            synchronized (new Object()) {
                 m++;
             }
 
             //正确使用对象作为锁
-            synchronized (object){
+            synchronized (OBJECT) {
                 n++;
             }
         }
