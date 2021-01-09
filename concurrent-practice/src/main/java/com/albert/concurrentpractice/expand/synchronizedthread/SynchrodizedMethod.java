@@ -123,8 +123,8 @@ class NumberOperating implements Runnable {
     /**
      * 普通同步方法，锁对象为this，等价于上面的方法
      */
-    public void increase(){
-        synchronized (this){
+    public void increase() {
+        synchronized (this) {
             i++;
         }
     }
@@ -151,9 +151,7 @@ class NumberOperatingStatic implements Runnable {
      * 静态同步方法,锁对象为类对象
      */
     private synchronized static void increaseM() {
-        synchronized (NumberOperatingStatic.class) {
-            m++;
-        }
+        m++;
     }
 
     /**
