@@ -11,22 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Albert
  * @date 2021/1/11 下午4:16
  */
-public class LockTime_03 {
-
-    public static void main(String[] args) {
-        LockTime lockTime = new LockTime();
-        //第一个线程能获取到锁对象，然后休眠
-        Thread threadOne = new Thread(lockTime);
-        //第二个线程由于第一个线程持有锁对象休眠了，无法获取锁对象。
-        Thread threadTwo = new Thread(lockTime);
-        threadOne.start();
-        threadTwo.start();
-    }
-
-
-}
-
-class LockTime implements Runnable {
+public class LockTime_03 implements Runnable{
 
     private static ReentrantLock lock = new ReentrantLock();
 
@@ -44,4 +29,17 @@ class LockTime implements Runnable {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        LockTime_03 lockTime = new LockTime_03();
+        //第一个线程能获取到锁对象，然后休眠
+        Thread threadOne = new Thread(lockTime);
+        //第二个线程由于第一个线程持有锁对象休眠了，无法获取锁对象。
+        Thread threadTwo = new Thread(lockTime);
+        threadOne.start();
+        threadTwo.start();
+    }
+
+
 }
+

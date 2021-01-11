@@ -12,25 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Albert
  * @date 2021/1/11 下午2:50
  */
-public class LockInterrupt_02 {
-
-    @SneakyThrows
-    public static void main(String[] args) {
-        //在两个线程之间创建死锁
-        LockInterrupt runnableOne = new LockInterrupt(1);
-        LockInterrupt runnableTwo = new LockInterrupt(2);
-        Thread threadOne = new Thread(runnableOne);
-        Thread threadTwo = new Thread(runnableTwo);
-        threadOne.start();
-        threadTwo.start();
-        Thread.sleep(1000);
-        threadTwo.interrupt();
-    }
-
-
-}
-
-class LockInterrupt implements Runnable {
+public class LockInterrupt_02 implements Runnable{
 
     public static ReentrantLock lockOne = new ReentrantLock();
     public static ReentrantLock lockTwo = new ReentrantLock();
@@ -40,7 +22,7 @@ class LockInterrupt implements Runnable {
      */
     int lock;
 
-    public LockInterrupt(int lock) {
+    public LockInterrupt_02(int lock) {
         this.lock = lock;
     }
 
@@ -74,8 +56,22 @@ class LockInterrupt implements Runnable {
         }
     }
 
+    @SneakyThrows
+    public static void main(String[] args) {
+        //在两个线程之间创建死锁
+        LockInterrupt_02 runnableOne = new LockInterrupt_02(1);
+        LockInterrupt_02 runnableTwo = new LockInterrupt_02(2);
+        Thread threadOne = new Thread(runnableOne);
+        Thread threadTwo = new Thread(runnableTwo);
+        threadOne.start();
+        threadTwo.start();
+        Thread.sleep(1000);
+        threadTwo.interrupt();
+    }
+
 
 }
+
 
 /**
  * 死锁产生的原因：

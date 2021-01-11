@@ -9,28 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Albert
  * @date 2021/1/11 下午2:21
  */
-public class ReenterLock_01 {
-
-    public static void main(String[] args) {
-        ReenterLock runnable = new ReenterLock();
-        Thread one = new Thread(runnable);
-        Thread two = new Thread(runnable);
-        one.start();
-        two.start();
-        try {
-            one.join();
-            two.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(ReenterLock.i);
-    }
-
-
-}
-
-
-class ReenterLock implements Runnable {
+public class ReenterLock_01 implements Runnable {
 
     /**
      * 锁对象
@@ -56,8 +35,23 @@ class ReenterLock implements Runnable {
         }
     }
 
+    public static void main(String[] args) {
+        ReenterLock_01 runnable = new ReenterLock_01();
+        Thread one = new Thread(runnable);
+        Thread two = new Thread(runnable);
+        one.start();
+        two.start();
+        try {
+            one.join();
+            two.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(i);
+    }
 
 }
+
 
 /**
  * 重入锁：可多次获取锁对象，但是释放锁的次数要和获取锁的次数保持一致。

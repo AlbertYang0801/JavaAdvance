@@ -10,25 +10,13 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Albert
  * @date 2021/1/11 下午4:38
  */
-public class LockTime_04 {
-
-    public static void main(String[] args) {
-        LockEmptyTime one = new LockEmptyTime(1);
-        LockEmptyTime two = new LockEmptyTime(2);
-        Thread threadOne = new Thread(one);
-        Thread threadTwo = new Thread(two);
-        threadOne.start();
-        threadTwo.start();
-    }
-}
-
-class LockEmptyTime implements Runnable {
+public class LockTime_04 implements Runnable{
 
     private static ReentrantLock lockOne = new ReentrantLock();
     private static ReentrantLock lockTwo = new ReentrantLock();
     int lock;
 
-    public LockEmptyTime(int lock) {
+    public LockTime_04(int lock) {
         this.lock = lock;
     }
 
@@ -58,6 +46,7 @@ class LockEmptyTime implements Runnable {
                 }
             }
         } else {
+            //先获取锁对象two，再获取锁对象one
             while (true) {
                 if (lockTwo.tryLock()) {
                     try {
@@ -79,4 +68,14 @@ class LockEmptyTime implements Runnable {
             }
         }
     }
+
+    public static void main(String[] args) {
+        LockTime_04 one = new LockTime_04(1);
+        LockTime_04 two = new LockTime_04(2);
+        Thread threadOne = new Thread(one);
+        Thread threadTwo = new Thread(two);
+        threadOne.start();
+        threadTwo.start();
+    }
 }
+
