@@ -48,6 +48,9 @@
 * Java Thread CountDownLatch学习和练习 2020-7-26
 * Java Thread Semaphore学习和练习 未完成
 * Java Thread synchrodized关键字的练习 2020-12-29
+* 自旋锁的练习 2021-1-12
+* AtomicReference类的练习 2021-1-12
 * 可重入锁和不可重入锁的练习 待完成
+
 
 
