@@ -10,12 +10,19 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class SpinLock {
 
     /**
-     * 原子引用变量
+     * 原子类型引用变量
      */
     public static AtomicReference<Thread> atomicReference = new AtomicReference<>();
 
+    /**
+     * 加锁
+     */
     public abstract void lock();
 
+    /**
+     * 解锁
+     */
     public abstract void unlock();
+
 
 }

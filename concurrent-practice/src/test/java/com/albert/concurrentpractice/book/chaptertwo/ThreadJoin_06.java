@@ -9,10 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * join()方法和yeild()方法
+ * 等待线程结束join()方法和礼让线程yeild()方法练习
  *
  * <p>
- * 例6：对应49页的例子
  *
  * @author Albert
  * @date 2020/8/26 19:16

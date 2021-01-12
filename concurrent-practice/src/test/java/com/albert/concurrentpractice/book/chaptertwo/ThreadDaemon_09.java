@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 守护线程
- * 例9_对应55页的例子
+ * 守护线程的练习
+ *
  * @author Albert
  * @date 2020/8/31 14:24
  */

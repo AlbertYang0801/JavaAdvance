@@ -12,10 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Thread的线程退出方法
+ * Thread的线程退出方法练习
  * 通过为线程添加标记变量的方法，来避免使用stop()方法，保证加锁之后的原子性
  * <p>
- * 例3：对应38页的例子
  *
  * @author Albert
  * @date 2020/8/15 16:38

@@ -4,8 +4,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 限时等待锁的练习-不指定等待时间
- * <p>
- * 第77页的例子
  *
  * @author Albert
  * @date 2021/1/11 下午4:38
@@ -77,5 +75,7 @@ public class LockTime_04 implements Runnable{
         threadOne.start();
         threadTwo.start();
     }
+
+
 }
 

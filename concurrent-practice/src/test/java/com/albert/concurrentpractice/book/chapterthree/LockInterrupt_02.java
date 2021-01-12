@@ -7,7 +7,6 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 重入锁中断特性的练习
  * 中断可以解决多线程之间的死锁问题
- * 第74页的例子
  *
  * @author Albert
  * @date 2021/1/11 下午2:50

@@ -12,7 +12,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * volatile关键字
+ * volatile关键字练习
  * 1.volatile关键字的特点
  * (1).volatile变量可保证可见性，但不保证原子性。
  * volatile修饰变量时，会把该线程本地内存中的该变量刷新到主存中。
@@ -27,7 +27,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * 2.可见性
  * 3.有序性
  * <p>
- * 例7：对应51页的例子
  *
  * @author Albert
  * @date 2020/8/30 19:16

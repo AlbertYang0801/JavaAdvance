@@ -9,13 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 线程中断
+ * 线程中断的练习
  * Java中Thread提供了关于线程中断的三个方法：
  * 1.interrupt() 中断线程
  * 2.isInterrupted() 判断线程中断的状态
  * 3.interrupted() 判断线程中断的状态，并重置中断标志(实际是调用了isInterrupted()方法，并传入中断标志数据)
  * <p>
- * 例4：对应39页的例子
  *
  * @author Albert
  * @date 2020/8/16 19:16

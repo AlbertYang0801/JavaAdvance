@@ -19,7 +19,7 @@ public class ThreadPoolCreate {
      * 创建一个缓存型的线程池
      */
     public static ExecutorService getCachedThreadPool() {
-        //使用默认的线程工厂
+        //使用默认的工厂
         return Executors.newCachedThreadPool();
     }
 

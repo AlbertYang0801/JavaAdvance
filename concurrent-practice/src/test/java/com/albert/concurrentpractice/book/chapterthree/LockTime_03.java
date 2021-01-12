@@ -6,7 +6,6 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 限时等待锁的练习-指定等待时间
  * 限时等待锁也可以有效解决死锁的问题
- * 第76页的例子
  *
  * @author Albert
  * @date 2021/1/11 下午4:16

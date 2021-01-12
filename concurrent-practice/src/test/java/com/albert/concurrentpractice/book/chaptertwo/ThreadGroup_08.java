@@ -8,8 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 线程组
- * 例8_对应53页的例子
+ * 线程组的练习
  *
  * @author Albert
  * @date 2020/8/31 12:00

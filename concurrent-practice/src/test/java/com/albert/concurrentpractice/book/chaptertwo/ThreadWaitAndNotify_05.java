@@ -13,10 +13,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * wait()方法和notify()方法
+ * 线程等待wait()方法和线程唤醒notify()方法
  *
  * <p>
- * 例5：对应43页的例子
  *
  * @author Albert
  * @date 2020/8/26 19:16

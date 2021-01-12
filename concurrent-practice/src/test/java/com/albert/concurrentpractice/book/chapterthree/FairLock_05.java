@@ -6,7 +6,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * 公平锁
  * 注意：synchronized关键字实现的同步，锁对象是不公平的。
  * 重入锁可以实现公平锁
- * 第79页的例子
  *
  * @author Albert
  * @date 2021/1/11 下午5:30

@@ -1,35 +1,57 @@
 package com.albert.concurrentpractice.expand.semaphore;
 
+import com.albert.concurrentpractice.threadpool.ThreadPoolCreate;
+
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
+ * 信号量Semaphore练习
+ * 实现停车示例：
+ * 停车场只有10个车位，现在有30辆车去停车。当车位满时出来一辆车才能有一辆车进入停车。
+ *
  * @author Albert
  * @date 2020/8/2 21:34
  */
-public class ParkingCars {
-    private static final int NUMBER_OF_CARS = 30;
-    private static final int NUMBER_OF_PARKING_SLOT = 10;
+public class ParkingCars implements Runnable {
 
-    public static void main(String[] args) {
-        Semaphore parkingSlot = new Semaphore(NUMBER_OF_PARKING_SLOT, true);    // "车位",采用FIFO,设置true。
-        ExecutorService service = Executors.newCachedThreadPool();    // 创建线程池。模拟30辆车"停车"。
-        for (int carNo = 1; carNo <= NUMBER_OF_CARS; carNo++) {
-            service.execute(new Car(parkingSlot, carNo));
-        }
-        sleep(3000);
-        service.shutdown(); // 关闭线程池。 // 输出剩余可以用的资源数。
-        System.out.println(parkingSlot.availablePermits() + " 个停车位可以用!");
+    /**
+     * 创建一个许可为10的信号量
+     */
+    private static Semaphore semaphore = new Semaphore(10);
+
+    private int carNo;
+
+    public ParkingCars(int carNo) {
+        this.carNo = carNo;
     }
 
-    private static void sleep(long millis) {
+    @Override
+    public void run() {
         try {
-            Thread.sleep(millis);
+            //获取信号量许可，获取车位（若信号量可用许可为0，则线程进入等待，直到有车位释放）
+            semaphore.acquire();
+            System.out.println(carNo + "号车子开始停车");
+            Thread.sleep(300);
+            System.out.println(carNo + "号车子停止停车");
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            //释放车位
+            semaphore.release();
         }
-
     }
+
+    public static void main(String[] args) {
+        ExecutorService executorService = ThreadPoolCreate.getCachedThreadPool();
+        for (int i = 0; i < 30; i++) {
+            ParkingCars runnable = new ParkingCars(i);
+            executorService.submit(runnable);
+            //获取线程类信号量当前可用许可个数
+            System.out.println(ParkingCars.semaphore.availablePermits());
+        }
+        executorService.shutdown();
+    }
+
 
 }

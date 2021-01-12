@@ -4,7 +4,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 重入锁的练习
- * 第72页例子
  *
  * @author Albert
  * @date 2021/1/11 下午2:21

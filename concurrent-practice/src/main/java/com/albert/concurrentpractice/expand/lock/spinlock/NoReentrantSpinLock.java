@@ -31,6 +31,7 @@ public class NoReentrantSpinLock extends SpinLock {
 /**
  * 自旋锁定义：
  * 自旋锁是采用让当前线程不停地的在循环体内执行实现的，当循环的条件被其他线程改变时 才能进入临界区。如下
+ *
  * 自旋锁的实现：
  * 1.第一个线程进入之后，请求lock()方法，可以正常拿到锁资源，不会进入到循环体。
  * 首次atomicReference默认为空，atomicReference.compareAndSet(null, thread)意为若atomicReference为null，则将thread赋值给atomicReference，并返回true。

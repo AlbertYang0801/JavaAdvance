@@ -6,8 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Condition对象练习（lock关联的等待和唤醒对象）
- * 第82页的例子
+ * Condition对象练习（和lock关联的，实现线程等待和唤醒）
  *
  * @author Albert
  * @date 2021/1/11 下午6:16
@@ -49,3 +48,4 @@ public class Condition_06 implements Runnable {
 
 
 }
+
