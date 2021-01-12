@@ -4,7 +4,7 @@ import lombok.SneakyThrows;
 import org.junit.Test;
 
 /**
- * 测试线程优先级
+ * 线程优先级
  * 例10_对应59页的例子
  *
  * @author Albert

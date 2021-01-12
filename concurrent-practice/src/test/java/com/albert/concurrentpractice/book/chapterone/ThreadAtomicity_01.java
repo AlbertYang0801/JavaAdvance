@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 测试多线程的原子性
+ * 多线程的原子性
  * 例1：对应19页的例子
  *
  * @author Albert

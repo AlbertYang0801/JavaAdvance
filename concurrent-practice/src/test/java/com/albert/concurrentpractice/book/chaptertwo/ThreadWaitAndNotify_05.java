@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 测试wait()方法和notify()方法
+ * wait()方法和notify()方法
  *
  * <p>
  * 例5：对应43页的例子

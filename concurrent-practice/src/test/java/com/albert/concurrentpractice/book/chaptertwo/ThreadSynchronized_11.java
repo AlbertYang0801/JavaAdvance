@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 练习synchronized关键字
  * @author Albert
  * @date 2020/12/28 下午4:56
  */

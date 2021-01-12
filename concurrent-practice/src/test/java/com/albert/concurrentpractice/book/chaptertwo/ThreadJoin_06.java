@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 测试join()方法和yeild()方法
+ * join()方法和yeild()方法
  *
  * <p>
  * 例6：对应49页的例子

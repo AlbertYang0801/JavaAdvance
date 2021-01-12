@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * 测试Thread的stop()方法
+ * Thread的stop()方法
  * 不推荐使用stop()方法关闭线程，因为stop()方法执行会直接让出线程的锁对象，若多个线程操作同一个对象，则会产生错误数据。
  * 例2：对应36页的例子
  *

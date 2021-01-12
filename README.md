@@ -94,7 +94,7 @@
 6. Stream流对象
 
 
-### 6. Lettcode题目练习(leetcode-parctice)
+### 7. Lettcode题目练习(leetcode-parctice)
 
 
 ### 9.排序算法的练习(sort-practice)
