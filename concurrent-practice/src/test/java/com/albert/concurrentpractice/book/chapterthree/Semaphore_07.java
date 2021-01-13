@@ -12,6 +12,9 @@ import java.util.concurrent.Semaphore;
  */
 public class Semaphore_07 implements Runnable {
 
+    /**
+     * 设置初始许可数量，和是否公平
+     */
     private static Semaphore semaphore = new Semaphore(5, true);
 
     private int i;
