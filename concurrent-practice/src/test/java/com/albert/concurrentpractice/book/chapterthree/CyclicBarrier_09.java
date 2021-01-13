@@ -32,7 +32,7 @@ public class CyclicBarrier_09 {
                 dowork();
                 //等待所有士兵完成工作
                 cyclicBarrier.await();
-                System.out.println(11);
+                System.out.println(soldierName+"     : 集合报数！");
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
@@ -74,8 +74,8 @@ public class CyclicBarrier_09 {
         final int num = 10;
         Thread[] threads = new Thread[num];
         //创建一个循环栅栏，一次计数器计数完成后，会执行一次指定的方法
-//        CyclicBarrier cyclicBarrier = new CyclicBarrier(num, new Commander(num));
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(num);
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(num, new Commander(num));
+//        CyclicBarrier cyclicBarrier = new CyclicBarrier(num);
 
         System.out.println("开始集合");
         for (int i = 0; i < num; i++) {
