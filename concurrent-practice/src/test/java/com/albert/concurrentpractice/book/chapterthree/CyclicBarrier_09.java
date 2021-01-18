@@ -1,5 +1,6 @@
 package com.albert.concurrentpractice.book.chapterthree;
 
+import java.util.Dictionary;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -32,7 +33,7 @@ public class CyclicBarrier_09 {
                 dowork();
                 //等待所有士兵完成工作
                 cyclicBarrier.await();
-                System.out.println(soldierName+"     : 集合报数！");
+                System.out.println(soldierName + "     : 集合报数！");
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
@@ -79,7 +80,11 @@ public class CyclicBarrier_09 {
 
         System.out.println("开始集合");
         for (int i = 0; i < num; i++) {
-            threads[i] = new Thread(new Soldier(cyclicBarrier,i+"士兵"));
+            //如果等待的线程中被中断，其它等待线程会报BrokenBarrierException异常。
+//            if(i==5){
+//                threads[0].interrupt();
+//            }
+            threads[i] = new Thread(new Soldier(cyclicBarrier, i + "士兵"));
             threads[i].start();
         }
 

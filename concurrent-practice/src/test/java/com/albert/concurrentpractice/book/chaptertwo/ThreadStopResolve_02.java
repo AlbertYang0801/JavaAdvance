@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
-public class ThreadStopResolve_03 {
+public class ThreadStopResolve_02 {
 
     private static User user = new User();
 

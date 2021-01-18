@@ -74,15 +74,44 @@ public class ThreadPoolCreateTest {
 
     /**
      * 测试定时线程池-周期执行
+     * 在上次任务开始执行计时
+     * 若单个任务的执行时间>指定时间间隔。则任务会按照单个任务的执行时间来周期执行
      */
     @Test
-    public void testScheduledThreadPoolPeriod() {
+    public void testScheduledRateThreadPoolPeriod() {
         ScheduledExecutorService scheduledThreadPool = ThreadPoolCreate.getScheduledThreadPool(3);
         scheduledThreadPool.scheduleAtFixedRate(() -> {
-            log.info("每1秒执行一次");
-        }, 1, 1, TimeUnit.SECONDS);
+            log.info("每3秒执行一次");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 0, 2, TimeUnit.SECONDS);
         try {
-            Thread.sleep(10000);
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试定时线程池-周期执行
+     * 在上次任务执行完成之后开始计时
+     */
+    @Test
+    public void testScheduledDelayThreadPoolPeriod() {
+        ScheduledExecutorService scheduledThreadPool = ThreadPoolCreate.getScheduledThreadPool(3);
+        scheduledThreadPool.scheduleWithFixedDelay(() -> {
+            log.info("每5秒执行一次");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 0, 2, TimeUnit.SECONDS);
+        try {
+            Thread.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

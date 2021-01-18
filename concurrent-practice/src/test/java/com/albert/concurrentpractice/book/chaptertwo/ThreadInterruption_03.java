@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
 @Slf4j
-public class ThreadInterruption_04 {
+public class ThreadInterruption_03 {
 
     /**
      * 测试interrupt()方法

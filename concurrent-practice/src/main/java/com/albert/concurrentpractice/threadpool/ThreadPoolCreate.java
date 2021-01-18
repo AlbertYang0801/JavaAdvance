@@ -72,8 +72,7 @@ public class ThreadPoolCreate {
      *
      */
     public static ScheduledExecutorService getScheduledThreadPool(int corePoolSize) {
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(corePoolSize);
-        return scheduledExecutorService;
+        return Executors.newScheduledThreadPool(corePoolSize);
     }
 
     /**

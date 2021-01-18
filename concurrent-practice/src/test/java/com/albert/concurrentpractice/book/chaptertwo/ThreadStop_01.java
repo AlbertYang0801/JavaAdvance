@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
-public class ThreadStop_02 {
+public class ThreadStop_01 {
 
     private static User user = new User();
 

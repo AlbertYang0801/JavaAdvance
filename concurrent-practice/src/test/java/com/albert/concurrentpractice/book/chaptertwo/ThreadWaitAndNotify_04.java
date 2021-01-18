@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
 @Slf4j
-public class ThreadWaitAndNotify_05 {
+public class ThreadWaitAndNotify_04 {
 
     final static Object object = new Object();
 
