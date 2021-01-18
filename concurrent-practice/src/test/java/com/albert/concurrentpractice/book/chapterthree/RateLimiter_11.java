@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.RateLimiter;
 
 /**
  * 限流RateLimiter的使用
+ * 基于令牌桶算法
  * @author Albert
  * @date 2021/1/18 上午10:41
  */
@@ -15,7 +16,6 @@ public class RateLimiter_11 {
     static RateLimiter rateLimiter=RateLimiter.create(2);
 
     public static class Task implements Runnable{
-
         @Override
         public void run() {
             System.out.println("任务执行"+System.currentTimeMillis());
