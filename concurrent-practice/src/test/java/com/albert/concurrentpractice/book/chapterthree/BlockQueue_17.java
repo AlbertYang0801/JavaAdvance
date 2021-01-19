@@ -14,7 +14,7 @@ public class BlockQueue_17 {
 
     @SneakyThrows
     public static void main(String[] args) {
-        ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue(50);
+        ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(50);
         //入队
         blockingQueue.put("123");
         //入队，实际调用了offer()方法入队
