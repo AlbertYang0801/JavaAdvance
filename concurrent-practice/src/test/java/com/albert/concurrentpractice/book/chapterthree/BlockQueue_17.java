@@ -2,9 +2,7 @@ package com.albert.concurrentpractice.book.chapterthree;
 
 import lombok.SneakyThrows;
 
-import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * 阻塞队列的练习
