@@ -2,7 +2,6 @@ package com.albert.concurrentpractice.book.chapterthree;
 
 import lombok.SneakyThrows;
 
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -43,3 +42,8 @@ public class CopyOnWriteArrayList_16 {
 
 
 }
+
+/**
+ * 读操作是不加锁的，而写操作加锁。
+ * 实现了读取并行，而写操作是独占的独占的。
+ */
