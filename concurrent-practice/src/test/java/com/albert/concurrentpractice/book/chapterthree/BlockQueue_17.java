@@ -65,9 +65,7 @@ public class BlockQueue_17 {
     /**
      * 有界队列的练习
      */
-    public static void arrayBlockQueue() {
-        //底层是数组，适合做有界队列
-        ArrayBlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue<>(5);
+    public static void arrayBlockQueue(BlockingQueue<Integer> blockingQueue) {
 
         //测试入队方法
         BlockQueue_17.add(blockingQueue);
@@ -82,35 +80,18 @@ public class BlockQueue_17 {
         BlockQueue_17.out(blockingQueue);
     }
 
-    /**
-     * 无界队列的练习
-     */
-    public static void linkedBlockQueue() {
-        //底层是链表，适合做无界队列
-        LinkedBlockingDeque<Integer> linkedBlockingDeque = new LinkedBlockingDeque<>();
-
-        //测试入队方法
-        BlockQueue_17.add(linkedBlockingDeque);
-
-        linkedBlockingDeque.forEach(queue -> {
-            System.out.println(queue.intValue());
-        });
-
-        //测试出队方法
-        BlockQueue_17.out(linkedBlockingDeque);
-
-    }
-
-
     @SneakyThrows
     public static void main(String[] args) {
+        //底层是数组，适合做有界队列
+        ArrayBlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue<>(5);
         //测试有界队列
-        BlockQueue_17.arrayBlockQueue();
+        BlockQueue_17.arrayBlockQueue(blockingQueue);
 
         System.out.println("-----------------------------------");
 
+        LinkedBlockingDeque<Integer> linkedBlockingDeque = new LinkedBlockingDeque<>();
         //测试无界队列
-        BlockQueue_17.linkedBlockQueue();
+        BlockQueue_17.arrayBlockQueue(linkedBlockingDeque);
     }
 
 
