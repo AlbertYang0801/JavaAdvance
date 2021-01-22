@@ -23,7 +23,7 @@ public class SynchrodizedCodebolck {
         System.out.println(SumNumber.i);
         System.out.println(SumNumber.m);
         System.out.println(SumNumber.n);
-
+        System.out.println(SumNumber.x);
     }
 
 
@@ -40,6 +40,8 @@ class SumNumber implements Runnable {
     static int m = 0;
 
     static int n = 0;
+
+    static int x = 0;
 
     static final Object OBJECT = new Object();
 
@@ -60,6 +62,12 @@ class SumNumber implements Runnable {
             synchronized (OBJECT) {
                 n++;
             }
+
+            //使用当前类作为锁对象
+            synchronized (SynchrodizedCodebolck.class) {
+                x++;
+            }
+
         }
     }
 

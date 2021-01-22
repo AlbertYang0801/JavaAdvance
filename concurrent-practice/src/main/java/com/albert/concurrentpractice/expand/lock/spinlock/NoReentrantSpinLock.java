@@ -43,5 +43,5 @@ public class NoReentrantSpinLock extends SpinLock {
  * atomicReference.compareAndSet(thread,null)意为若atomicReference等于当前线程值，则将atomicReference赋值为null。
  * 4.当第一个线程请求unlock()方法之后，atomicReference的值变为null。
  * 其它在循环体的线程，atomicReference.compareAndSet(null, thread)判断为true，会跳出循环体，持有锁资源。
- * 注意：该锁为非公平锁。
+ * 注意：该锁为非公平锁。（多个在循环体里的线程，随机抢占锁，非公平）
  */

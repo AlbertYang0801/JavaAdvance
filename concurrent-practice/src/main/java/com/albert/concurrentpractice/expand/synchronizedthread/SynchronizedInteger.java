@@ -19,6 +19,7 @@ public class SynchronizedInteger implements Runnable {
             synchronized (synchronizedInteger){
                 i++;
             }
+            //i是动态变化的，不能作为锁对象
             synchronized (i){
                 i++;
             }

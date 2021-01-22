@@ -16,7 +16,6 @@ public class SynchrodizedMethod {
      * 01_普通方法同步（没有实现线程同步）
      * 锁对象为实例对象，创建线程时传入两个不同的实例，代表的是两把锁对象，无法对这两个线程类实现线程同步
      *
-     * @return
      */
     @SneakyThrows
     public int numberOperating() {
