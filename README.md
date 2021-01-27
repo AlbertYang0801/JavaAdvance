@@ -15,7 +15,6 @@
    * kafka 2.1.12
    * jackson
    * fastjson
-   * SpringTask
    * Guava
    
 
@@ -66,20 +65,9 @@
 
 * Poi导出带图表的Excel(file-demo) 2020-10-09
 
-* Poi导出带图表的Excel(file-demo) 2020-10-09
 
 
-
-### 5. 高并发学习（concurrent-practice）
-
-* 多线程的学习和练习 
-* 线程池的学习
-* 线程池的实战
-* Java高并发实战设计例子练习
-* 高并发的扩展
-
-
-### 6.java1.8新特性学习
+### 5.java1.8新特性学习
 
 1. Date-Time API   
 
@@ -94,10 +82,10 @@
 6. Stream流对象
 
 
-### 7. Lettcode题目练习(leetcode-parctice)
+### 6. Lettcode题目练习(leetcode-parctice)
 
 
-### 9.排序算法的练习(sort-practice)
+### 7.排序算法的练习(sort-practice)
 
 * 直接插入排序 2020-9-11
 * 冒泡排序 2020-9-13

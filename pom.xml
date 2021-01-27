@@ -17,7 +17,6 @@
 
     <modules>
         <module>activemq-demo</module>
-        <module>concurrent-practice</module>
         <module>eightfeatures-practice</module>
         <module>filter-demo</module>
         <module>kafka-demo</module>
