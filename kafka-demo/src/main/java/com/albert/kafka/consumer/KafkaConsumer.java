@@ -9,6 +9,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -40,6 +41,21 @@ public class KafkaConsumer {
             //表示消息已被处理
             ack.acknowledge();
         }
+    }
+
+    /**
+     * 批量消费消息
+     */
+    @KafkaListener(topics ={"${kafka.test.topic}"},containerFactory="batchFactory")
+    public void consumerBatch(List<ConsumerRecord<?, ?>> record){
+        log.info("接收到消息数量：{}",record.size());
+        record.forEach(data->{
+            Optional<?> kafkaMessage = Optional.ofNullable(data.value());
+            if (kafkaMessage.isPresent()) {
+                Object message = kafkaMessage.get();
+                log.info("从队列批量消费到的数据为:{}",message);
+            }
+        });
     }
 
 
