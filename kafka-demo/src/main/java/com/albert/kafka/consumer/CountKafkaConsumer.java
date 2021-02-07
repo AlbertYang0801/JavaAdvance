@@ -22,7 +22,7 @@ public class CountKafkaConsumer {
     public static long totalMessageCount(String topic, String brokerList) {
         Properties props = new Properties();
         props.put("bootstrap.servers", brokerList);
-        props.put("group.id", "testGroup");
+        props.put("group.id", "htestGroup01");
         props.put("enable.auto.commit", "false");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
@@ -43,7 +43,7 @@ public class CountKafkaConsumer {
 
     public static void main(String[] args) {
         while (true){
-            long test = CountKafkaConsumer.totalMessageCount("testalbert", "10.0.7.212:9092");
+            long test = CountKafkaConsumer.totalMessageCount("testalbert1", "10.0.7.212:9092");
             System.out.println(test);
         }
 
