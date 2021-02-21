@@ -25,25 +25,31 @@ public class MergeInterval {
 
         List<int[]> list = new ArrayList<>();
 
-        int min = intervals[0][0];
-        int max = intervals[0][1];
+        //获取初始左右边界
+        int left = intervals[0][0];
+        int right = intervals[0][1];
 
+        //从第二个元素开始比较
         for (int i = 1; i < intervals.length; i++) {
-            //[1,2],[1,3]
-            if (intervals[i][0] == min) {
-                max = Math.max(max, intervals[i][1]);
+            // 第二个元素与左边界值相等
+            if (intervals[i][0] == left) {
+                right = Math.max(right, intervals[i][1]);
             }
-            //[1,2],[2,6]
-            else if (intervals[i][0] <= max) {
-                max = Math.max(max, intervals[i][1]);
-            } else {
-                int[] temp = {min, max};
+            // 第二个元素小于等于右边界值
+            else if (intervals[i][0] <= right) {
+                right = Math.max(right, intervals[i][1]);
+            }
+            // 不满足聚合条件，
+            else {
+                int[] temp = {left, right};
                 list.add(temp);
-                min = intervals[i][0];
-                max = intervals[i][1];
+                //将当前比较值设置为左右边界值
+                left = intervals[i][0];
+                right = intervals[i][1];
             }
+            // 循环到最后，将左右边界值输出
             if (i == intervals.length - 1) {
-                int[] temp = {min,max};
+                int[] temp = {left,right};
                 list.add(temp);
             }
         }
