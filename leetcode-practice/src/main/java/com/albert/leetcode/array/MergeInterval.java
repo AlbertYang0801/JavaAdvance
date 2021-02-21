@@ -6,14 +6,14 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * leetcode第56题
+ * leetcode第56题：合并区间
  * leetbook-数组第三题
  * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。
  *
  * @author yjw
  * @date 2021/2/21 13:40
  */
-public class SolutionC {
+public class MergeInterval {
 
 
     public static int[][] merge(int[][] intervals) {
@@ -59,7 +59,7 @@ public class SolutionC {
         int[][] intervals = {{1, 4}, {4, 5}};
 //        int[][] intervals = {{1, 4}};
 //        int[][] intervals = {{1, 4}, {0, 2}, {3, 5}};
-        int[][] merge = SolutionC.merge(intervals);
+        int[][] merge = MergeInterval.merge(intervals);
         for (int[] ints : merge) {
             System.out.println(ints[0] + "" + ints[1]);
         }
