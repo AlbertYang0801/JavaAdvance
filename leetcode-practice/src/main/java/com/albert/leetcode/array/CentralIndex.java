@@ -1,18 +1,17 @@
 package com.albert.leetcode.array;
 
 /**
+ * Leetcode第724题：寻找数组的中心索引
+ * Leetbook-数组-第1题
  * 给你一个整数数组 nums，请编写一个能够返回数组 “中心索引” 的方法。
- *
  * 数组 中心索引 是数组的一个索引，其左侧所有元素相加的和等于右侧所有元素相加的和。
- *
  * 如果数组不存在中心索引，返回 -1 。如果数组有多个中心索引，应该返回最靠近左边的那一个。
- *
  * 注意：中心索引可能出现在数组的两端。
  *
  * @author Albert
  * @date 2021/2/21 上午1:20
  */
-public class SolutionA {
+public class CentralIndex {
 
     public static int pivotIndex(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
@@ -55,12 +54,9 @@ public class SolutionA {
 
     public static void main(String[] args) {
         int[] nums = {-1,-1,-1,-1,-1,-1};
-
 //        int[] nums = {1, 2, 3};
-
 //        int[] nums = {2, 1, -1};
-
-        int i = SolutionA.pivotIndex(nums);
+        int i = CentralIndex.pivotIndex(nums);
 
         System.out.println(i);
     }
