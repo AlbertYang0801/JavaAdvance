@@ -1,13 +1,14 @@
 package com.albert.leetcode.array;
 
 /**
+ * Leetcode第35题
  * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
  * 你可以假设数组中无重复元素。
  *
  * @author Albert
  * @date 2021/2/21 上午1:41
  */
-public class SolutionB {
+public class InsertPosition {
 
 //    public static int searchInsert(int[] nums, int target) {
 //        if(nums.length<=0){
@@ -72,7 +73,7 @@ public class SolutionB {
     public static void main(String[] args) {
         int[] nums = {1,3,4,7};
         int target = 6;
-        int i = SolutionB.searchInsert(nums, target);
+        int i = InsertPosition.searchInsert(nums, target);
         System.out.println(i);
     }
 
