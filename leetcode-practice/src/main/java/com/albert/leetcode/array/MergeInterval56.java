@@ -12,7 +12,7 @@ import java.util.List;
  * @author yjw
  * @date 2021/2/21 13:40
  */
-public class MergeInterval {
+public class MergeInterval56 {
 
 
     public static int[][] merge(int[][] intervals) {
@@ -59,12 +59,13 @@ public class MergeInterval {
         return newIntervals;
     }
 
+
     public static void main(String[] args) {
 //        int[][] intervals = {{1,3},{2,6},{8,10},{15,18}};
         int[][] intervals = {{1, 4}, {4, 5}};
 //        int[][] intervals = {{1, 4}};
 //        int[][] intervals = {{1, 4}, {0, 2}, {3, 5}};
-        int[][] merge = MergeInterval.merge(intervals);
+        int[][] merge = MergeInterval56.merge(intervals);
         for (int[] ints : merge) {
             System.out.println(ints[0] + "" + ints[1]);
         }

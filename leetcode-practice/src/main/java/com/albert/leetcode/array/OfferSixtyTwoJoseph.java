@@ -1,4 +1,4 @@
-package com.albert.leetcode.practice;
+package com.albert.leetcode.array;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +28,6 @@ public class OfferSixtyTwoJoseph {
             index = (index - 1 + m) % list.size();
             //删除指定索引元素
             list.remove(index);
-            n--;
         }
         return list.get(0);
     }

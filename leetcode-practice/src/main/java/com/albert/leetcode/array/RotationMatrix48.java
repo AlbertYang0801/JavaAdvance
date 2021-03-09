@@ -6,7 +6,7 @@ package com.albert.leetcode.array;
  * @author Albert
  * @date 2021/2/22 下午9:05
  */
-public class RotationMatrix {
+public class RotationMatrix48 {
 
     public static void rotate(int[][] matrix) {
         //镜像翻转
