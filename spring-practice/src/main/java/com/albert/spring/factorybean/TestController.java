@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
+    /**
+     * 测试FactoryBean能注入为主动注入的类
+     */
     @GetMapping("/import/test")
     public String testImport() {
         //尝试从容器中获取未主动注入的类
@@ -20,6 +23,10 @@ public class TestController {
         return "Hello";
     }
 
+    /**
+     * 测试获取FactoryBean实例
+     * 返回的是getObject()方法返回的实例
+     */
     @SneakyThrows
     @GetMapping("/factoryBean/test")
     public String testFactoryBean() {
@@ -30,6 +37,9 @@ public class TestController {
         return "Hello";
     }
 
+    /**
+     * 测试加& 实现获取FactoryBean实例本身
+     */
     @SneakyThrows
     @GetMapping("/factoryBean/testMine")
     public String testFactoryBeanMine() {
