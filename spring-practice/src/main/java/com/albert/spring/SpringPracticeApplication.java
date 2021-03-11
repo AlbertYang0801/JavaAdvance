@@ -1,14 +1,17 @@
-package sqlserver;
+package com.albert.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+/**
+ * @author Albert Yang
+ */
 @SpringBootApplication
-public class SqlserverApplication {
+public class SpringPracticeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SqlserverApplication.class, args);
+        SpringApplication.run(SpringPracticeApplication.class, args);
     }
 
 }
