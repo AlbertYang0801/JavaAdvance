@@ -18,13 +18,13 @@ public class TestSafeBeanController {
     @GetMapping("/safeBean/default")
     public void testThreadSafeBean() {
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             DefaultSingleBean defaultSingleBean = SpringBeanUtil.getBean(DefaultSingleBean.class);
             defaultSingleBean.msg = "线程A信息";
             System.out.println(defaultSingleBean.msg);
         }).start();
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             DefaultSingleBean defaultSingleBean = SpringBeanUtil.getBean(DefaultSingleBean.class);
             System.out.println(defaultSingleBean.msg);
         }).start();
@@ -36,13 +36,13 @@ public class TestSafeBeanController {
     @GetMapping("/safeBean/beanScope")
     public void testThreadSafeBeanScope() {
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             BeanScopeSafeBean beanScopeSafeBean = SpringBeanUtil.getBean(BeanScopeSafeBean.class);
             beanScopeSafeBean.msg = "线程A信息";
             System.out.println(beanScopeSafeBean.msg);
         }).start();
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             BeanScopeSafeBean beanScopeSafeBean = SpringBeanUtil.getBean(BeanScopeSafeBean.class);
             System.out.println(beanScopeSafeBean.msg);
         }).start();
@@ -55,14 +55,14 @@ public class TestSafeBeanController {
     @GetMapping("/safeBean/threadlocal")
     public void testThreadSafeBeanThreadLocal() {
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             ThreadLocalSafeBean threadLocalSafeBean = SpringBeanUtil.getBean(ThreadLocalSafeBean.class);
             threadLocalSafeBean.threadLocalMsg.set("线程A信息");
             System.out.println(threadLocalSafeBean.threadLocalMsg.get());
         }).start();
         Thread.sleep(1000);
         new Thread(() -> {
-            //从ApplicationContext容器中获取ThreadSafeBeanDemo
+            //从ApplicationContext容器中获取
             ThreadLocalSafeBean threadLocalSafeBean = SpringBeanUtil.getBean(ThreadLocalSafeBean.class);
             System.out.println(threadLocalSafeBean.threadLocalMsg.get());
         }).start();
