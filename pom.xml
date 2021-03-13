@@ -10,9 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.albert</groupId>
-    <artifactId>java-component-practice</artifactId>
+    <artifactId>JavaAdvanced</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>java-component-practice</name>
+    <name>JavaAdvanced</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
@@ -29,7 +29,6 @@
         <module>mail-demo</module>
         <module>file-demo</module>
         <module>javase-practice</module>
-        <module>sqlserver-demo</module>
         <module>mybatis-demo</module>
 
     </modules>
