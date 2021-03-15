@@ -7,7 +7,7 @@ package com.albert.leetcode.array;
  * @author Albert
  * @date 2021/3/12 下午10:01
  */
-public class RepeatNum {
+public class RepeatNum03Offer {
 
     public int findRepeatNumber(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
@@ -30,8 +30,8 @@ public class RepeatNum {
 
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 0, 2, 5, 3};
-        RepeatNum repeatNum = new RepeatNum();
-        int repeatNumber = repeatNum.findRepeatNumber(nums);
+        RepeatNum03Offer repeatNum03Offer = new RepeatNum03Offer();
+        int repeatNumber = repeatNum03Offer.findRepeatNumber(nums);
         System.out.println(repeatNumber);
     }
 
