@@ -1,5 +1,8 @@
 package com.albert.spring.collection;
 
+import com.albert.utils.jackson.JsonUtil;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 
 /**
@@ -8,8 +11,12 @@ import java.util.HashMap;
  */
 public class HashMapDemo {
 
-    public static void main(String[] args) {
+    @Test
+    public void hashMapCreate(){
         HashMap<String,String> map = new HashMap<>();
+        map.put("a","a");
+        map.put(null,"a");
+        System.out.println(JsonUtil.toString(map));
     }
 
 

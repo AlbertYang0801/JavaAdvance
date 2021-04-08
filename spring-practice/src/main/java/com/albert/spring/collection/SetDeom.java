@@ -27,9 +27,9 @@ public class SetDeom {
     @Test
     public void hashMapDeom(){
         HashMap<Integer,Integer> hashMap  = Maps.newHashMap();
-        Integer one = hashMap.put(1, 1);
+        Integer one = hashMap.put(1, 2);
         System.out.println(one);
-        Integer two = hashMap.put(1, 2);
+        Integer two = hashMap.put(1, 3);
         System.out.println(two);
     }
 
