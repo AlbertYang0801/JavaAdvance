@@ -3,13 +3,18 @@ package com.albert.spring.tree;
 import com.albert.utils.jackson.JsonUtil;
 
 /**
+ * 二叉排序树的实现
  * @author Albert
- * @date 2021/3/17 下午9:40
+ * @date 2021/4/12 下午5:29
  */
-public class TreeTest {
+public class BinarySortTree {
 
-
-    private void insert(int value,Tree tree){
+    /**
+     * 向指定树添加元素
+     * @param value 元素
+     * @param tree 树
+     */
+    private static void insert(int value,Tree tree){
         if(tree.getValue()==0){
             tree.setValue(value);
         }else{
@@ -34,20 +39,27 @@ public class TreeTest {
         }
     }
 
-
-
-    public static void main(String[] args) {
-        TreeTest treeTest = new TreeTest();
+    /**
+     * 获取测试用的二叉平衡树
+     * @return
+     */
+    public static Tree getTestBinarySortTree(){
         Tree tree = new Tree();
-        treeTest.insert(4,tree);
-        treeTest.insert(1,tree);
-        treeTest.insert(2,tree);
-        treeTest.insert(3,tree);
+        insert(10,tree);
+        insert(5,tree);
+        insert(15,tree);
+        insert(20,tree);
+        insert(16,tree);
+        insert(3,tree);
+        insert(7,tree);
         System.out.println(JsonUtil.toString(tree));
-
-
+        return tree;
     }
 
+    public static void main(String[] args) {
+        Tree testBinarySortTree = getTestBinarySortTree();
+        System.out.println();
+    }
 
 
 
