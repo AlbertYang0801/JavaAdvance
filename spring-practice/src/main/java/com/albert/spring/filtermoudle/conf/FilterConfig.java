@@ -1,9 +1,8 @@
-package com.albert.filter.conf;
+package com.albert.spring.filtermoudle.conf;
 
 import com.albert.filter.filter.ConfFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 第二种过滤器配置方式：配置类

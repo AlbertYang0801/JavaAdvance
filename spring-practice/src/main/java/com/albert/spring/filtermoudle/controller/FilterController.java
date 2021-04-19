@@ -1,4 +1,4 @@
-package com.albert.filter.controller;
+package com.albert.spring.filtermoudle.controller;
 
 import com.albert.utils.jackson.JsonUtil;
 import lombok.AllArgsConstructor;
