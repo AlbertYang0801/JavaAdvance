@@ -1,4 +1,4 @@
-package com.albert.spring.tree;
+package com.albert.leetcode.tree;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

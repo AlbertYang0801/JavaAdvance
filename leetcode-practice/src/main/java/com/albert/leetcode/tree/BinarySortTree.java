@@ -1,4 +1,5 @@
-package com.albert.spring.tree;
+package com.albert.leetcode.tree;
+
 
 import com.albert.utils.jackson.JsonUtil;
 
@@ -52,13 +53,12 @@ public class BinarySortTree {
         insert(16,tree);
         insert(3,tree);
         insert(7,tree);
-        System.out.println(JsonUtil.toString(tree));
         return tree;
     }
 
     public static void main(String[] args) {
         Tree testBinarySortTree = getTestBinarySortTree();
-        System.out.println();
+        System.out.println(JsonUtil.toString(testBinarySortTree));
     }
 
 
