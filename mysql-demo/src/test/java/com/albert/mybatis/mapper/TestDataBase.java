@@ -30,35 +30,10 @@ public class TestDataBase {
     @Resource
     TestMapper testMapper;
 
-    @Value("${workorder.dictionary.id}")
-    private String id;
-
     @Test
     public void testUser() {
         List<UserInfoPO> userInfoList = userMapper.getUserInfoList();
         System.out.println(userInfoList);
-    }
-
-    @Test
-    public void test() {
-        TestData test = testMapper.getData();
-        String workOrderFormData = test.getData();
-
-        //解析workOrderFormData
-        JsonNode workOrderFormDataNode = JsonUtil.getJsonNode(workOrderFormData);
-        if (Objects.isNull(workOrderFormDataNode)) {
-            return;
-        }
-
-        //根据字典key获取value列表
-        JsonNode dictionaryKeyNode = workOrderFormDataNode.findValue(id.trim());
-
-        Iterator<JsonNode> iterator = dictionaryKeyNode.iterator();
-        while (iterator.hasNext()){
-            String dictionaryValue = iterator.next().asText();
-            System.out.println(dictionaryValue);
-        }
-
     }
 
 
