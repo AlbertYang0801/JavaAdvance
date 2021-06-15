@@ -1,6 +1,5 @@
 package com.albert.spring.filtermoudle.conf;
 
-import com.albert.filter.filter.ConfFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
@@ -14,13 +13,13 @@ import org.springframework.context.annotation.Bean;
 //@Configuration
 public class FilterConfig {
 
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new ConfFilter());
-        registrationBean.addUrlPatterns("/*");
-        registrationBean.setName("confFilter");
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean filterRegistrationBean() {
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new ConfFilter());
+//        registrationBean.addUrlPatterns("/*");
+//        registrationBean.setName("confFilter");
+//        return registrationBean;
+//    }
 
 
 }

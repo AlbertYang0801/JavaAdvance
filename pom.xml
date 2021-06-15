@@ -16,12 +16,10 @@
     <description>Demo project for Spring Boot</description>
 
     <modules>
-        <module>activemq-demo</module>
+        <module>es-practice</module>
         <module>eightfeatures-practice</module>
-        <module>filter-demo</module>
-        <module>kafka-demo</module>
+        <module>msg-queue</module>
         <module>leetcode-practice</module>
-        <module>logging-demo</module>
         <module>mysql-demo</module>
         <module>redis-demo</module>
         <module>springtask-demo</module>
