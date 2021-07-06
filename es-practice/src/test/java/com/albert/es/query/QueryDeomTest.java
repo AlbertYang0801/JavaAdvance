@@ -2,14 +2,17 @@ package com.albert.es.query;
 
 import com.albert.es.TestApplication;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.search.aggregations.AggregationBuilder;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.aggregations.metrics.avg.Avg;
 import org.elasticsearch.search.aggregations.metrics.max.Max;
+import org.elasticsearch.search.sort.SortOrder;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,6 +64,22 @@ public class QueryDeomTest {
         //打印最大值
         System.out.println(avg.getValue());
     }
+
+//    @Test
+//    public void testSortTop10(){
+//        TermsAggregationBuilder termsAggregationBuilder = AggregationBuilders
+//                .terms("timestamp").field("timestamp")
+//                .subAggregation(AggregationBuilders.max("cpuUsage").field("sysinfo.cpuUsage"))
+//                .subAggregation(
+//                        AggregationBuilders.topHits("interval")
+//                                .sort("timestamp", SortOrder.DESC)
+//                        .fetchSource(new String[]{"requestBytes","requestSent","totalTime","response_headers"},null)
+//                ).order(BucketOrder)
+//
+//
+//
+//
+//    }
 
 
 }
