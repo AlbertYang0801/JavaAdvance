@@ -1,7 +1,12 @@
 package com.albert.file.service;
 
 import com.csvreader.CsvReader;
+import lombok.SneakyThrows;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -91,7 +96,17 @@ public class CsvReadService {
         }
     }
 
+    @SneakyThrows
+    public static long getScriptFileDataCount(String scriptFilePath) {
+        FileInputStream fis = new FileInputStream(scriptFilePath);
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheetAt = workbook.getSheetAt(0);
+        return sheetAt.getLastRowNum() + 1;
+    }
+
     public static void main(String[] args) {
+        long scriptFileDataCount = getScriptFileDataCount(WRITE_CSV_FILE_PATH);
+        System.out.println(scriptFileDataCount);
         readCsvFile(2,WRITE_CSV_FILE_PATH);
     }
 }
