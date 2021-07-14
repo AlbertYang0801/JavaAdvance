@@ -7,10 +7,10 @@
         <artifactId>JavaAdvanced</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>kafka-demo</artifactId>
+    <artifactId>msg-queue</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kafka-demo</name>
-    <description>Demo project for Spring Boot and Kafka</description>
+    <name>msg-queue</name>
+    <description>Demo project for Spring Boot and msg-queue</description>
 
     <properties>
         <java.version>1.8</java.version>
