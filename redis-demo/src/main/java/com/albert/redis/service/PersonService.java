@@ -4,6 +4,7 @@ import com.albert.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,6 +20,13 @@ public class PersonService {
     RedisUtil redisUtil;
 
     private final String PERSON_KEY = "person:";
+
+    public void insert(String userId, String... values) {
+        if(redisUtil.sSize(userId)>0){
+            redisUtil.sRemove(PERSON_KEY+userId);
+        }
+        redisUtil.sAdd(PERSON_KEY + userId, values);
+    }
 
     /**
      * 共同认识的人

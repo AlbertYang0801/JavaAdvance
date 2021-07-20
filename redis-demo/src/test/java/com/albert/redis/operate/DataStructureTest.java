@@ -1,6 +1,7 @@
 package com.albert.redis.operate;
 
 import com.albert.redis.TestApplication;
+import com.albert.redis.entry.SellScore;
 import com.albert.redis.service.*;
 import com.albert.utils.jackson.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,15 @@ public class DataStructureTest {
     @Autowired
     LuckDrawService luckDrawService;
 
+    @Autowired
+    PersonService personService;
+
+    @Autowired
+    GoodsSellSortService goodsSellSortService;
+
+    /**
+     * string - 文章点赞数量
+     */
     @Test
     public void stringTest() {
         String articleId = "ACE110";
@@ -53,6 +63,9 @@ public class DataStructureTest {
         System.out.println(articleId + "文章的点赞数量为=>" + likeCount);
     }
 
+    /**
+     * list - 公众号文章推送
+     */
     @Test
     public void listTest() {
         String publicId = "public2021";
@@ -66,6 +79,9 @@ public class DataStructureTest {
         System.out.println("倒序获取公众号最近的5篇文章" + JsonUtil.toString(articleTop));
     }
 
+    /**
+     * hash - 购物车
+     */
     @Test
     public void hashTest() {
         String userId = "110";
@@ -88,6 +104,9 @@ public class DataStructureTest {
         System.out.println("购物车信息为：" + JsonUtil.toString(shopCartList));
     }
 
+    /**
+     * set - 预约
+     */
     @Test
     public void setOneTest() {
         String attractionName = "杭州西湖";
@@ -109,16 +128,19 @@ public class DataStructureTest {
 
         //判断用户是否预约过
         boolean reservation = reservationService.isReservation(attractionName, lr);
-        System.out.println(lr+"用户是否预约过："+reservation);
+        System.out.println(lr + "用户是否预约过：" + reservation);
 
         //获取预约用户列表
         Set<String> userSet = reservationService.reservationDetails(attractionName);
-        System.out.println(attractionName+"预约列表："+JsonUtil.toString(userSet));
+        System.out.println(attractionName + "预约列表：" + JsonUtil.toString(userSet));
 
     }
 
+    /**
+     * set - 抽奖
+     */
     @Test
-    public void setTwoTest(){
+    public void setTwoTest() {
         String ming = "ming110";
         String hong = "hong110";
         String lr = "luren";
@@ -129,20 +151,61 @@ public class DataStructureTest {
 
         //统计参与人数
         long count = luckDrawService.count();
-        System.out.println("参与抽奖的人数为："+count);
+        System.out.println("参与抽奖的人数为：" + count);
 
         //不限次数随机抽两个人
         List<String> pump = luckDrawService.pump(2);
-        System.out.println("安慰奖不限次数，抽两个人："+JsonUtil.toString(pump));
+        System.out.println("安慰奖不限次数，抽两个人：" + JsonUtil.toString(pump));
 
 
         //只限抽一次，出队
         List<String> list = luckDrawService.pumpSingle(1);
-        System.out.println("终极大奖，抽一个人，中奖人为："+JsonUtil.toString(list));
+        System.out.println("终极大奖，抽一个人，中奖人为：" + JsonUtil.toString(list));
 
         //出队后剩下的人
         Set<String> luckDrawList = luckDrawService.getLuckDraw();
-        System.out.println("未中终极大奖的人："+JsonUtil.toString(luckDrawList));
+        System.out.println("未中终极大奖的人：" + JsonUtil.toString(luckDrawList));
+    }
+
+    /**
+     * set - 共同关注的人和可能认识的人
+     */
+    @Test
+    public void setThreeTest() {
+        String userA = "王";
+        String userB = "汇";
+
+        personService.insert(userA, "小明", "王丽", "阿飞", "风哥", "李站");
+        personService.insert(userB, "王丽", "阿飞", "红红");
+
+        Set<String> commonConcern = personService.commonConcern(userA, userB);
+        System.out.println("共同关注的人：" + JsonUtil.toString(commonConcern));
+
+        Set<String> mayKnow = personService.mayKnow(userA, userB);
+        System.out.println("userB可能认识的人：" + JsonUtil.toString(mayKnow));
+    }
+
+    /**
+     * zset - 商品销售排行榜
+     */
+    @Test
+    public void zsetTest() {
+        String bookId = "book110";
+        String ipone = "ipone12";
+        String ipad = "ipad2020";
+
+        goodsSellSortService.addGoodsSell(bookId, 100);
+        goodsSellSortService.addGoodsSell(ipone, 12);
+        goodsSellSortService.addGoodsSell(ipad, 268);
+
+        List<SellScore> sellScores = goodsSellSortService.goodsSellSortTop(5);
+        System.out.println("商品销售排行版："+JsonUtil.toString(sellScores));
+
+        goodsSellSortService.addGoodsSell(ipone,10000);
+        System.out.println("ipone搞活动，销售量增加10000");
+
+        List<SellScore> newSellScores = goodsSellSortService.goodsSellSortTop(5);
+        System.out.println("商品销售排行版："+JsonUtil.toString(newSellScores));
     }
 
 
