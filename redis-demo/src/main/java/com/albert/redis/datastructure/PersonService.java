@@ -1,10 +1,9 @@
-package com.albert.redis.service;
+package com.albert.redis.datastructure;
 
 import com.albert.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 /**

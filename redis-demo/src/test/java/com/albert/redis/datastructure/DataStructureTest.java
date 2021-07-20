@@ -1,8 +1,7 @@
-package com.albert.redis.operate;
+package com.albert.redis.datastructure;
 
 import com.albert.redis.TestApplication;
 import com.albert.redis.entry.SellScore;
-import com.albert.redis.service.*;
 import com.albert.utils.jackson.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

@@ -12,8 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SellScore {
-
+    /**
+     * 商品
+     */
     private String sellValue;
+    /**
+     * 商品销量
+     */
     private Double score;
 
 }

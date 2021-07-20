@@ -1,4 +1,4 @@
-package com.albert.redis.service;
+package com.albert.redis.datastructure;
 
 import com.albert.redis.utils.RedisUtil;
 import org.assertj.core.util.Lists;
