@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 分布式锁 - 解决超卖问题
@@ -23,7 +24,6 @@ public class OversoldGoodService {
     private final String GOOD_KEY = "good:110110";
 
     private final String GOOD_LOCK = "lock:110110";
-
 
     /**
      * 1.0 版本
@@ -74,8 +74,41 @@ public class OversoldGoodService {
      * 加分布式锁 - 解决超卖问题
      */
     public String oversoldGoodVersionThree() {
-        //加锁，解决单机版线程安全问题
-        synchronized (GOOD_KEY) {
+        //不断请求锁
+        while (true) {
+            //加分布式锁 setNx
+            Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent(GOOD_LOCK, UUID.randomUUID().toString());
+            if (Objects.isNull(lock)) {
+                continue;
+            }
+            //获取到锁
+            if (lock) {
+                //获取商品数量
+                String stock = stringRedisTemplate.opsForValue().get(GOOD_KEY);
+                int goods = StringUtils.isEmpty(stock) ? 0 : Integer.parseInt(stock);
+
+                if (goods <= 0) {
+                    System.out.println("商品已经卖完了");
+                    return "商品已经卖完";
+                }
+
+                //减库存
+                int realGoodCount = goods - 1;
+                stringRedisTemplate.opsForValue().set(GOOD_KEY, String.valueOf(realGoodCount));
+                System.out.println("成功买到商品");
+                //解锁
+                stringRedisTemplate.delete(GOOD_LOCK);
+                return "成功买到商品";
+            }
+        }
+    }
+
+    /**
+     * 4.0 版本
+     * 加 finally 保证顺利解锁
+     */
+    public String oversoldGoodVersionFour() {
+        try {
             //不断请求锁
             while (true) {
                 //加分布式锁 setNx
@@ -93,19 +126,99 @@ public class OversoldGoodService {
                         System.out.println("商品已经卖完了");
                         return "商品已经卖完";
                     }
-
                     //减库存
                     int realGoodCount = goods - 1;
                     stringRedisTemplate.opsForValue().set(GOOD_KEY, String.valueOf(realGoodCount));
                     System.out.println("成功买到商品");
-                    //解锁
-                    stringRedisTemplate.delete(GOOD_LOCK);
                     return "成功买到商品";
                 }
+            }
+        } finally {
+            //解锁
+            stringRedisTemplate.delete(GOOD_LOCK);
+        }
+    }
+
+    /**
+     * 5.0 版本
+     * 对分布式锁增加过期时间，保证解锁
+     */
+    public String oversoldGoodVersionFive() {
+        try {
+            //不断请求锁
+            while (true) {
+                //加分布式锁 setNx（增加过期时间）
+                Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent(GOOD_LOCK, UUID.randomUUID().toString(),
+                        1000L, TimeUnit.SECONDS);
+                if (Objects.isNull(lock)) {
+                    continue;
+                }
+                //获取到锁
+                if (lock) {
+                    //获取商品数量
+                    String stock = stringRedisTemplate.opsForValue().get(GOOD_KEY);
+                    int goods = StringUtils.isEmpty(stock) ? 0 : Integer.parseInt(stock);
+
+                    if (goods <= 0) {
+                        System.out.println("商品已经卖完了");
+                        return "商品已经卖完";
+                    }
+                    //减库存
+                    int realGoodCount = goods - 1;
+                    stringRedisTemplate.opsForValue().set(GOOD_KEY, String.valueOf(realGoodCount));
+                    System.out.println("成功买到商品");
+                    return "成功买到商品";
+                }
+            }
+        } finally {
+            //解锁
+            stringRedisTemplate.delete(GOOD_LOCK);
+        }
+    }
+
+
+    /**
+     * 6.0 版本
+     * 保证删除锁时删除的是自己线程创建的锁
+     */
+    public String oversoldGoodVersionSix() {
+        String value = UUID.randomUUID().toString() + Thread.currentThread().toString();
+        try {
+            //不断请求锁
+            while (true) {
+                //加分布式锁 setNx（增加过期时间）
+                Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent(GOOD_LOCK, value,
+                        1000L, TimeUnit.SECONDS);
+                if (Objects.isNull(lock)) {
+                    continue;
+                }
+                //获取到锁
+                if (lock) {
+                    //获取商品数量
+                    String stock = stringRedisTemplate.opsForValue().get(GOOD_KEY);
+                    int goods = StringUtils.isEmpty(stock) ? 0 : Integer.parseInt(stock);
+
+                    if (goods <= 0) {
+                        System.out.println("商品已经卖完了");
+                        return "商品已经卖完";
+                    }
+                    //减库存
+                    int realGoodCount = goods - 1;
+                    stringRedisTemplate.opsForValue().set(GOOD_KEY, String.valueOf(realGoodCount));
+                    System.out.println("成功买到商品");
+                    return "成功买到商品";
+                }
+            }
+        } finally {
+            //删除自己的锁
+            if(Objects.requireNonNull(stringRedisTemplate.opsForValue().get(GOOD_KEY)).equalsIgnoreCase(value)){
+                //解锁
+                stringRedisTemplate.delete(GOOD_LOCK);
             }
         }
     }
 
-    
+
+
 
 }
