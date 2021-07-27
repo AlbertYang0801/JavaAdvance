@@ -11,5 +11,13 @@
 
     <artifactId>javase-practice</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.espertech</groupId>
+            <artifactId>esper</artifactId>
+            <version>7.1.0</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
