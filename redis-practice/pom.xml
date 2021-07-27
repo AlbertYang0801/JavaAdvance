@@ -8,10 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.albert</groupId>
-    <artifactId>redis-demo</artifactId>
+    <artifactId>redis-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>redis-demo</name>
+    <name>redis-practice</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -24,6 +23,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.11.1</version>
         </dependency>
 
 
