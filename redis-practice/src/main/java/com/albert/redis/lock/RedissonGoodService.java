@@ -2,6 +2,7 @@ package com.albert.redis.lock;
 
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.Redisson;
+import org.redisson.RedissonLock;
 import org.redisson.api.RLock;
 import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
@@ -81,6 +82,15 @@ public class RedissonGoodService {
         RReadWriteLock readWriteLock = redissonClient.getReadWriteLock("readWriteLock");
         readWriteLock.readLock().lock();
         readWriteLock.writeLock().lock();
+
+
+        lock.unlock();
+
+        RLock redLock = redissonClient.getRedLock(lock,fairLock);
+        redLock.lock();
+        redLock.unlock();
+
+
     }
 
 
