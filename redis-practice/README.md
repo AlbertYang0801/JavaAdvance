@@ -1,9 +1,8 @@
 # Redis 实战练习
 
+## 八大数据结构实战 
 
-## 五种数据结构实战 
-
-[src/test/java/com/albert/redis/datastructure/DataStructureTest.java](src/test/java/com/albert/redis/datastructure/DataStructureTest.java)
+[测试类地址](src/test/java/com/albert/redis/datastructure/DataStructureTest.java)
 
 ### 字符串 - string
 
@@ -21,7 +20,7 @@
 
 ### 列表 - list
 
-公众号文章订阅
+**公众号文章订阅**
 
 - 新增文章
 
@@ -33,7 +32,7 @@
 
 ### 哈希表 - hash
 
-购物车
+**购物车**
 
 - 添加商品
 
@@ -116,3 +115,15 @@
    - 查询前十条热度最高的新闻
 
      `zrevrange weibo 0 9 WITHSCORES`
+
+### 位图 - bitmaps
+
+**用户每月签到**
+
+- 用户签到
+
+  `setbit signIn:YYYYMM:userId day 1`
+
+- 统计当月签到总数
+
+  `bitcount signIn:YYYYMM:userId`
