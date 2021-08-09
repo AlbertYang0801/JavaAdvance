@@ -13,7 +13,7 @@ import java.util.Set;
  * @date 2021/7/18 9:55 下午
  */
 @Service
-public class ReservationService {
+public class Set_ReservationService {
 
     @Autowired
     RedisUtil redisUtil;

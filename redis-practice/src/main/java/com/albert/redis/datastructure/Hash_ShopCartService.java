@@ -14,7 +14,7 @@ import java.util.Map;
  * @date 2021/7/19 7:43 下午
  */
 @Service
-public class ShopCartService {
+public class Hash_ShopCartService {
 
     @Autowired
     RedisUtil redisUtil;

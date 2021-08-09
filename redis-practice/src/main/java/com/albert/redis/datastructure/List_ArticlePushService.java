@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2021/7/19 7:39 下午
  */
 @Service
-public class ArticlePushService {
+public class List_ArticlePushService {
 
     @Autowired
     RedisUtil redisUtil;

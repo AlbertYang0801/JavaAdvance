@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class RedissonConfig {
 
     @Bean
-    public RedissonClient redissonConfig() {
+    public RedissonClient redissonClient() {
         Config config = new Config();
         config.useSingleServer().setAddress("redis://localhost:6379");
         return Redisson.create(config);

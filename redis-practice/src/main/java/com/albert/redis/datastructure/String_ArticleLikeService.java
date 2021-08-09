@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @date 2021/7/19 7:51 下午
  */
 @Service
-public class ArticleLikeService {
+public class String_ArticleLikeService {
 
     @Autowired
     RedisUtil redisUtil;

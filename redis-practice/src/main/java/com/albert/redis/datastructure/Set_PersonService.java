@@ -13,7 +13,7 @@ import java.util.Set;
  * @date 2021/7/19 7:18 下午
  */
 @Service
-public class PersonService {
+public class Set_PersonService {
 
     @Autowired
     RedisUtil redisUtil;

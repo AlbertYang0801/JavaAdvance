@@ -15,7 +15,7 @@ import java.util.Set;
  * @date 2021/7/19 7:06 下午
  */
 @Service
-public class LuckDrawService {
+public class Set_LuckDrawService {
 
     @Autowired
     RedisUtil redisUtil;

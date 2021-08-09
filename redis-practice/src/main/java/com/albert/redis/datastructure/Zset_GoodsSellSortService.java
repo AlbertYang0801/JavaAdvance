@@ -17,7 +17,7 @@ import java.util.Set;
  * @date 2021/7/19 7:26 下午
  */
 @Service
-public class GoodsSellSortService {
+public class Zset_GoodsSellSortService {
 
     @Autowired
     RedisUtil redisUtil;
