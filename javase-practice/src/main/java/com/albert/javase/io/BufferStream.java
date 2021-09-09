@@ -2,6 +2,7 @@ package com.albert.javase.io;
 
 import org.junit.Test;
 
+import javax.annotation.processing.Filer;
 import java.io.*;
 
 /**
@@ -12,8 +13,12 @@ import java.io.*;
  */
 public class BufferStream {
 
+    /**
+     * 缓冲流复制非文本文件-字节缓冲流
+     * BufferedInputStream和BufferedOutputStream
+     */
     @Test
-    public void testBufferIo() {
+    public void testBufferIoCopyPic() {
         String path = "src/main/java/com/albert/javase/io/file/hello.jpg";
         String outputPath = "src/main/java/com/albert/javase/io/file/newhello.jpg";
 
@@ -58,6 +63,49 @@ public class BufferStream {
             }
         }
 
+    }
+
+    /**
+     * 缓冲流复制文本文件-字符缓冲流
+     * BufferedReader 和 BufferedWriter
+     */
+    @Test
+    public void testCopyText() {
+        String path = "src/main/java/com/albert/javase/io/file/data.txt";
+        String outputPath = "src/main/java/com/albert/javase/io/file/newdata.txt";
+        FileReader fileReader = null;
+        FileWriter fileWriter = null;
+        BufferedReader bufferedReader = null;
+        BufferedWriter bufferedWriter = null;
+
+        try {
+            //节点流
+            fileReader = new FileReader(path);
+            fileWriter = new FileWriter(outputPath);
+            //缓冲流
+            bufferedReader = new BufferedReader(fileReader);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            char[] chars = new char[1024];
+            int length;
+            while ((length = bufferedReader.read(chars)) != -1) {
+                bufferedWriter.write(chars, 0, length);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //关闭最外层流对象，对应节点流也会关闭
+                if (bufferedReader != null) {
+                    //带有缓冲区的流对象关闭，会在关闭流之前刷新缓冲区
+                    bufferedReader.close();
+                }
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
