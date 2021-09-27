@@ -30,7 +30,7 @@ public class ConstructMaximumBinaryTree_654 {
             }
         }
         //确定根节点
-        TreeNode treeNode =new TreeNode(max);
+        TreeNode treeNode = new TreeNode(max);
 
         //2.找到最大值左边的数组，递归
         int[] leftNums = new int[index];
@@ -43,12 +43,44 @@ public class ConstructMaximumBinaryTree_654 {
         //3.找到最大值右边的数组，递归
         int[] rightNums = new int[nums.length - index - 1];
         for (int i = index + 1; i < nums.length; i++) {
-            rightNums[i-index-1] = nums[i];
+            rightNums[i - index - 1] = nums[i];
         }
         TreeNode rightNode = constructMaximumBinaryTree(rightNums);
 
-        treeNode.left=leftNode;
-        treeNode.right=rightNode;
+        treeNode.left = leftNode;
+        treeNode.right = rightNode;
+        return treeNode;
+    }
+
+    public TreeNode constructMaximumBinaryTreeHelper(int[] nums) {
+        //base case
+        if (nums.length <= 0) {
+            return null;
+        }
+        if (nums.length == 1) {
+            return new TreeNode(nums[0]);
+        }
+        return helper(nums, 0, nums.length - 1);
+    }
+
+    /**
+     * 核心思想是找到数组的最大值，以及最大值左边和右边数组的最大值。
+     */
+    public TreeNode helper(int[] nums, int from, int to) {
+        if (from > to) {
+            return null;
+        }
+        int max = Integer.MIN_VALUE;
+        int index = -1;
+        for (int i = from; i <= to; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+                index = i;
+            }
+        }
+        TreeNode treeNode = new TreeNode(max);
+        treeNode.left = helper(nums, from, index - 1);
+        treeNode.right = helper(nums, index + 1, to);
         return treeNode;
     }
 
