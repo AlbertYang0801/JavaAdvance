@@ -2,7 +2,7 @@ package com.albert.leetcode.tree;
 
 /**
  * @author yangjunwei
- * @date 2021/9/26 5:45 下午
+ * @date 2021/9/27 11:38 上午
  */
 public class TreeNode {
 
@@ -31,5 +31,5 @@ public class TreeNode {
                 ", right=" + right +
                 '}';
     }
-}
 
+}

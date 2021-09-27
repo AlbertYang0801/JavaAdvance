@@ -1,17 +1,13 @@
 package com.albert.leetcode.tree;
 
 
-import com.albert.utils.jackson.JsonUtil;
-import com.alibaba.fastjson.JSON;
-
 /**
- * labuladong-二叉树练习题目
+ * 226.翻转二叉树
  *
  * @author yangjunwei
  * @date 2021/9/26 5:43 下午
  */
-public class LabuladongBinaryTree {
-
+public class invertTree_226 {
 
     /**
      * 226-翻转二叉树
@@ -58,16 +54,19 @@ public class LabuladongBinaryTree {
         four.val = 4;
         five.val = 5;
 
-        System.out.println("翻转前："+ one.toString());
+        System.out.println("翻转前：" + one.toString());
         TreeNode treeNode = invertTree(one);
-        System.out.println("翻转后："+treeNode.toString());
+        System.out.println("翻转后：" + treeNode.toString());
     }
 
 
     public static void main(String[] args) {
-        LabuladongBinaryTree labuladongBinaryTree = new LabuladongBinaryTree();
-        labuladongBinaryTree.invertTreeTest();
+        invertTree_226 invertTree226 = new invertTree_226();
+        invertTree226.invertTreeTest();
     }
 
 
 }
+
+
+
