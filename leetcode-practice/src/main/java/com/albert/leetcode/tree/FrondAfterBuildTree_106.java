@@ -34,9 +34,10 @@ public class FrondAfterBuildTree_106 {
         }
 
         int leftsize = index - inStart;
+        //递归左子树
         root.left = buildTree(inorder, inStart, index - 1,
                 postorder, postStart, postStart + leftsize - 1);
-
+        //递归右子树
         root.right = buildTree(inorder, index + 1, inEnd,
                 postorder, postStart + leftsize, postEnd - 1);
 

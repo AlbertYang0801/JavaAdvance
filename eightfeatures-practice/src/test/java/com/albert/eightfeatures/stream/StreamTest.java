@@ -61,6 +61,14 @@ public class StreamTest {
         System.out.println(JSON.toJSONString(collect));
     }
 
+    @Test
+    public void testArray(){
+        int[] nums = {1,2,3,4,5,6};
+        Arrays.stream(nums).map(x->x%2==0?x:x+1).forEach(System.out::println);
+        //函数式编程，不会改变函数外的数据
+        Arrays.stream(nums).forEach(System.out::println);
+    }
+
 
 }
 
