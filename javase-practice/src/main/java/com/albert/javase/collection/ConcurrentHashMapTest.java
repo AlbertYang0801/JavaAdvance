@@ -1,9 +1,7 @@
 package com.albert.javase.collection;
 
 import org.junit.Test;
-import org.omg.PortableInterceptor.INACTIVE;
 
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -13,13 +11,39 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConcurrentHashMapTest {
 
     @Test
+    public void testForeach() {
+        ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
+        for (int i = 0; i < 5; i++) {
+            concurrentHashMap.put(Integer.toString(i), i);
+        }
+        concurrentHashMap.forEach((k, v) -> {
+            System.out.println("K:" + k + ";V:" + v);
+        });
+    }
+
+    @Test
     public void testReduce() {
+        ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
+        for (int i = 1; i <= 5; i++) {
+            concurrentHashMap.put(Integer.toString(i), i);
+        }
+        //并行计算map的总和
+        //这里的2是并行数量
+        // transformer函数是计算元素结果（K，V），reducer是元素之间的运算规则
+        Integer count = concurrentHashMap.reduce(2,
+                (k, v) -> Integer.valueOf(k) + v - 1, (value1, value2) -> value1 * value2);
+        System.out.println(count);
+    }
+
+    @Test
+    public void testReduceValues() {
         ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
         for (int i = 0; i < 5; i++) {
             concurrentHashMap.put(Integer.toString(i), i);
         }
         //并行计算map的总和
         //这里的2是并行数量
+        //reduceValues只对value进行运算
         Integer count = concurrentHashMap.reduceValues(2, Integer::sum);
         System.out.println(count);
     }
