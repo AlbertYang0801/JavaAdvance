@@ -1,5 +1,6 @@
 package com.albert.leetcode.tree;
 
+import com.albert.leetcode.tree.bst.BinarySortTree;
 import com.albert.utils.jackson.JsonUtil;
 import com.google.common.collect.Lists;
 

@@ -1,6 +1,7 @@
-package com.albert.leetcode.tree;
+package com.albert.leetcode.tree.bst;
 
 
+import com.albert.leetcode.tree.Tree;
 import com.albert.utils.jackson.JsonUtil;
 
 /**
@@ -15,7 +16,7 @@ public class BinarySortTree {
      * @param value 元素
      * @param tree 树
      */
-    private static void insert(int value,Tree tree){
+    private static void insert(int value, Tree tree){
         if(tree.getValue()==0){
             tree.setValue(value);
         }else{
