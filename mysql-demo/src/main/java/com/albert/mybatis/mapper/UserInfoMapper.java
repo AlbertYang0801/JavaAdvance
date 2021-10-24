@@ -16,7 +16,8 @@ public interface UserInfoMapper {
     /**
      * 简单查询
      */
-    @Select("SELECT id,name,age,timestamp FROM user_info")
+    @Select("SELECT id,username,sex,property,money,create_time as createTime,timestamp FROM user")
     List<UserInfoPO> getUserInfoList();
+
 
 }
