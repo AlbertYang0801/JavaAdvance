@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author Albert
  * @date 2020/10/29 21:18
@@ -15,11 +17,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserInfoPO {
 
-    private String id;
-    private String name;
-    private Integer age;
-    private Long timestamp;
+    private Integer id;
 
+    private String username;
+
+    private Integer sex;
+
+    private Double property;
+
+    private Float money;
+
+    private Date createTime;
+
+    private Date timestamp;
 
 
 }
