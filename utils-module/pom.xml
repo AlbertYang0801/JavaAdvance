@@ -43,9 +43,9 @@
 
         <!-- 谷歌guava依赖-->
         <dependency>
-            <groupId>com.github.racc</groupId>
-            <artifactId>typesafeconfig-guice</artifactId>
-            <version>0.0.3</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
         </dependency>
 
         <!--fastjson-->
@@ -86,6 +86,12 @@
             <groupId>com.github.houbb</groupId>
             <artifactId>markdown-toc</artifactId>
             <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.5</version>
         </dependency>
 
     </dependencies>
