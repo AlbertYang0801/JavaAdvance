@@ -1,21 +1,17 @@
 package com.albert.es.config;
 
 import cn.hutool.core.date.DateUtil;
-import java.util.Date;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicLong;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BackoffPolicy;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -58,8 +54,6 @@ public class EsBulkProcessor {
             public void afterBulk(final long executionId, final BulkRequest request, final BulkResponse response) {
                 if (response.hasFailures()) {
                     log.error("{} afterBulk error", executionId);
-                    log.info("start: {}, end:{}, took:{}, number:{}, context:{}, FailureMessage:{} ",
-                        start, DateUtil.now(), response.getTook(), number, context, response.buildFailureMessage());
                 } else {
                     log.info("序号：{}，执行 {} 条数据批量操作成功，共耗费 {} 毫秒。",
                         executionId, request.numberOfActions(), response.getTook().getMillis());
