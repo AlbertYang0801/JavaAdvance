@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Albert
  * @date 2020/7/27 20:33
  */
-@RestController
+//@RestController
 public class KafkaController {
 
     @Autowired

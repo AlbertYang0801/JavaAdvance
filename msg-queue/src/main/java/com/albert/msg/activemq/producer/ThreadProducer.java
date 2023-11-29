@@ -20,7 +20,7 @@ public class ThreadProducer implements Runnable{
     @Override
     public void run() {
         //发送消息
-        jmsMessagingTemplate.convertAndSend(topic,msg);
+        jmsMessagingTemplate.convertAndSend("test",msg);
     }
 
     public void setJmsMessagingTemplate(JmsMessagingTemplate jmsMessagingTemplate) {

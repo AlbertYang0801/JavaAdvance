@@ -11,7 +11,7 @@ import org.springframework.kafka.core.ConsumerFactory;
  * @author Albert
  * @date 2021/1/27 下午4:45
  */
-@Configuration
+//@Configuration
 @Slf4j
 public class KafkaConfig {
 

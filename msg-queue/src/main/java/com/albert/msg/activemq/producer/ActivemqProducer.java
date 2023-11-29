@@ -27,7 +27,7 @@ public class ActivemqProducer {
     /**
      * 定时发送
      */
-    @Scheduled(fixedDelay = 2000)
+//    @Scheduled(fixedDelay = 2000)
     public void send(){
         jmsMessagingTemplate.convertAndSend(topic, "生产者发送消息");
     }
@@ -36,7 +36,7 @@ public class ActivemqProducer {
      * 只发送一次消息
      * 创建5个线程发送5条消息
      */
-    @Scheduled(initialDelay = 2000,fixedDelay = 50000)
+//    @Scheduled(initialDelay = 2000,fixedDelay = 50000)
     public void asynSend(){
         int num = 5;
         for(int i=0;i<num;i++){
