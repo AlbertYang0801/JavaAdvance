@@ -14,7 +14,7 @@ public class ActivemqConsumer {
     /**
      * 监听队列，一个消费者
      */
-    @JmsListener(destination = "${activemq.topoc.test}")
+    @JmsListener(destination = "test")
     public void receiveQueue(String msg) {
         System.out.println(msg+"消息已经消费了");
     }
@@ -22,7 +22,7 @@ public class ActivemqConsumer {
     /**
      * 另一个消费者
      */
-    @JmsListener(destination = "${activemq.topoc.test}")
+    @JmsListener(destination = "test")
     public void receiveOtherQueue(String msg) {
         System.out.println(msg+"消息已经消费了");
     }

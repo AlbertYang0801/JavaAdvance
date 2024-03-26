@@ -17,6 +17,13 @@
             <artifactId>esper</artifactId>
             <version>7.1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+
     </dependencies>
 
 

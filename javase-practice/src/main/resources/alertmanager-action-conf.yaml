@@ -1,0 +1,412 @@
+## 配置AlertManager接口与ARMS RamAction的映射关系
+mappings:
+  # 创建联系人
+  # CONTACT_MEMBER_SAVE("arms:SaveContactMember"),
+  # ARMS_CREATE_CONTACT("arms:CreateContact"),
+  # ARMS_CREATE_ALERT_CONTACT("arms:CreateAlertContact"),
+  ARMS_CREATE_CONTACT:
+    alias:
+      - CONTACT_MEMBER_SAVE
+      - ARMS_CREATE_ALERT_CONTACT
+    methods:
+      - path: /console/v1/contact/add.json
+        method: POST
+        methodName: '添加联系人'
+      - path: /console/v1/contact/webhook/add.json
+        method: POST
+        methodName: '添加webhook'
+      - path: /console/v1/robot/add.json
+        method: POST
+        methodName: '添加机器人'
+      - path: /console/v1/robot/addRobot.json
+        method: POST
+        methodName: '添加机器人pop接口'
+
+  # 创建webhook
+  ARMS_CREATE_WEBHOOK:
+    methods:
+    - path: /console/v1/contact/webhook/add.json
+      method: POST
+      methodName:
+
+  # 删除联系人
+  # ARMS_DELETE_CONTACT("arms:DeleteContact"),
+  # ARMS_DELETE_ALERT_CONTACT("arms:DeleteAlertContact"),
+  # CONTACT_MEMBER_DELETE("arms:DeleteContactMember"),
+  ARMS_DELETE_CONTACT:
+    alias:
+      - ARMS_DELETE_ALERT_CONTACT
+      - CONTACT_MEMBER_DELETE
+    methods:
+      - path: /console/v1/contact/delete.json
+        method: DELETE
+        methodName:
+      - path: /console/v1/contact/batchDelete.json
+        method: POST
+        methodName:
+      - path: /console/v1/robot/delete.json
+        method: DELETE
+        methodName:
+
+  # 更新联系人
+  # ARMS_UPDATE_CONTACT("arms:UpdateContact"),
+  # ARMS_UPDATE_ALERT_CONTACT("arms:UpdateAlertContact"),
+  # CONTACT_MEMBER_UPDATE("arms:UpdateContactMember"),
+  ARMS_UPDATE_CONTACT:
+    alias:
+      - ARMS_UPDATE_ALERT_CONTACT
+      - CONTACT_MEMBER_DELETE
+    methods:
+      - path: /console/v1/contact/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/contact/webhook/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/contact/webhook/updateTTSReissue.json
+        method: POST
+        methodName:
+      - path: /console/v1/robot/update.json
+        method: POST
+        methodName:
+
+
+  # 更新webhook
+  # ARMS_UPDATE_WEBHOOK("arms:UpdateWebhook"),
+  ARMS_UPDATE_WEBHOOK:
+    methods:
+      - path: /console/v1/contact/webhook/update.json
+        method: POST
+        methodName:
+
+
+  # 查询联系人
+  # ARMS_SEARCH_CONTACT("arms:SearchContact"),
+  # ARMS_SEARCH_ALERT_CONTACT("arms:SearchAlertContact"),
+  # ARMS_SEARCH_CONTACT("arms:SearchContact"),
+#  ARMS_SEARCH_CONTACT:
+#    alias:
+#      - ARMS_SEARCH_ALERT_CONTACT
+#      - ARMS_SEARCH_CONTACT
+#    methods:
+#      - path: /console/v1/contact/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contact/listAll.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contact/webhook/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contact/fetchContact.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/robot/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/robot/listAll.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/dispatch/contact.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/dispatch/contactOptions.json
+#        method: GET
+#        methodName:
+
+  # 创建联系人分组
+  # ARMS_CREATE_CONTACT_GROUP("arms:CreateContactGroup"),
+  # ARMS_CREATE_ALERT_CONTACT_GROUP("arms:CreateAlertContactGroup"),
+  # CONTACT_GROUP_SAVE("arms:SaveContactGroup"),
+  ARMS_CREATE_CONTACT_GROUP:
+    alias:
+      - ARMS_CREATE_ALERT_CONTACT_GROUP
+      - CONTACT_GROUP_SAVE
+    methods:
+      - path: /console/v1/contactGroup/add.json
+        method: POST
+        methodName:
+      - path: /console/v1/contactGroup/addContactGroup.json
+        method: POST
+        methodName:
+
+  # 删除联系人分组
+  # ARMS_DELETE_CONTACT_GROUP("arms:DeleteContactGroup"),
+  # ARMS_DELETE_ALERT_CONTACT_GROUP("arms:DeleteAlertContactGroup"),
+  # CONTACT_GROUP_DELETE("arms:DeleteContactGroup"),
+  ARMS_DELETE_CONTACT_GROUP:
+    alias:
+      - ARMS_DELETE_ALERT_CONTACT_GROUP
+      - CONTACT_GROUP_DELETE
+    methods:
+      - path: /console/v1/contactGroup/delete.json
+        method: DELETE
+        methodName:
+
+  # 修改联系人分组
+  # ARMS_UPDATE_CONTACT_GROUP("arms:UpdateContactGroup"),
+  # ARMS_UPDATE_ALERT_CONTACT_GROUP("arms:UpdateAlertContactGroup"),
+  # CONTACT_LINK_DELETE("arms:DeleteContactLink"),
+  # CONTACT_GROUP_UPDATE("arms:UpdateContactGroup"),
+  ARMS_UPDATE_CONTACT_GROUP:
+    alias:
+      - ARMS_UPDATE_ALERT_CONTACT_GROUP
+      - CONTACT_LINK_DELETE
+      - CONTACT_GROUP_UPDATE
+    methods:
+      - path: /console/v1/contactGroup/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/contactGroup/contact/delete.json
+        method: DELETE
+        methodName:
+      - path: /console/v1/contactGroup/contact/updateContactGroup.json
+        method: POST
+        methodName:
+
+  # 查询告警联系人组
+  # ARMS_SEARCH_CONTACT_GROUP("arms:SearchContactGroup"),
+  # ARMS_SEARCH_ALERT_CONTACT_GROUP("arms:SearchAlertContactGroup"),
+#  ARMS_SEARCH_CONTACT_GROUP:
+#    alias:
+#      - ARMS_SEARCH_ALERT_CONTACT_GROUP
+#    methods:
+#      - path: /console/v1/contactGroup/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactGroup/option.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactGroup/contact/list.json
+#        method: GET
+#        methodName:
+
+  # 创建通知策略
+  # ARMS_CREATE_DISPATCH_RULE("arms:CreateDispatchRule"),
+  ARMS_CREATE_DISPATCH_RULE:
+    alias:
+      - ARMS_CREATE_NOTIFICATION_POLICY
+    methods:
+      - path: /console/v1/dispatch/add.json
+        method: POST
+        methodName:
+      - path: /console/v1/dispatch/create.json
+        method: POST
+        methodName:
+      - path: /console/v1/dispatch/import.json
+        method: POST
+        methodName:
+
+
+  # 删除通知策略
+  # ARMS_DELETE_DISPATCH_RULE("arms:DeleteDispatchRule"),
+  ARMS_DELETE_DISPATCH_RULE:
+    alias:
+      - ARMS_DELETE_NOTIFICATION_POLICY
+    methods:
+      - path: /console/v1/dispatch/delete.json
+        method: DELETE
+        methodName:
+
+  # 更新通知策略
+  # ARMS_UPDATE_DISPATCH_RULE("arms:UpdateDispatchRule"),
+  ARMS_UPDATE_DISPATCH_RULE:
+    alias:
+      - ARMS_UPDATE_NOTIFICATION_POLICY
+    methods:
+      - path: /console/v1/dispatch/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/dispatch/updateConditions.json
+        method: POST
+        methodName:
+      - path: /console/v1/dispatch/updateByName.json
+        method: POST
+        methodName:
+      - path: /console/v1/dispatch/modify/state.json
+        method: POST
+        methodName:
+  # 查询通知策略
+  # ARMS_DESCRIBE_DISPATCH_RULE("arms:DescribeDispatchRule"),
+  #  ARMS_LIST_DISPATCH_RULE("arms:ListDispatchRule"),
+#  ARMS_DESCRIBE_DISPATCH_RULE:
+#    alias:
+#      - ARMS_LIST_DISPATCH_RULE
+#      - ARMS_LIST_NOTIFICATION_POLICY
+#    methods:
+#      - path: /console/v1/dispatch/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/dispatch/newList.json
+#        method: POST
+#        methodName:
+#      - path: /console/v1/dispatch/details.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/dispatch/listAll.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/dispatch/export.json
+#        method: GET
+#        methodName:
+
+  # 创建排班策略
+  # ARMS_CREATE_ON_CALL_SCHEDULE("arms:CreateOnCallSchedule"),
+  ARMS_CREATE_ON_CALL_SCHEDULE:
+    methods:
+      - path: /console/v1/contactSchedule/add.json
+        method: POST
+        methodName:
+
+  # 更新排班策略
+  # ARMS_UPDATE_ON_CALL_SCHEDULE("arms:UpdateOnCallSchedule"),
+  ARMS_UPDATE_ON_CALL_SCHEDULE:
+    methods:
+      - path: /console/v1/contactSchedule/update.json
+        method: POST
+        methodName:
+  # 删除排班策略
+  # ARMS_DELETE_ON_CALL_SCHEDULE("arms:DeleteOnCallSchedule"),
+  ARMS_DELETE_ON_CALL_SCHEDULE:
+    methods:
+      - path: /console/v1/contactSchedule/delete.json
+        method: DELETE
+        methodName:
+  # 查询排班策略
+  # ARMS_LIST_ON_CALL_SCHEDULE("arms:ListOnCallSchedule"),
+#  ARMS_LIST_ON_CALL_SCHEDULE:
+#    methods:
+#      - path: /console/v1/contactSchedule/list.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactSchedule/details.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactSchedule/preview.json
+#        method: POST
+#        methodName:
+#      - path: /console/v1/contactSchedule/curContact.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactSchedule/nextSchedule.json
+#        method: GET
+#        methodName:
+#      - path: /console/v1/contactSchedule/listSchedule.json
+#        method: GET
+#        methodName:
+
+
+# 集成相关接口
+# ARMS_ADD_INTEGRATION("arms:AddIntegration"),
+# ARMS_DELETE_INTEGRATION("arms:DeleteIntegration"),
+# ARMS_UPDATE_INTEGRATION("arms:UpdateIntegration"),
+  ARMS_ADD_INTEGRATION:
+    methods:
+      - path: /console/v1/integration/add.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/aone/add.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/eb/add.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/jira/add.json
+        method: POST
+        methodName:
+
+  ARMS_DELETE_INTEGRATION:
+    methods:
+      - path: /console/v1/integration/remove.json
+        method: GET
+        methodName:
+      - path: /console/v1/itsm/remove.json
+        method: DELETE
+        methodName:
+
+  ARMS_UPDATE_INTEGRATION:
+    methods:
+      - path: /console/v1/integration/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/integration/update/token.json
+        method: GET
+        methodName:
+      - path: /console/v1/integration/repost.json
+        method: POST
+        methodName:
+      - path: /console/v1/integration/unRepost.json
+        method: POST
+        methodName:
+      - path: /console/v1/integration/uploadEvents.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/aone/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/eb/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/itsm/jira/update.json
+        method: POST
+        methodName:
+
+
+# 升级策略相关接口
+#    ARMS_DESCRIBE_ESCALATION_POLICY("arms:DescribeEscalationPolicy"),
+#    ARMS_CREATE_ESCALATION_POLICY("arms:CreateEscalationPolicy"),
+#    ARMS_UPDATE_ESCALATION_POLICY("arms:UpdateEscalationPolicy"),
+#    ARMS_DELETE_ESCALATION_POLICY("arms:DeleteEscalationPolicy"),
+
+  ARMS_CREATE_ESCALATION_POLICY:
+    methods:
+      - path: /console/v1/escalation/add.json
+        method: POST
+        methodName:
+
+  ARMS_UPDATE_ESCALATION_POLICY:
+    methods:
+      - path: /console/v1/escalation/update.json
+        method: POST
+        methodName:
+
+  ARMS_DELETE_ESCALATION_POLICY:
+    methods:
+      - path: /console/v1/escalation/delete.json
+        method: GET
+        methodName:
+
+
+#  事件处理流相关接口
+#    ARMS_DESCRIBE_INCIDENT_WORKFLOW("arms:DescribeIncidentWorkFlow"),
+#    ARMS_CREATE_INCIDENT_WORKFLOW("arms:CreateIncidentWorkFlow"),
+#    ARMS_UPDATE_INCIDENT_WORKFLOW("arms:UpdateIncidentWorkFlow"),
+#    ARMS_DELETE_INCIDENT_WORKFLOW("arms:DeleteIncidentWorkFlow"),
+  ARMS_CREATE_INCIDENT_WORKFLOW:
+    methods:
+      - path: /console/v1/incidentWf/add.json
+        method: POST
+        methodName:
+
+  ARMS_UPDATE_INCIDENT_WORKFLOW:
+    methods:
+      - path: /console/v1/incidentWf/update.json
+        method: POST
+        methodName:
+      - path: /console/v1/incidentWf/move.json
+        method: POST
+        methodName:
+
+  ARMS_DELETE_INCIDENT_WORKFLOW:
+    methods:
+      - path: /console/v1/incidentWf/delete.json
+        method: DELETE
+        methodName:
+
+# 商业化配置
+#  ARMS_UPDATE_ALERT_COMMERCIAL_CONFIG("arms:UpdateAlertCommercialConfig"),
+  ARMS_UPDATE_ALERT_COMMERCIAL_CONFIG:
+    methods:
+      - path: /console/v1/commercial/updateLimit.json
+        method: POST
+        methodName:

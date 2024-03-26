@@ -1,6 +1,9 @@
 package com.albert.es.doc;
 
-import lombok.SneakyThrows;
+import com.albert.es.TestApplication;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -19,17 +22,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Elasticsearch文档操作的测试
  *
  * @author yjw
  * @date 2019/12/24 14:34
  */
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringRunner.class)
 public class TestDoc {
 
@@ -48,14 +47,12 @@ public class TestDoc {
     @Test
     public void addDoc() throws IOException {
         //创建文档数据
-        Map<String,String> map = new HashMap<>();
-        map.put("name", "spring开发基础");
-        map.put("description", "spring 在java领域非常流行，java程序员都在用");
-        map.put("studymodel", "201001");
-        map.put("pic", "group1/M00/00/01/wKhlQFqO4MmAOP53AAAcwDwm6SU490.jpg");
-        map.put("timestamp", "2018-07-04 18:28:58");
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "基础");
+        map.put("time", "2022-03-15 16:04:24");
+        map.put("price", 10);
         //索引请求对象
-        IndexRequest indexRequest = new IndexRequest("sfs_course", "doc");
+        IndexRequest indexRequest = new IndexRequest("test-0602", "_doc");
         //指定索引文档内容
         indexRequest.source(map);
         //创建索引响应对象

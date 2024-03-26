@@ -2,18 +2,20 @@ package com.albert.redis.datastructure;
 
 import com.albert.redis.TestApplication;
 import com.albert.redis.entry.SellScore;
+import com.albert.redis.entry.SellScoreVo;
 import com.albert.utils.jackson.JsonUtil;
 import com.albert.utils.localdatetime.LocalDateTimeUtils;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 数据结构实战 - 测试类
@@ -105,6 +107,20 @@ public class DataStructureTest {
         //查询购物车商品信息和数量
         Map<Object, Object> shopCartList = hashShopCartService.getShopCartList(userId);
         System.out.println("购物车信息为：" + JsonUtil.toString(shopCartList));
+    }
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+
+    @Test
+    public void testhash(){
+        String hashkey = redisTemplate.opsForHash().get("hashkey", "689").toString();
+        Boolean aBoolean = redisTemplate.opsForHash().hasKey("hashkey", "123");
+        if(aBoolean){
+            String string = redisTemplate.opsForHash().get("hashkey", "123").toString();
+            System.out.println(string);
+        }
+        System.out.println(hashkey);
     }
 
     /**
@@ -223,6 +239,21 @@ public class DataStructureTest {
         String month = LocalDateTimeUtils.formatNow(LocalDateTimeUtils.YEAR_MONTH);
         int signInCount = bitmapsSignInService.countMonthSignIn(userId, month);
         System.out.println(userId + " => " + month + " => 签到次数为:" + signInCount);
+    }
+
+    @Test
+    public void test1(){
+        SellScore sellScore=new SellScore("666",1.0d);
+        String string = JSON.toJSONString(sellScore);
+        SellScoreVo sellScoreVo = JSON.parseObject(string, SellScoreVo.class);
+        sellScoreVo.setMsg("13");
+        System.out.println(JSON.toJSONString(sellScoreVo));
+    }
+
+    @Test
+    public void test2(){
+        SellScoreVo sellScoreVo = new SellScoreVo();
+        System.out.println(Objects.isNull(sellScoreVo));
     }
 
 

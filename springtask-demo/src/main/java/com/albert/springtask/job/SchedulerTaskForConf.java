@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 /**
  * 测试从配置文件获取定时任务的属性规则
@@ -45,6 +46,11 @@ public class SchedulerTaskForConf {
     private void printMsg(String taskName) {
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         log.info("{},打印该消息的时间是:{}", taskName, now);
+    }
+
+    public static void main(String[] args) {
+        String string = UUID.randomUUID().toString();
+        System.out.println(string);
     }
 
 

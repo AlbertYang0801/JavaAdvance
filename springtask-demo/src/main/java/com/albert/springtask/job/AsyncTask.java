@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 /**
  * 测试异步任务
@@ -41,6 +42,13 @@ public class AsyncTask {
     private void printMsg(String taskName) {
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         log.info("{},打印该消息的时间是:{}", taskName,now);
+    }
+
+    public static void main(String[] args) {
+        int randomPrefix = (int) (Math.random() * 10);
+        System.out.println(randomPrefix);
+        String prefix = randomPrefix + UUID.randomUUID().toString().replace("-", "") + "^";
+        System.out.println(prefix);
     }
 
 }
