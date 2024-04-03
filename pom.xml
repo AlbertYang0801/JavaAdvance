@@ -28,6 +28,7 @@
         <module>file-demo</module>
         <module>javase-practice</module>
         <module>mybatis-demo</module>
+        <module>zk-demo</module>
 
     </modules>
 
