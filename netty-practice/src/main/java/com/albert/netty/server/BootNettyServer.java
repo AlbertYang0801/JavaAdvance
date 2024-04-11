@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
  * @author yjw
  * @date 2024/3/26 23:25
  */
-@Component
 @Slf4j
 public class BootNettyServer {
 
