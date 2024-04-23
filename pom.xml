@@ -29,6 +29,7 @@
         <module>javase-practice</module>
         <module>mybatis-demo</module>
         <module>zk-demo</module>
+        <module>springboot-practice</module>
 
     </modules>
 
