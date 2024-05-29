@@ -1,4 +1,4 @@
-package com.albert.netty.rpc.client.controller;
+package com.albert.netty.rpc.controller;
 
 import com.albert.netty.rpc.server.service.IStockService;
 import org.springframework.beans.factory.annotation.Autowired;
