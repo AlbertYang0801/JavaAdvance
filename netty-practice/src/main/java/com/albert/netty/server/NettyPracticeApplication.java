@@ -1,4 +1,4 @@
-package com.albert.netty;
+package com.albert.netty.server;
 
 import com.albert.netty.server.BootNettyServer;
 import lombok.SneakyThrows;
