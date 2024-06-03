@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -20,8 +21,17 @@ public class FileChannelTest {
         RandomAccessFile raf = new RandomAccessFile(file, "r");
 
         FileChannel channel = raf.getChannel();
-        ByteBuffer allocate = ByteBuffer.allocate(1024);
-        channel.read(allocate);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        //读取文件到缓冲区
+        while (channel.read(byteBuffer) != -1) {
+            //切换缓冲区为读模式
+            byteBuffer.flip();
+            while (byteBuffer.hasRemaining()){
+                System.out.println((char)byteBuffer.get());
+            }
+            //清空缓冲区
+            byteBuffer.clear();
+        }
 
 
     }
