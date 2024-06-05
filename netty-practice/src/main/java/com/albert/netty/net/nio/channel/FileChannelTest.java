@@ -1,10 +1,9 @@
-package com.albert.netty.nio.channel;
+package com.albert.netty.net.nio.channel;
 
 import lombok.SneakyThrows;
 
 import java.io.File;
 import java.io.RandomAccessFile;
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 

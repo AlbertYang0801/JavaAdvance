@@ -1,4 +1,4 @@
-package com.albert.netty.nio.selecotr;
+package com.albert.netty.net.nio.selecotr;
 
 import lombok.SneakyThrows;
 
@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
  * @author yjw
  * @date 2024/6/3 16:24
  */
-public class ClientBTest {
+public class ClientATest {
 
     @SneakyThrows
     public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class ClientBTest {
             output = socket.getOutputStream();
             input = socket.getInputStream();
 
-            System.out.println("B ready send msg");
+            System.out.println("A ready send msg");
 
             //发送给服务端
             output.write("zhangsan".getBytes(StandardCharsets.UTF_8));

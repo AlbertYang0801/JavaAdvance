@@ -19,7 +19,7 @@ public class Acceptor implements Runnable {
 
     private BlockingQueue<InputSource> sourceQueue = new LinkedBlockingDeque<>();
 
-    public Acceptor(int port, Selector selector) {
+    public Acceptor(Selector selector, int port) {
         this.port = port;
         this.selector = selector;
     }
@@ -51,7 +51,6 @@ public class Acceptor implements Runnable {
             }
         }
     }
-
 
 
 }

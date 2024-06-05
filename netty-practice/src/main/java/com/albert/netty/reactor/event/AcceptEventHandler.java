@@ -23,6 +23,7 @@ public class AcceptEventHandler extends EventHandler {
     public void handle(Event event) {
         // 处理accept事件
         if (event.getEventType().equals(EventType.ACCEPT)) {
+            System.out.println("处理accept事件");
             //将事件改为 READ，并放入 Selecotr 队列中，继续处理
             Event readEvent = new Event();
             readEvent.setInputSource(event.getInputSource());

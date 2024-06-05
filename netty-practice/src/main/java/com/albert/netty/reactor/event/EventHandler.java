@@ -1,6 +1,5 @@
 package com.albert.netty.reactor.event;
 
-import com.albert.netty.reactor.bean.InputSource;
 import com.albert.netty.reactor.bean.Event;
 
 /**
@@ -15,8 +14,6 @@ public abstract class EventHandler {
      * @param event
      */
     public abstract void handle(Event event);
-
-    private InputSource inputSource;
 
 
 }

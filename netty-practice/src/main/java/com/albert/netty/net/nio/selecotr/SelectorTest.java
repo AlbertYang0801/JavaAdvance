@@ -1,4 +1,4 @@
-package com.albert.netty.nio.selecotr;
+package com.albert.netty.net.nio.selecotr;
 
 import lombok.SneakyThrows;
 
