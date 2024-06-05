@@ -1,12 +1,10 @@
-package com.albert.netty.basic;
+package com.albert.netty.sharehandler;
 
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -39,19 +37,24 @@ public class EchoServer {
     }
 
     private void start() throws InterruptedException {
+        final MsgCountHandler msgCountHandler = new MsgCountHandler();
         //线程组
-        EventLoopGroup eventLoopGroup = new EpollEventLoopGroup();
+        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup work = new NioEventLoopGroup();
+
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         try {
-            serverBootstrap.group(eventLoopGroup)
+            //父子EventLoop
+            serverBootstrap.group(boss,work)
                     //指定使用NIO的通信模式
-                    .channel(EpollServerSocketChannel.class)
+                    .channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(port))
                     //设置 I/O处理类,主要用于网络I/O事件，记录日志，编码、解码消息
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            //添加对应的eventHandler
+                            //为每个Channel添加一个共享的Handler
+                            socketChannel.pipeline().addLast(msgCountHandler);
                             socketChannel.pipeline().addLast(new EchoServceHandler());
                         }
                     });
@@ -60,7 +63,8 @@ public class EchoServer {
             //阻塞当前线程，直到服务器的ServerChannel被关闭
             sync.channel().closeFuture().sync();
         } finally {
-            eventLoopGroup.shutdownGracefully().sync();
+            boss.shutdownGracefully().sync();
+            work.shutdownGracefully().sync();
         }
     }
 
