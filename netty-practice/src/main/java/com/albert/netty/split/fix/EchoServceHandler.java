@@ -31,12 +31,9 @@ public class EchoServceHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
         String request = in.toString(CharsetUtil.UTF_8);
-
         System.out.println("Server Accept[" + request + "] and the counter is:" + counter.incrementAndGet());
-
         //将消息写入Channel
-        String resp = "Hello," + request + ". Welcome to Netty World!" + EchoServer.DELIMITER_SYMBOL;
-        ctx.writeAndFlush(resp.getBytes());
+        ctx.writeAndFlush((EchoServer.REQUEST+1).getBytes());
     }
 
     @Override

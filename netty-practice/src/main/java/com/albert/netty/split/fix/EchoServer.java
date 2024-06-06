@@ -11,6 +11,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.FixedLengthFrameDecoder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,7 @@ public class EchoServer {
 
     private final int port;
 
-    public static final String DELIMITER_SYMBOL = "@~";
+    public final static String REQUEST = "Mark,zhuge,zhouyu,fox,loulan";
 
     public EchoServer(int port) {
         this.port = port;
@@ -55,11 +56,8 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
 
-                            //处理器的作用是根据前面定义的delimiter来分割接收到的数据流，将其切分成多个完整的消息。
-                            //每个完整的消息是一个ByteBuf对象，它包含了从上一个分隔符到当前分隔符之间的所有数据。
-                            //参数1024是单个消息的最大长度，如果接收到的数据超过了这个长度但仍然没有遇到分隔符，那么将会抛出一个异常。
-                            ByteBuf byteBuf = Unpooled.copiedBuffer(DELIMITER_SYMBOL.getBytes());
-                            socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, byteBuf));
+                            //用于将接收到的字节数据（ByteBuf）分割成固定长度的帧。
+                            socketChannel.pipeline().addLast(new FixedLengthFrameDecoder(REQUEST.length() + 1));
 
                             //添加自定义的eventHandler
                             socketChannel.pipeline().addLast(new EchoServceHandler());

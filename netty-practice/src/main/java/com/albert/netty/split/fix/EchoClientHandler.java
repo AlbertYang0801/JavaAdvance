@@ -6,10 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 /**
  * @author yjw
@@ -42,14 +39,8 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
         new Thread(() -> {
             ByteBuf msg = null;
 
-            List<String> userNames = new ArrayList<>();
-            userNames.add("A");
-            userNames.add("B");
-            userNames.add("C");
-
-            String request = userNames.stream().collect(Collectors.joining(EchoServer.DELIMITER_SYMBOL));
-
             for (int i = 0; i < 10; i++) {
+                String request = EchoServer.REQUEST + i;
                 msg = Unpooled.buffer(request.length());
                 msg.writeBytes(request.getBytes());
                 ctx.writeAndFlush(msg);
@@ -57,5 +48,6 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
             }
         }).start();
     }
+
 
 }
