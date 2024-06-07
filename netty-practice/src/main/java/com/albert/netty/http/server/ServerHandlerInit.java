@@ -1,4 +1,4 @@
-package com.albert.netty.http;
+package com.albert.netty.http.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -27,11 +27,11 @@ public class ServerHandlerInit extends ChannelInitializer<SocketChannel> {
 
         //聚合 http 为一个完整的报文
         pipeline.addLast("aggregator", new HttpObjectAggregator(10 * 1024 * 1024));
-
         //压缩应答报文
         pipeline.addLast("compressor", new HttpContentCompressor());
 
         //自定义 ChannelHandler
+        pipeline.addLast(new BusiHandler());
 
     }
 

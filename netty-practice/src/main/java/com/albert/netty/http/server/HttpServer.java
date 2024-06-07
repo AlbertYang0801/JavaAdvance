@@ -1,4 +1,4 @@
-package com.albert.netty.http;
+package com.albert.netty.http.server;
 
 import cn.hutool.socket.nio.NioServer;
 import io.netty.bootstrap.ServerBootstrap;
@@ -21,16 +21,14 @@ public class HttpServer {
     private static EventLoopGroup group = new NioEventLoopGroup();
     private static ServerBootstrap serverBootstrap = new ServerBootstrap();
     //是否开启SSL模式
-    public static final boolean SSL = true;
+    public static final boolean SSL = false;
 
     public static void main(String[] args) throws InterruptedException {
         //TODO 兼容 ssl
-
-
         try {
             serverBootstrap.group(group)
-                    .channel(NioServerSocketChannel.class);
-
+                    .channel(NioServerSocketChannel.class)
+                    .childHandler(new ServerHandlerInit());
             ChannelFuture sync = serverBootstrap.bind(PORT).sync();
             System.out.println("netty server start!");
             sync.channel().closeFuture().sync();

@@ -1,4 +1,4 @@
-package com.albert.netty.http;
+package com.albert.netty.http.server;
 
 import java.util.Random;
 

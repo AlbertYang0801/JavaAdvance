@@ -30,6 +30,7 @@
         <module>mybatis-demo</module>
         <module>zk-demo</module>
         <module>springboot-practice</module>
+        <module>agent-practice</module>
 
     </modules>
 
