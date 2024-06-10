@@ -68,7 +68,7 @@ public class DocOfConfUtil {
             Set<Map.Entry<String, Object>> entrySet = infoJson.entrySet();
             for (Map.Entry<String, Object> entry : entrySet) {
                 cache.put(entry.getKey(), String.valueOf(entry.getValue()));
-                log.debug("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
+                log.info("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
             }
         } catch (Exception e) {
             log.error("fetch Device from file error", e);
@@ -82,7 +82,7 @@ public class DocOfConfUtil {
             Set<Map.Entry<String, Object>> entrySet = infoJson.entrySet();
             for (Map.Entry<String, Object> entry : entrySet) {
                 cache.put(entry.getKey(), entry.getValue());
-                log.debug("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
+                log.info("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
             }
         } catch (Exception e) {
             log.error("fetch Device from file error", e);

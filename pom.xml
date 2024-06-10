@@ -31,6 +31,7 @@
         <module>zk-demo</module>
         <module>springboot-practice</module>
         <module>agent-practice</module>
+        <module>netty-adv</module>
 
     </modules>
 

@@ -47,7 +47,7 @@ public class EsBulkProcessor {
                 start = DateUtil.now();
                 context = request.requests().size();
                 number = request.numberOfActions();
-                log.debug("beforeBulk=====> 序号：{},开始执行 {} 条数据", executionId, request.numberOfActions());
+                log.info("beforeBulk=====> 序号：{},开始执行 {} 条数据", executionId, request.numberOfActions());
             }
 
             @Override

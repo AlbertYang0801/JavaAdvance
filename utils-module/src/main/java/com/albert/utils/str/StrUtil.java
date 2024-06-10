@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class StrUtil {
 	
 	public static String jointParam(String rootId) {
-		log.debug("rootId is {}", rootId);
+		log.info("rootId is {}", rootId);
 		StringBuilder builder = new StringBuilder();
 		String[] rootArr = rootId.split(",");
 		for (String root : rootArr) {
@@ -46,7 +46,7 @@ public class StrUtil {
 		return str;
 	}
 	public static String jointParam(List<String> list) {
-		log.debug("list size is {}", list.size());
+		log.info("list size is {}", list.size());
 		StringBuilder builder = new StringBuilder();
 		for (String root : list) {
 			String[] rootArr = root.split(",");
@@ -121,7 +121,7 @@ public class StrUtil {
 		return builder.toString();
 	}
 	public static String jointParamSimple(Set<Long> appIdSet) {
-		log.debug("list size is {}", appIdSet.size());
+		log.info("list size is {}", appIdSet.size());
 		StringBuilder builder = new StringBuilder();
 		for (Long root : appIdSet) {
 			builder.append(root).append(",");
