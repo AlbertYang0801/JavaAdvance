@@ -1,8 +1,11 @@
 package com.albert.es.config;
 
-import cn.hutool.core.date.DateUtil;
+import java.util.Date;
 import java.util.Objects;
+
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.client.utils.DateUtils;
 import org.elasticsearch.action.bulk.BackoffPolicy;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -44,7 +47,7 @@ public class EsBulkProcessor {
 
             @Override
             public void beforeBulk(final long executionId, final BulkRequest request) {
-                start = DateUtil.now();
+                start = DateUtils.formatDate(new Date());
                 context = request.requests().size();
                 number = request.numberOfActions();
                 log.info("beforeBulk=====> 序号：{},开始执行 {} 条数据", executionId, request.numberOfActions());

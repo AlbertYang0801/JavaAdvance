@@ -1,12 +1,12 @@
 package com.albert.es.doc;
 
-import cn.hutool.core.date.DateUtil;
 import com.albert.es.TestApplication;
 import com.albert.es.config.EsBulkProcessor;
 import com.alibaba.fastjson.JSON;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.SneakyThrows;
+import org.assertj.core.util.DateUtil;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;

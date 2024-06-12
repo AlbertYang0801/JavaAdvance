@@ -14,23 +14,11 @@
 
     <dependencies>
 
-        <!--lombok依赖-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-        </dependency>
-
+        <!--工具类模块-->
         <dependency>
             <groupId>com.albert</groupId>
             <artifactId>utils-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

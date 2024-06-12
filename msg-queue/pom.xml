@@ -18,6 +18,13 @@
 
     <dependencies>
 
+        <!--工具类模块-->
+        <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--springboot集成activemq-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

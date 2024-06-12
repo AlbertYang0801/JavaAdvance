@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @date 2021/4/19 下午4:03
  */
 @Service
-@Slf4j
+
 public class TestService {
 
     @Autowired

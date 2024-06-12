@@ -1,4 +1,4 @@
-package com.albert.sort.practice;
+package com.albert.leetcode.sort;
 
 import lombok.extern.slf4j.Slf4j;
 

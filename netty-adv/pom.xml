@@ -48,6 +48,14 @@
             <artifactId>kryo-serializers</artifactId>
             <version>0.42</version>
         </dependency>
+
+        <!--工具类模块-->
+        <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 

@@ -12,6 +12,13 @@
     <artifactId>javase-practice</artifactId>
 
     <dependencies>
+        <!--工具类模块-->
+        <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.espertech</groupId>
             <artifactId>esper</artifactId>

@@ -16,6 +16,9 @@
     <description>Demo project for Spring Boot</description>
 
     <modules>
+
+        <module>utils-module</module>
+
         <module>es-practice</module>
         <module>eightfeatures-practice</module>
         <module>msg-queue</module>
@@ -23,7 +26,6 @@
         <module>mysql-demo</module>
         <module>redis-practice</module>
         <module>springtask-demo</module>
-        <module>sort-practice</module>
         <module>mail-demo</module>
         <module>file-demo</module>
         <module>javase-practice</module>
@@ -31,7 +33,17 @@
         <module>zk-demo</module>
         <module>springboot-practice</module>
         <module>agent-practice</module>
+
         <module>netty-adv</module>
+        <module>netty-practice</module>
+        <module>rpc-client</module>
+        <module>rpc-server</module>
+        <module>rpc-netty-client</module>
+        <module>rpc-netty-server</module>
+        <module>rpc-regcenter</module>
+        <module>spring-practice</module>
+
+
 
     </modules>
 
@@ -40,13 +52,6 @@
     </properties>
 
     <dependencies>
-
-        <!--工具类模块-->
-        <dependency>
-            <groupId>com.albert</groupId>
-            <artifactId>utils-module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
     </dependencies>
 

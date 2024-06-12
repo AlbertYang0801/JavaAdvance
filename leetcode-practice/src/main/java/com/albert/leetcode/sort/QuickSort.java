@@ -1,4 +1,4 @@
-package com.albert.sort.practice;
+package com.albert.leetcode.sort;
 
 /**
  * 快速排序
