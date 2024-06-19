@@ -19,7 +19,6 @@
 
     <dependencies>
 
-        <!-- ...其他依赖 -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
