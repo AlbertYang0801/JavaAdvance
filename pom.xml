@@ -42,7 +42,7 @@
         <module>rpc-netty-server</module>
         <module>rpc-regcenter</module>
         <module>spring-practice</module>
-
+        <module>cache-practice</module>
 
 
     </modules>
