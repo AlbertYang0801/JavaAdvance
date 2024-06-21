@@ -36,7 +36,7 @@ public class EliminationAbstractStage<K, V> extends AbstractStageCache<K, V> {
         //check key
         if (dataMap.containsKey(key)) {
             Node<K, V> node = dataMap.get(key);
-            doubleLinkedList.remove(node);
+            linkedList.remove(node);
             dataMap.remove(key);
             accessCountMap.remove(key);
         }
@@ -54,7 +54,7 @@ public class EliminationAbstractStage<K, V> extends AbstractStageCache<K, V> {
         //保存到hash表
         dataMap.put(key, node);
         //保存到双向链表头部
-        doubleLinkedList.add(node);
+        linkedList.addFirst(node);
     }
 
     /**
@@ -73,7 +73,7 @@ public class EliminationAbstractStage<K, V> extends AbstractStageCache<K, V> {
         //校验缓存长度，淘汰最久未使用的数据
         if (this.isFull()) {
             //淘汰段直接淘汰数据
-            tail = doubleLinkedList.getTail();
+            tail = linkedList.getLast();
             this.remove(tail.getKey());
         }
         this.put(key, value);

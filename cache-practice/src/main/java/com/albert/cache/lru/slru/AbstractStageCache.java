@@ -1,10 +1,10 @@
 package com.albert.cache.lru.slru;
 
 
-import com.albert.cache.lru.DoubleLinkedList;
 import com.albert.cache.lru.Node;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -16,7 +16,7 @@ public abstract class AbstractStageCache<K, V> {
     public Map<K, Node<K, V>> dataMap = new HashMap<>();
 
     //双向链表，只用来保存元素顺序
-    public DoubleLinkedList<K, V> doubleLinkedList = new DoubleLinkedList<>();
+    public LinkedList<Node<K, V>> linkedList = new LinkedList<>();
 
     public Map<K, Integer> accessCountMap = new HashMap<>();
 
@@ -32,12 +32,9 @@ public abstract class AbstractStageCache<K, V> {
      * @param node
      */
     public void toHead(Node<K, V> node) {
-        if (node == doubleLinkedList.getHead()) {
-            return;
-        }
         if (dataMap.containsKey(node.getKey())) {
-            doubleLinkedList.remove(node);
-            doubleLinkedList.add(node);
+            linkedList.remove(node);
+            linkedList.addFirst(node);
         }
     }
 

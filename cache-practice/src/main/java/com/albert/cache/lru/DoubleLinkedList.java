@@ -2,6 +2,7 @@ package com.albert.cache.lru;
 
 import lombok.Data;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 /**
@@ -31,35 +32,37 @@ public class DoubleLinkedList<K, V> {
     }
 
     public void addHead(Node<K, V> node) {
-        //单节点，设置head
-        if (Objects.isNull(head)) {
-            head = node;
-            tail = node;
-            return;
-        } else {
-            head.prev = node;
-            node.next = head;
-            head = node;
-        }
+        Node<K, V> f = head;
+        Node<K, V> newNode = node;
+        head = newNode;
+        if (f == null)
+            tail = newNode;
+        else
+            f.prev = newNode;
     }
 
     //删除结点
     public void remove(Node<K, V> node) {
-        //处理prev
-        if (node.prev != null) {
-            node.prev.next = node.next;
+        // assert x != null;
+        final Node<K,V> next = node.next;
+        final Node<K,V> prev = node.prev;
+
+        if (prev == null) {
+            head = next;
         } else {
-            //是head节点
-            head = node.next;
+            prev.next = next;
+            node.prev = null;
         }
 
-        //处理next
-        if (node.next != null) {
-            node.next.prev = node.prev;
+        if (next == null) {
+            tail = prev;
         } else {
-            //是tail节点
-            tail = node.prev;
+            next.prev = prev;
+            node.next = null;
         }
+        //gc
+        node.key=null;
+        node.value=null;
     }
 
     //获取第一个结点
@@ -67,15 +70,5 @@ public class DoubleLinkedList<K, V> {
         return head;
     }
 
-    /**
-     * 从头节点遍历链表
-     */
-    public void printf() {
-        Node<K, V> node = head;
-        while (Objects.nonNull(node)) {
-            node.printf();
-            node = node.getNext();
-        }
-    }
 
 }

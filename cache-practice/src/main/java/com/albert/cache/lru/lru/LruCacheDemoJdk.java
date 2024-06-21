@@ -27,7 +27,6 @@ public class LruCacheDemoJdk<K,V> extends LinkedHashMap<K,V> {
 
     public static void main(String[] args) {
         LruCacheDemoJdk<Integer,Integer> lruCacheDemoJdk = new LruCacheDemoJdk<Integer,Integer>(3);
-
         lruCacheDemoJdk.put(1,1);
         lruCacheDemoJdk.put(2,2);
         lruCacheDemoJdk.put(3,3);
@@ -43,6 +42,8 @@ public class LruCacheDemoJdk<K,V> extends LinkedHashMap<K,V> {
 
         lruCacheDemoJdk.put(5,5);
         System.out.println(lruCacheDemoJdk.keySet());
+
+
     }
 
 

@@ -78,6 +78,7 @@ public class SlruCache<K, V> {
 
 
     public void promotion(K key, V value) {
+        eliminationStage.remove(key);
         //晋升保护段
         //如果保护段满了，需要先淘汰元素到淘汰段
         if (protectStage.isFull()) {
@@ -91,16 +92,15 @@ public class SlruCache<K, V> {
         } else {
             //直接放入保护段数据
             protectStage.put(key, value);
-            eliminationStage.remove(key);
         }
     }
 
     public void printf() {
         System.out.println("-------淘汰段---------");
-        eliminationStage.doubleLinkedList.printf();
+        System.out.println(eliminationStage.linkedList.toString());
 
         System.out.println("-------保护段---------");
-        protectStage.doubleLinkedList.printf();
+        System.out.println(protectStage.linkedList.toString());
     }
 
     public static void main(String[] args) {
