@@ -43,6 +43,8 @@
         <module>rpc-regcenter</module>
         <module>spring-practice</module>
         <module>cache-practice</module>
+        <module>rocketmq-producer</module>
+        <module>rocketmq-consumer</module>
 
 
     </modules>
