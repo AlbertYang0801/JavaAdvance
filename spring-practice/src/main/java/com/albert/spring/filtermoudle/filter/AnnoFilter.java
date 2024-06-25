@@ -1,6 +1,6 @@
 package com.albert.spring.filtermoudle.filter;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,7 @@ public class AnnoFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         Map<String, String[]> parameterMap = servletRequest.getParameterMap();
-        log.info("过滤到的请求参数为:{}", JsonUtil.toString(parameterMap));
+        log.info("过滤到的请求参数为:{}", JSONUtil.toJsonStr(parameterMap));
         //过滤器放行
         filterChain.doFilter(servletRequest,servletResponse);
     }

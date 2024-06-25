@@ -1,6 +1,6 @@
 package com.albert.spring.filtermoudle.filter;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -23,7 +23,7 @@ public class ConfFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         Map<String, String[]> parameterMap = servletRequest.getParameterMap();
-        log.info("请求属性名称列表:{}", JsonUtil.toString(parameterMap));
+        log.info("请求属性名称列表:{}", JSONUtil.toJsonStr(parameterMap));
         Enumeration<String> parameterNames = servletRequest.getParameterNames();
         while (parameterNames.hasMoreElements()) {
             log.info("遍历参数名称:{}",parameterNames.nextElement());

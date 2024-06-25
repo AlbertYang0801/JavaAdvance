@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <!--工具类模块-->
+        <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-client</artifactId>

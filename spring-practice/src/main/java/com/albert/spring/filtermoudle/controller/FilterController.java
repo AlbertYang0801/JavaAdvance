@@ -1,6 +1,6 @@
 package com.albert.spring.filtermoudle.controller;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +20,6 @@ import java.util.Map;
 @RestController
 public class FilterController {
 
-
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
@@ -33,7 +32,7 @@ public class FilterController {
 
     @GetMapping("/filter")
     public ResponseResult getRequestParam(@RequestParam Map<String,Object> map){
-        log.info(JsonUtil.toString(map));
+        log.info(JSONUtil.toJsonStr(map));
         return new ResponseResult(map,true,"获取成功");
     }
 }
