@@ -1,0 +1,3 @@
+#jdk-spi在jar包外加载指定类
+com.albert.javase.spi.impl.EsSearchImpl
+com.albert.javase.spi.impl.CkSearchImpl

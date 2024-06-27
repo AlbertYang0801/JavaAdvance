@@ -23,7 +23,7 @@ public class FinalizeGc {
     }
 
     @SneakyThrows
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         save = new FinalizeGc();
         save = null;
         System.gc();
