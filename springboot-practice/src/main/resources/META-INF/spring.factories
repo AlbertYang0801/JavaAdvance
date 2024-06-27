@@ -1,1 +1,1 @@
-com.albert.boot.spi.DbDriver=com.albert.boot.spi.impl.MysqlDriver,com.albert.boot.spi.impl.OracleDriver,,com.albert.boot.spi.impl.CkDriver
+com.albert.boot.spi.DbDriver=com.albert.boot.spi.impl.MysqlDriver,com.albert.boot.spi.impl.OracleDriver
