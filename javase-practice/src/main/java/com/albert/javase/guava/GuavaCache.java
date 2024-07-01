@@ -30,6 +30,19 @@ public class GuavaCache {
 
     @Test
     @SneakyThrows
+    public void testCacheGet() {
+        String key = "test";
+        Cache<Object, Object> cache = CacheBuilder.newBuilder()
+                .maximumSize(100)//缓存最大容量
+                .expireAfterWrite(5, TimeUnit.SECONDS)//过期时间
+                .build();
+        cache.put(key, "1");
+        System.out.println(cache.getIfPresent(2));
+
+    }
+
+    @Test
+    @SneakyThrows
     public void testCacheBuild() {
         Cache<String, String> cache = CacheBuilder.newBuilder()
                 //并发级别为8，同时写缓存的线程数量最大为8

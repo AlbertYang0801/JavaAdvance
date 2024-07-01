@@ -22,7 +22,7 @@ public class PythonThreeService {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 1000L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(5000));
 
         Runnable task = () -> {
-            String path = "/Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file";
+            String path = "/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file";
             String command = "python3 CheckTest.py user";
             try {
                 ShellUtils.exec(path, command);
@@ -37,7 +37,7 @@ public class PythonThreeService {
     }
 
     public void teseExecResult() {
-        String path = "/Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file";
+        String path = "/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file";
         String command = "python3 CheckTest.py user";
         StringBuilder execResult = execCommand(path, command);
         String replace = execResult.toString().replace("'", "\"");

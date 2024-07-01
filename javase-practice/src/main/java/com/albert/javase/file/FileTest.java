@@ -31,17 +31,17 @@ public class FileTest {
     @Test
     public void filePath() {
         //1.绝对路径
-        File file = new File("/Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file/");
-        System.out.println(file);///Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file
+        File file = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file/");
+        System.out.println(file);///Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file
         System.out.println(JsonUtil.toString(file.list()));//["666.xls","CheckTest.py","MySqlTools.py","2222.xls","1111.xls","测试csv.csv"]
 
         //2.相对路径
         File file1 = new File("../file/data.txt");
         System.out.println(file1.getName()); //data.txt
         //获取文件绝对路径（不会解析符号..和.）
-        System.out.println(file1.getAbsolutePath());// /Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/../file/data.txt
+        System.out.println(file1.getAbsolutePath());// /Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/../file/data.txt
         //获取文件绝对路径（会解析符号..和.）
-        System.out.println(file1.getCanonicalPath());// /Users/yangjunwei/IdeaProjects/JavaAdvanced/file/data.txt
+        System.out.println(file1.getCanonicalPath());// /Users/yangjunwei/IdeaProjects/JavaAdvance/file/data.txt
 
         //3.jvm启动目录
         File startFile = new File(".");
@@ -62,11 +62,11 @@ public class FileTest {
     public void fileInit() {
         // File(String pathname)
         File file = new File("data.txt");
-        File file1 = new File("/Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/src/main/java/com/albert/javase/file/data.txt");
+        File file1 = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/src/main/java/com/albert/javase/file/data.txt");
         System.out.println(file);
         System.out.println(file1);
         // File(String parent, String child)
-        File file2 = new File("/Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/", "src/main/java/com/albert/javase/file");
+        File file2 = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/", "src/main/java/com/albert/javase/file");
         System.out.println(file2);
         // File(File parent, String child)
         File file3 = new File(file2, "data.txt");
@@ -95,9 +95,9 @@ public class FileTest {
         File file1 = new File("../file/data.txt");
         System.out.println(file1.getName()); //data.txt
         //获取文件绝对路径（不会解析符号..和.）
-        System.out.println(file1.getAbsolutePath());// /Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/../file/data.txt
+        System.out.println(file1.getAbsolutePath());// /Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/../file/data.txt
         //获取文件绝对路径（会解析符号..和.）
-        System.out.println(file1.getCanonicalPath());// /Users/yangjunwei/IdeaProjects/JavaAdvanced/file/data.txt
+        System.out.println(file1.getCanonicalPath());// /Users/yangjunwei/IdeaProjects/JavaAdvance/file/data.txt
 
         //适用于文件目录
         File file2 = new File("src/main/java/com/albert/javase/file/");
@@ -116,9 +116,9 @@ public class FileTest {
     @Test
     public void renameFile() {
         //旧文件
-        File file = new File("/Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/src/main/java/com/albert/javase/file/data.txt");
+        File file = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/src/main/java/com/albert/javase/file/data.txt");
         //新文件（不能已存在）
-        File newFile = new File("/Users/yangjunwei/IdeaProjects/JavaAdvanced/javase-practice/src/main/java/com/albert/javase/file/data.txt");
+        File newFile = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/javase-practice/src/main/java/com/albert/javase/file/data.txt");
         boolean b = file.renameTo(newFile);
         System.out.println(b);
     }

@@ -15,7 +15,7 @@ public class FileChannelTest {
 
     @SneakyThrows
     public static void main(String[] args) {
-        String path = "D:\\IdeaWorkSpace\\JavaAdvanced\\netty-practice\\file\\test.txt";
+        String path = "D:\\IdeaWorkSpace\\JavaAdvance\\netty-practice\\file\\test.txt";
         File file = new File(path);
         RandomAccessFile raf = new RandomAccessFile(file, "r");
 

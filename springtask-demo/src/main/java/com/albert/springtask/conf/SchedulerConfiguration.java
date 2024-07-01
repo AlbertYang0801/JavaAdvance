@@ -28,7 +28,7 @@ public class SchedulerConfiguration implements SchedulingConfigurer {
     /**
      * 定时任务使用线程前缀
      */
-    private static final String THREAD_NAME_PREFI = "JavaAdvanced-";
+    private static final String THREAD_NAME_PREFI = "JavaAdvance-";
 
     /**
      * 创建定时任务线程池

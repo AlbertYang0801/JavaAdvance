@@ -52,7 +52,7 @@ public class BootNettyChannelInboundHandlerAdapter extends SimpleChannelInboundH
 
     @SneakyThrows
     public void downloadFile(ChannelHandlerContext ctx) {
-        String path = "D:\\IdeaWorkSpace\\JavaAdvanced\\netty-practice\\file\\test.txt";
+        String path = "D:\\IdeaWorkSpace\\JavaAdvance\\netty-practice\\file\\test.txt";
         File file = new File(path);
         RandomAccessFile raf;
         raf = new RandomAccessFile(file, "r");

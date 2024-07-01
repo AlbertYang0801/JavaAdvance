@@ -65,7 +65,7 @@ public class ShellUtils {
     }
 
     public static void main(String[] args) throws IOException {
-        String path="/Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file";
+        String path="/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file";
         String command="python3 CheckTest.py user";
         ShellUtils.exec(path,command);
     }

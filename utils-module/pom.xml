@@ -8,7 +8,7 @@
     <name>utils-module</name>
     <description>Demo project for Spring Boot</description>
     <parent>
-        <artifactId>JavaAdvanced</artifactId>
+        <artifactId>JavaAdvance</artifactId>
         <groupId>com.albert</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

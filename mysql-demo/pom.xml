@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.albert</groupId>
-        <artifactId>JavaAdvanced</artifactId>
+        <artifactId>JavaAdvance</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>mysql-demo</artifactId>
@@ -26,12 +26,7 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!--mysql连接-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.45</version>
-        </dependency>
+        Generator
         <!--springboot集成druid-->
         <dependency>
             <groupId>com.alibaba</groupId>

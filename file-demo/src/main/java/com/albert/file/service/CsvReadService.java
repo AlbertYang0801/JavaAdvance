@@ -19,7 +19,7 @@ import java.util.List;
 public class CsvReadService {
 
     // 需要写入的 csv 文件路径
-    public static final String WRITE_CSV_FILE_PATH = "/Users/yangjunwei/IdeaProjects/JavaAdvanced/file-demo/file/测试csv.csv";
+    public static final String WRITE_CSV_FILE_PATH = "/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file/测试csv.csv";
 
     /**
      * 读取 csv 文件
