@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * pull模式
  * @author admin
  * @date 2024/6/25 20:50
  */

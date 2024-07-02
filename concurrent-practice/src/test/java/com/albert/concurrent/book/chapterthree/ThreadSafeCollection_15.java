@@ -1,11 +1,13 @@
 package com.albert.concurrent.book.chapterthree;
 
+import cn.hutool.json.JSONUtil;
 import com.albert.utils.jackson.JsonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 线程安全的集合练习
@@ -38,6 +40,12 @@ public class ThreadSafeCollection_15 {
         vector.add(1);
         vector.add(2);
         System.out.println(JsonUtil.toString(vector));
+
+
+        CopyOnWriteArrayList<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
+        copyOnWriteArrayList.add(1);
+        copyOnWriteArrayList.add(2);
+        System.out.println(JSONUtil.toJsonStr(copyOnWriteArrayList));
 
         //***********************注意***************************
         //线程安全的Map

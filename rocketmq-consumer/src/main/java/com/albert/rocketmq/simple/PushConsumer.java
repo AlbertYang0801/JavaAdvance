@@ -11,6 +11,7 @@ import org.apache.rocketmq.common.message.MessageExt;
 import java.util.List;
 
 /**
+ * push模式
  * @author admin
  * @date 2024/6/25 20:50
  */
@@ -22,8 +23,6 @@ public class PushConsumer {
         consumer.setNamesrvAddr("10.10.102.83:9876");
         consumer.subscribe("test", "*");
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
-        //wrong time format 2017_0422_221800
-//        consumer.setConsumeTimestamp("20181109221800");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
