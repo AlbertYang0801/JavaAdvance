@@ -20,6 +20,7 @@ public class AskThread implements Runnable {
     @Override
     public void run() {
         try {
+            //阻塞等待
             int content = completableFuture.get() * completableFuture.get();
             System.out.println(content);
         } catch (InterruptedException | ExecutionException e) {

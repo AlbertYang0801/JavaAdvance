@@ -1,5 +1,6 @@
 package com.albert.concurrent.book.chapterfour;
 
+import cn.hutool.core.date.DateUtil;
 import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
@@ -35,7 +36,7 @@ public class ThreadLocal_01 {
         @Override
         public void run() {
             Date date = simpleDateFormat.parse("2020-10-01 16:00:" + i);
-            System.out.println(i+" "+date);
+            System.out.println(i+" "+ DateUtil.format(date, "yyyy-MM-dd HH:mm:ss"));
         }
     }
 
@@ -58,7 +59,7 @@ public class ThreadLocal_01 {
             }
             //从ThreadLocal里获取变量
             Date date = threadLocal.get().parse("2020-10-01 16:00:" + i);
-            System.out.println(i+" "+date);
+            System.out.println(i+" "+ DateUtil.format(date, "yyyy-MM-dd HH:mm:ss"));
         }
     }
 
@@ -72,7 +73,7 @@ public class ThreadLocal_01 {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 20; i++) {
-            executorService.submit(isSafe(i,true));
+            executorService.submit(isSafe(i,false));
         }
     }
 
