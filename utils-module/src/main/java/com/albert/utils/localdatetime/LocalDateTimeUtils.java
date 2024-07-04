@@ -25,6 +25,10 @@ public class LocalDateTimeUtils {
         return getSecondsByTime(LocalDateTime.now());
     }
 
+    public static String getNow(){
+        return formatDateTime(LocalDateTime.now());
+    }
+
     //获取当日凌晨
     public static LocalDateTime getWeeHour() {
         return LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0, 0));
