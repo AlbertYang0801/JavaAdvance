@@ -25,6 +25,7 @@ public class ThreadPoolCreateTest {
     /**
      * 测试使用CacheThreadPool,缓存类型线程池
      * 根据任务个数扩展线程个数，同时执行，每个任务对应一个线程
+     * 无限线程
      */
     @Test
     public void testCacheThreadPool() {
@@ -37,6 +38,7 @@ public class ThreadPoolCreateTest {
     /**
      * 测试使用FixedThreadPool，定长型线程池
      * 线程池永远拥有指定个数的线程池，允许同时执行指定个数，超出的任务会在队列中等待执行。
+     * 无限任务队列
      */
     @Test
     public void testFixedThreadPool() {

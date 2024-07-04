@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 测试内存泄漏
+ * 测试threadlocal内存泄漏
  *
  * @author yangjunwei
  * @date 2024/7/3

@@ -53,6 +53,7 @@ public class ThreadPoolCreate {
 
     /**
      * 创建一个单线程的线程池
+     * 单线程，无限任务队列
      */
     public static ExecutorService getSingleThreadExecutor() {
         return Executors.newSingleThreadExecutor();
