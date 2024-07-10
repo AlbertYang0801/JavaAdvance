@@ -296,7 +296,6 @@ public class RedisUtil {
      * @return
      */
     public Long size(String key) {
-        redisTemplate.boundListOps().
         return redisTemplate.opsForValue().size(key);
     }
 

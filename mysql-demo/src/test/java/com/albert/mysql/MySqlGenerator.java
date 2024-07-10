@@ -51,7 +51,7 @@ public class MySqlGenerator {
 
         // 策略配置
         StrategyConfig strategy = GeneratorBuilder.strategyConfigBuilder()
-                .addInclude("task_config","task_record")
+                .addInclude("billing_details","billing_total","checkout_records")
                 .addTablePrefix(pc.getModuleName() + "_")
                 .controllerBuilder().enableHyphenStyle()
                 .entityBuilder()

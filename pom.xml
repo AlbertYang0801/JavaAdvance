@@ -45,6 +45,7 @@
         <module>cache-practice</module>
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
+        <module>mybatis-plus-demo</module>
 
 
     </modules>
