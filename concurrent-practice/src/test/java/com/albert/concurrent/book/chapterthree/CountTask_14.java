@@ -39,7 +39,7 @@ public class CountTask_14 extends RecursiveTask<Long> {
             long step = (start + end) / 100;
             ArrayList<CountTask_14> subTasks = new ArrayList<>();
             long pos = start;
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 10000; i++) {
                 long lastOne = pos + step;
                 if (lastOne > end) {
                     lastOne = end;
@@ -60,7 +60,7 @@ public class CountTask_14 extends RecursiveTask<Long> {
 
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        CountTask_14 countTask = new CountTask_14(0, 200000L);
+        CountTask_14 countTask = new CountTask_14(0, 2000000L);
         //使用分治提交线程
         ForkJoinTask<Long> result = forkJoinPool.submit(countTask);
         try {

@@ -4,8 +4,6 @@ import com.google.common.collect.Lists;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -56,4 +54,9 @@ public class CopyOnWriteArrayList_16 {
 /**
  * 读操作是不加锁的，而写操作加锁。
  * 实现了读取并行，而写操作是独占的。
+ *
+ * 适合读多写少的场景
+ * 底层是用array存储数据
+ * 1.写数据时，先拷贝array，扩容长度+1，然后将新增元素放到末尾。这里写的整个过程是要加锁的。
+ * 2.读数据时，直接读取array，是不需要加锁的。因为写成功之后直接替换了array。读操作无感知。
  */

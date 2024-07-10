@@ -108,4 +108,7 @@ public class ProducerTest {
         defaultMQProducer.shutdown();
     }
 
+
+
+
 }

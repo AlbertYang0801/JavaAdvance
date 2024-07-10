@@ -43,6 +43,7 @@ public class Condition_06 implements Runnable {
         Condition_06.lock.lock();
         //唤醒一个等待中的线程，继续向下执行。
         Condition_06.condition.signal();
+        System.out.println("唤醒线程重新竞争锁对象");
         Condition_06.lock.unlock();
     }
 

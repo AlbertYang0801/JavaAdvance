@@ -33,6 +33,7 @@ public class CloseTest {
             threadPoolExecutor.execute(new TestTask(countDownLatch));
         }
         System.out.println(threadPoolExecutor);
+        //shutdown会等待线程池任务执行完毕之后，再关闭线程池
         threadPoolExecutor.shutdown();
         System.out.println("执行结束！");
         countDownLatch.await();
@@ -48,18 +49,17 @@ public class CloseTest {
                 System.out.println("111");
                 return false;
             }
-            boolean test2(){
+
+            boolean test2() {
                 System.out.println("222");
                 return true;
             }
         }
 
         Test test = new Test();
-        if(test.test2()||test.test1()){
+        if (test.test2() || test.test1()) {
             System.out.println(333);
         }
-
-
     }
 
 
@@ -75,7 +75,7 @@ public class CloseTest {
         }
         System.out.println(threadPoolExecutor);
 
-        //直接关闭线程池
+        //直接关闭线程池，不会等待线程池任务执行完毕
         threadPoolExecutor.shutdownNow();
         System.out.println("执行结束！");
 

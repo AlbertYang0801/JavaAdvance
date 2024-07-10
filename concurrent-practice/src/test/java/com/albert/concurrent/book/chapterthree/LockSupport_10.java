@@ -24,7 +24,7 @@ public class LockSupport_10 {
         public void run() {
             synchronized (OBJECT){
                 System.out.println(name+" job start");
-                //阻塞当前线程
+                //阻塞当前线程，信号量设置为0
                 LockSupport.park();
             }
         }
@@ -38,6 +38,7 @@ public class LockSupport_10 {
         two.start();
 
         //结束阻塞
+        //信号量设置为1
         LockSupport.unpark(one);
         LockSupport.unpark(two);
 
