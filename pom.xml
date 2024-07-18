@@ -46,6 +46,7 @@
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
         <module>mybatis-plus-demo</module>
+        <module>junit-demo</module>
 
 
     </modules>
