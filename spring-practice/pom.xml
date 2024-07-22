@@ -27,6 +27,13 @@
             <version>2.1.4.RELEASE</version>
         </dependency>
 
+        <!--动态代理，字节码增强技术，CgLib的替代品-->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.14.2</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
