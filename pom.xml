@@ -20,7 +20,6 @@
         <module>utils-module</module>
 
         <module>es-practice</module>
-        <module>eightfeatures-practice</module>
         <module>msg-queue</module>
         <module>leetcode-practice</module>
         <module>mysql-demo</module>
