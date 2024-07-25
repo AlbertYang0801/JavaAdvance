@@ -55,6 +55,7 @@
         <module>dubbo/dubbo-consumer</module>
         <module>dubbo/dubbo-provider</module>
         <module>dubbo/dubbo-common</module>
+        <module>dubbo/rpc-dubbo</module>
     </modules>
 
     <properties>

@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.29</version>
@@ -22,6 +27,7 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
         </dependency>
+
     </dependencies>
 
 
