@@ -19,35 +19,42 @@
 
         <module>utils-module</module>
 
-        <module>es-practice</module>
-        <module>msg-queue</module>
-        <module>leetcode-practice</module>
-        <module>mysql-demo</module>
-        <module>redis-practice</module>
-        <module>springtask-demo</module>
-        <module>mail-demo</module>
-        <module>file-demo</module>
-        <module>javase-practice</module>
-        <module>mybatis-demo</module>
-        <module>zk-demo</module>
-        <module>springboot-practice</module>
-        <module>agent-practice</module>
+        <module>java/junit-demo</module>
+        <module>java/leetcode-practice</module>
+        <module>java/cache-practice</module>
+        <module>java/mail-demo</module>
+        <module>java/file-demo</module>
+        <module>java/javase-practice</module>
+        <module>java/agent-practice</module>
+        <module>java/concurrent-practice</module>
 
-        <module>netty-adv</module>
-        <module>netty-practice</module>
-        <module>rpc-client</module>
-        <module>rpc-server</module>
-        <module>rpc-netty-client</module>
-        <module>rpc-netty-server</module>
-        <module>rpc-regcenter</module>
-        <module>spring-practice</module>
-        <module>cache-practice</module>
-        <module>rocketmq-producer</module>
-        <module>rocketmq-consumer</module>
-        <module>mybatis-plus-demo</module>
-        <module>junit-demo</module>
+        <module>mybatis/mybatis-demo</module>
+        <module>mybatis/mybatis-plus-demo</module>
 
+        <module>spring/spring-practice</module>
+        <module>spring/springboot-practice</module>
+        <module>spring/springtask-demo</module>
 
+        <module>db/mysql-demo</module>
+        <module>db/redis-practice</module>
+
+        <module>middleware/es-practice</module>
+        <module>middleware/rocketmq-producer</module>
+        <module>middleware/rocketmq-consumer</module>
+        <module>middleware/zk-demo</module>
+        <module>middleware/msg-queue</module>
+
+        <module>netty/netty-adv</module>
+        <module>netty/netty-practice</module>
+        <module>netty/rpc-client</module>
+        <module>netty/rpc-server</module>
+        <module>netty/rpc-netty-client</module>
+        <module>netty/rpc-netty-server</module>
+        <module>netty/rpc-regcenter</module>
+
+        <module>dubbo/dubbo-consumer</module>
+        <module>dubbo/dubbo-provider</module>
+        <module>dubbo/dubbo-common</module>
     </modules>
 
     <properties>
