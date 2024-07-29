@@ -6,6 +6,7 @@
         <artifactId>JavaAdvance</artifactId>
         <groupId>com.albert</groupId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../../JavaAdvance</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,27 +15,91 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <jdk.home>/Users/admin/Java/jdk1.8.0_411.jdk/Contents/Home</jdk.home>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${jdk.home}/lib/tools.jar</systemPath>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <!--将所有依赖都打入同一个jar包中-->
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Assembly Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <!-- 将所有的依赖全部打包进jar -->
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <!--指定java agent相关配置文件-->
+                    <!-- MainClass in mainfest make a executable jar -->
                     <archive>
-                        <manifestFile>src/main/resources/MANIFEST.MF</manifestFile>
+                        <manifestEntries>
+                            <!--设置jar的作者和时间-->
+
+                            <!--指定premain方法（静态加载时会调用的方法）的入口类，也就是说告诉jvm， premain方法在哪个类中-->
+<!--                            <Premain-Class>com.albert.agent.AgentMain</Premain-Class>-->
+
+                            <!--该属性设置为 true 时表示：允许已加载的类被重新转换（retransform）。这意味着 Java Agent 可以在运行时修改已经加载的类的字节码，而不需要重新启动应用或 JVM
+                            注意，如果此属性设置为 false 在执行main方法且设置-jaavaagent.jar时，将会执行抛出异常 ：java.lang.instrument ASSERTION FAILED ***: "result" with message agent load/premain call failed at src/java.instrument/share/native/libinstrument/JPLISAgent.c line: 422
+                            -->
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+
+                            <!--该属性设置为 true 时表示：允许 Java Agent 在运行时重新定义（也就是完全替换）已加载的类的字节码，这里我们没用到这个暂时设置成false,用到时在打开-->
+                            <Can-Redefine-Classes>false</Can-Redefine-Classes>
+
+                            <!--该属性设置为 true 时表示：允许 Java Agent 在运行时动态地为 JNI (Java Native Interface) 方法设置前缀。这项能力主要用于修改或拦截对本地方法的调用，这里我们没用到也设置为false -->
+                            <Can-Set-Native-Method-Prefix>false</Can-Set-Native-Method-Prefix>
+
+                            <!--指定agentmain方法的入口类（动态加载时将会调用 agentmain方法）-->
+                            <Agent-Class>com.albert.agent.AgentMain</Agent-Class>
+                        </manifestEntries>
+
+                        <!--如果不在pom中设置以上manifestEntries 这些信息，那么也可以在手动建一个MANIFEST.MF文件在 src/main/resources/META-INF/目录中，并将这些信息手动写进文件，然后让assembly打包时使用我们自己手写的这个MANIFEST.MF文件（如下的 manifestFile 标签就是告诉插件使用我们自己写的MANIFEST.MF文件），但是那样容易出错所以我们最好是在pom中设置然后让assembly插件帮我们生成 -->
+                        <!--<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>-->
+
                     </archive>
                 </configuration>
+                <executions>
+                    <!-- 配置执行器 -->
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- 绑定到package命令的生命周期上 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 只运行一次 -->
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
+
+
 
 
 </project>

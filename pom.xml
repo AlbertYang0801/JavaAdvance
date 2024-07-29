@@ -19,13 +19,13 @@
 
         <module>utils-module</module>
 
+        <module>java/agent-practice</module>
         <module>java/junit-demo</module>
         <module>java/leetcode-practice</module>
         <module>java/cache-practice</module>
         <module>java/mail-demo</module>
         <module>java/file-demo</module>
         <module>java/javase-practice</module>
-        <module>java/agent-practice</module>
         <module>java/concurrent-practice</module>
 
         <module>mybatis/mybatis-demo</module>
@@ -66,13 +66,6 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>

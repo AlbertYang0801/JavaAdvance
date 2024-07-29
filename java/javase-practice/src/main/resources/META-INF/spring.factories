@@ -1,0 +1,2 @@
+#结合Spi机制，动态开启是否开启异步日志链路追踪
+#org.springframework.context.ApplicationContextInitializer=com.albert.javase.log.TtlMDCAdapterInitializer

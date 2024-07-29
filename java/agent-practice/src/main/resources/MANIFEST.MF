@@ -1,7 +1,5 @@
 Manifest-Version: 1.0
-Premain-Class: com.albert.agent.AgenMain
-Agent-Class: com.albert.agent.AgenMain
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
-Can-Set-Native-Method-Prefix: true
+Can-Set-Native-Method-Prefix: false
 
