@@ -3,10 +3,7 @@ package com.albert.spring.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -42,12 +39,25 @@ public class LogAspectj {
     }
 
     /**
-     * 通知
+     * 通知-在方法執行前
+     * 对应的切点
      * @param joinPoint
      */
     @Before("logAspectPointcut()")
     public void controllerBefore(JoinPoint joinPoint){
         System.out.println("controller before");
+    }
+
+    /**
+     * 环绕通知-指定切点
+     * 解析注解
+     * @param auditLogAspect
+     */
+    @Around(value = "logAspectPointcut() && @annotation(auditLogAspect)")
+    public void controllerAround(AuditLogAspect auditLogAspect){
+        //日志持久化
+        log.info("执行了 {} 方法",auditLogAspect.methodName());
+        log.info("执行了 {} 操作",auditLogAspect.oper());
     }
 
     @After("logAspectPointcut()")
