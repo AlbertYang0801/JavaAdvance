@@ -1,4 +1,4 @@
-package com.albert.rpc.split.fix;
+package com.albert.rpc.split.line;
 
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -8,14 +8,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
 
 /**
- * 解决粘包拆包问题-固定长度
+ * 解决粘包拆包问题-换行符
  *
  * @author yjw
  * @date 2024/6/5 22:59
@@ -53,9 +54,11 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
 
-                            //用于将接收到的字节数据（ByteBuf）分割成固定长度的帧。
-                            socketChannel.pipeline().addLast(new FixedLengthFrameDecoder(REQUEST.length() + 1));
-
+                            //LineBasedFrameDecoder依次遍历ByteBuf的可读字节，判断看是否有 "\n" 或者 "\r\n"。如果有，就以此位置为结束位置。
+                            //以换行符为结束标志的解码器
+                            socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            //将接收到的对象转换成字符串
+                            socketChannel.pipeline().addLast(new StringDecoder());
                             //添加自定义的eventHandler
                             socketChannel.pipeline().addLast(new EchoServceHandler());
                         }

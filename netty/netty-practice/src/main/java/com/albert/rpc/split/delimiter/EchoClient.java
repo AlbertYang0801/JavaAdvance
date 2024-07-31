@@ -15,6 +15,8 @@ import lombok.SneakyThrows;
 import java.net.InetSocketAddress;
 
 /**
+ * 解决粘包拆包问题-分割符
+ *
  * @author yjw
  * @date 2024/6/5 23:32
  */
@@ -35,13 +37,13 @@ public class EchoClient {
             bootstrap.group(eventLoopGroup)
                     //指定使用NIO的通信模式
                     .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress(host,port))
+                    .remoteAddress(new InetSocketAddress(host, port))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel channel) throws Exception {
                             ByteBuf byteBuf = Unpooled.copiedBuffer(EchoServer.DELIMITER_SYMBOL.getBytes());
                             //按照分割符分割数据流
-                            channel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,byteBuf));
+                            channel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, byteBuf));
                             channel.pipeline().addLast(new EchoClientHandler());
                         }
                     });
@@ -50,7 +52,7 @@ public class EchoClient {
             //f.channel().closeFuture().sync()
             sync.channel().closeFuture().sync();
 
-        }finally {
+        } finally {
             eventLoopGroup.shutdownGracefully().sync();
         }
     }
@@ -58,9 +60,8 @@ public class EchoClient {
     @SneakyThrows
     public static void main(String[] args) {
         System.out.println("client server start!");
-        new EchoClient(9999,"127.0.0.1").start();
+        new EchoClient(9999, "127.0.0.1").start();
     }
-
 
 
 }

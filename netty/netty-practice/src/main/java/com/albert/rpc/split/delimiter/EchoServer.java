@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.InetSocketAddress;
 
 /**
- * 基于netty的服务器
+ * 解决粘包拆包问题-分割符
  *
  * @author yjw
  * @date 2024/6/5 22:59

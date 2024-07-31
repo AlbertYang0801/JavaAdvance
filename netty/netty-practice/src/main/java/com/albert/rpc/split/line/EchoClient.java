@@ -1,4 +1,4 @@
-package com.albert.rpc.split.fix;
+package com.albert.rpc.split.line;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

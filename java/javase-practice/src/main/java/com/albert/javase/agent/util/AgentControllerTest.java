@@ -2,6 +2,7 @@ package com.albert.javase.agent.util;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,5 +18,9 @@ public class AgentControllerTest {
         System.out.println(new AgentUtilTest().getTime());
     }
 
+    @GetMapping("/hello")
+    public String hello(@RequestParam("name") String name) {
+        return "hello " + name;
+    }
 
 }
