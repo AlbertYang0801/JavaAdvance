@@ -19,7 +19,9 @@
 
         <module>utils-module</module>
 
-        <module>java/agent-practice</module>
+        <module>agent/agent-practice</module>
+        <module>agent/attach-agent</module>
+
         <module>java/junit-demo</module>
         <module>java/leetcode-practice</module>
         <module>java/cache-practice</module>
@@ -56,6 +58,7 @@
         <module>dubbo/dubbo-provider</module>
         <module>dubbo/dubbo-common</module>
         <module>dubbo/rpc-dubbo</module>
+        <module>agent/attach-agent</module>
     </modules>
 
     <properties>
