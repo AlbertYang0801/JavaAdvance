@@ -87,6 +87,10 @@ public class AdviceFactory {
         return content.toString();
     }
 
+    public static void main(String[] args) {
+        String content = insertBeforeContent("test", "hello", 3);
+        System.out.println(content);
+    }
 
 
 }

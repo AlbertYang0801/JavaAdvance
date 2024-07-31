@@ -103,7 +103,7 @@
                             <!--设置jar的作者和时间-->
 
                             <!--指定premain方法（静态加载时会调用的方法）的入口类，也就是说告诉jvm， premain方法在哪个类中-->
-                            <Premain-Class>com.albert.agent.AgentMain</Premain-Class>
+<!--                            <Premain-Class>com.albert.agent.AgentMain</Premain-Class>-->
 
                             <!--该属性设置为 true 时表示：允许已加载的类被重新转换（retransform）。这意味着 Java Agent 可以在运行时修改已经加载的类的字节码，而不需要重新启动应用或 JVM
                             注意，如果此属性设置为 false 在执行main方法且设置-jaavaagent.jar时，将会执行抛出异常 ：java.lang.instrument ASSERTION FAILED ***: "result" with message agent load/premain call failed at src/java.instrument/share/native/libinstrument/JPLISAgent.c line: 422
@@ -117,7 +117,7 @@
                             <Can-Set-Native-Method-Prefix>false</Can-Set-Native-Method-Prefix>
 
                             <!--指定agentmain方法的入口类（动态加载时将会调用 agentmain方法）-->
-<!--                            <Agent-Class>com.albert.agent.AgentMain</Agent-Class>-->
+                            <Agent-Class>com.albert.agent.AgentMain</Agent-Class>
                         </manifestEntries>
 
                         <!--如果不在pom中设置以上manifestEntries 这些信息，那么也可以在手动建一个MANIFEST.MF文件在 src/main/resources/META-INF/目录中，并将这些信息手动写进文件，然后让assembly打包时使用我们自己手写的这个MANIFEST.MF文件（如下的 manifestFile 标签就是告诉插件使用我们自己写的MANIFEST.MF文件），但是那样容易出错所以我们最好是在pom中设置然后让assembly插件帮我们生成 -->

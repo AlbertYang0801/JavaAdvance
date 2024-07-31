@@ -10,6 +10,7 @@ import com.sun.tools.attach.VirtualMachine;
  */
 public class AttachAgentMain {
 
+    //TODO jar包动态注入
     public static void main(String[] args) throws Exception {
         if (args.length > 1) {
             System.out.println("参数过长");
@@ -25,7 +26,7 @@ public class AttachAgentMain {
             System.out.println("开始attach");
             //1.根据pid，与目标jvm进程建立Socket连接
             vm = VirtualMachine.attach(pid.toString());
-            vm.loadAgent("/lib/agent-practice-0.0.1-SNAPSHOT-jar-with-dependencies.jar");
+            vm.loadAgent("/Users/admin/IdeaProjects/JavaAdvance/agent/agent-practice/target/agent-practice-0.0.1-SNAPSHOT-jar-with-dependencies.jar");
             System.out.println("attach success");
         } finally {
             //程序结束时，卸载agent
