@@ -10,6 +10,7 @@ import org.aspectj.lang.JoinPoint;
  * @author yangjunwei
  * @date 2024/7/30
  */
+//TODO java.lang.Throwable jre里面类不能被增强
 @AdvicePointCut(matchClasses = {"java.lang.Throwable"}, matchMethods = {"getMessage", "printStackTrace"})
 @Slf4j
 public class ExceptionMessageAdvice {

@@ -1,10 +1,8 @@
 package com.albert.agent.transformer;
 
 import com.albert.agent.advice.AdviceFactory;
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
+import javassist.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
@@ -17,6 +15,7 @@ import java.security.ProtectionDomain;
  * @author yangjunwei
  * @date 2024/7/30
  */
+@Slf4j
 public class CustomTransformer implements ClassFileTransformer {
 
     /**
@@ -39,9 +38,11 @@ public class CustomTransformer implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         //匹配Class
-        if (AdviceFactory.matchClass(className)) {
+        String finalClassName = className.replace("/", ".");
+        if (AdviceFactory.matchClass(finalClassName)) {
             //匹配方法
-            return matchMethod(className, classfileBuffer);
+            log.info("匹配成功，className:{}", finalClassName);
+            return matchMethod(finalClassName, classfileBuffer);
         }
         return classfileBuffer;
     }
@@ -52,13 +53,16 @@ public class CustomTransformer implements ClassFileTransformer {
         try {
             ctClass = classPool.get(className);
             for (CtMethod method : ctClass.getMethods()) {
+                log.info("匹配到的methodName:{}", method.getName());
+
                 //匹配到方法
                 if (AdviceFactory.matchClassAndMethod(className, method.getName())) {
                     //增强方法
                     modifyMethod(ctClass, method);
+                    return ctClass.toBytecode();
                 }
             }
-            return ctClass.toBytecode();
+            return classfileBuffer;
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -72,11 +76,23 @@ public class CustomTransformer implements ClassFileTransformer {
 
     private void modifyMethod(CtClass ctClass, CtMethod ctMethod) throws CannotCompileException, IOException {
         // 在方法调用前插入代码
-        String insertBeforeContent = AdviceFactory.insertBeforeContent(ctClass.getName(), ctMethod.getName());
+        String insertBeforeContent = AdviceFactory.insertBeforeContent(ctClass.getName(), ctMethod.getName(), getParameterLength(ctMethod));
+
+        log.info("insertBeforeContent:{}", insertBeforeContent);
         ctMethod.insertBefore(insertBeforeContent);
+
+        //ctMethod.insertBefore("{ System.out.println(\"Before myMethod\"); }");
+
         ctClass.writeFile("build/classes");
     }
 
+    private int getParameterLength(CtMethod ctMethod) {
+        try {
+            return ctMethod.getParameterTypes().length;
+        } catch (NotFoundException e) {
+            return 0;
+        }
+    }
 
 
 }

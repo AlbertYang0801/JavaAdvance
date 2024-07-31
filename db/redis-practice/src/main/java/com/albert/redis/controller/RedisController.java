@@ -4,7 +4,7 @@ import com.albert.redis.datastructure.*;
 import com.albert.utils.jackson.JsonUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +42,9 @@ public class RedisController {
 
     @Autowired
     Bitmaps_SignInService bitmapsSignInService;
+
+    @Autowired
+    RedissonClient redissonClient;
 
     /**
      * string - 文章点赞数量

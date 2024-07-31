@@ -6,7 +6,7 @@ package com.albert.agent.advice;
  * @author yangjunwei
  * @date 2024/7/30
  */
-public interface IAdvice {
+public abstract class IAdvice {
 
     /**
      * 方法执行之前-增强逻辑
@@ -14,7 +14,9 @@ public interface IAdvice {
      * @param target
      * @param args
      */
-    void before(Object target, Object[] args);
+    static void before(Object target, Object[] args){
+
+    }
 
     /**
      * 方法执行之后执行逻辑
@@ -22,7 +24,9 @@ public interface IAdvice {
      * @param target
      * @param args
      */
-    void after(Object target, Object[] args);
+    static void after(Object target, Object[] args){
+
+    }
 
 
 }

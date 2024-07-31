@@ -1,7 +1,6 @@
 package com.albert.agent.utils;
 
 
-import com.sun.istack.internal.Nullable;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -57,7 +56,6 @@ public class ClassUtils {
      * @PostConstruct void init() {}
      * </code>
      */
-    @Nullable
     public static Method findAnnotationMethod(Class<?> clazz, Class<? extends Annotation> annoClass) {
         // try get declared method:
         List<Method> ms = Arrays.stream(clazz.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(annoClass)).map(m -> {

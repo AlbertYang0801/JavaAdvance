@@ -4,8 +4,8 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%p] %d %C{1}:%L [%X{traceId}] - %m%n"/>
         </Console>
-        <RollingFile name="RollingFileInfo" fileName="./logs/attach-info.log"
-                     filePattern="./logs/attach.log.%i">
+        <RollingFile name="RollingFileInfo" fileName="./logs/redis-info.log"
+                     filePattern="./logs/redis.log.%i">
             <ThresholdFilter level="info" onMatch="ACCEPT"
                              onMismatch="DENY"/>
             <PatternLayout pattern="[%p] %d %C{1}:%L [%X{traceId}] - %m%n"/>
@@ -14,8 +14,8 @@
             </Policies>
             <DefaultRolloverStrategy max="9"/>
         </RollingFile>
-        <RollingFile name="RollingFileWarn" fileName="./logs/attach-warn.log"
-                     filePattern="./logs/attach.log.%i">
+        <RollingFile name="RollingFileWarn" fileName="./logs/redis-warn.log"
+                     filePattern="./logs/redis.log.%i">
             <ThresholdFilter level="warn" onMatch="ACCEPT"
                              onMismatch="DENY"/>
             <PatternLayout pattern="[%p] %d %C{1}:%L - %m%n"/>
