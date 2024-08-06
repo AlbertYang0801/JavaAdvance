@@ -20,7 +20,7 @@ public class MySqlGenerator {
     private static final String REPLACE_LOCAL_PATH = "/target/test-classes/";
     private static final String JAVA_PATH = "/src/main/java";
 
-    private static final String JDBC_URL = "jdbc:mysql://10.10.102.83:3306";
+    private static final String JDBC_URL = "jdbc:mysql://10.10.102.83:3306/test?useUnicode=true&autoReconnect=true&characterEncoding=utf8&connectionCollation=utf8_general_ci&useSSL=false";
     private static final String USERNAME = "buynow";
     private static final String PASSWORD = "buynow";
     private static final String DB = "test";
@@ -53,7 +53,7 @@ public class MySqlGenerator {
 
         // 策略配置
         StrategyConfig strategy = GeneratorBuilder.strategyConfigBuilder()
-                .addInclude("user","order")
+                .addInclude("t2")
                 .addTablePrefix(pc.getModuleName() + "_")
                 .controllerBuilder().enableHyphenStyle()
                 .entityBuilder()
