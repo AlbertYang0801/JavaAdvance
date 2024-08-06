@@ -1,9 +1,8 @@
 package com.albert.mysql.mapper;
 
-import com.albert.mysql.model.entity.TestData;
+import com.albert.mysql.model.entity.OrderInfoDo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * DOSM - 数据字典表
@@ -11,10 +10,7 @@ import org.apache.ibatis.annotations.Select;
  * @date 2021/4/15 上午11:22
  */
 @Mapper
-public interface TestMapper extends BaseMapper<TestData> {
-
-    @Select("SELECT id,data from test")
-    TestData getData();
+public interface OrderInfoMapper extends BaseMapper<OrderInfoDo> {
 
 
 }

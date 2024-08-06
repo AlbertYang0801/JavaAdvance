@@ -1,4 +1,4 @@
-package com.albert.mysql.model.po;
+package com.albert.mysql.model.entity;
 
 import lombok.Data;
 

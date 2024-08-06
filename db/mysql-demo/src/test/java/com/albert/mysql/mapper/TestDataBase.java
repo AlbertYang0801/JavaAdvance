@@ -1,7 +1,7 @@
 package com.albert.mysql.mapper;
 
 import com.albert.mysql.TestApplication;
-import com.albert.mysql.model.po.UserInfoPO;
+import com.albert.mysql.model.entity.UserInfoPO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

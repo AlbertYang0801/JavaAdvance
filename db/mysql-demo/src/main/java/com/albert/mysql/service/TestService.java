@@ -1,8 +1,7 @@
 package com.albert.mysql.service;
 
 import com.albert.mysql.mapper.TestMapper;
-import com.albert.mysql.model.po.TestData;
-import lombok.extern.slf4j.Slf4j;
+import com.albert.mysql.model.entity.TestData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
  * @date 2021/4/19 下午4:03
  */
 @Service
-
 public class TestService {
 
     @Autowired

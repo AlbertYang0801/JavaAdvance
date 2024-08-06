@@ -11,11 +11,9 @@
     <artifactId>mysql-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mysql-demo</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-
     </properties>
 
     <dependencies>
@@ -24,6 +22,13 @@
             <groupId>com.albert</groupId>
             <artifactId>utils-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--mysql连接-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
         </dependency>
 
         <!--springboot集成druid-->

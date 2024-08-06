@@ -1,7 +1,7 @@
 package com.albert.mysql.tran;
 
 import com.albert.mysql.mapper.UserMapper;
-import com.albert.mysql.model.po.UserDo;
+import com.albert.mysql.model.entity.UserDo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,17 +41,21 @@ public class TranUserService {
 ////        }
 //    }
 
+    /**
+     * REQUIRED 默认事务传播行为
+     */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void insertUserA() {
         userMapper.insert(new UserDo().build("小A"));
 
         boolean isSuccess = true;
-        try {
-            insertUserB();
-        } catch (Exception ex) {
-            isSuccess = false;
-            log.error("insertUserB发生异常，不影响insertUserA的提交", ex);
-        }
+        //try {
+        insertUserB();
+        //} catch (Exception ex) {
+        //    isSuccess = false;
+        //    log.error("insertUserB发生异常，不影响insertUserA的提交", ex);
+        //}
+        int i = 10 / 0;
 
         if (isSuccess) {
             // 如果insertUserB成功，则提交insertUserA的事务
@@ -64,9 +68,9 @@ public class TranUserService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void insertUserB() {
         userMapper.insert(new UserDo().build("小B"));
-        int i = 10 / 0;
+        //异常只要不捕获，一直向上抛，就会触发回滚。
+        //int i = 10 / 0;
     }
-
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void callBack() {
@@ -76,9 +80,11 @@ public class TranUserService {
         } catch (Exception e) {
             //强制回滚
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            log.error("抛出异常，强制回滚");
+            System.out.println("抛出异常，强制回滚");
         }
     }
+
+
 
 }
 

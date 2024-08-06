@@ -1,6 +1,6 @@
 package com.albert.mysql.mapper;
 
-import com.albert.mysql.model.po.UserInfoPO;
+import com.albert.mysql.model.entity.UserInfoPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
