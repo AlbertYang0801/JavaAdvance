@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.albert</groupId>
     <artifactId>JavaAdvance</artifactId>
@@ -16,11 +16,6 @@
     <description>Demo project for Spring Boot</description>
 
     <modules>
-
-        <module>utils-module</module>
-
-        <module>agent/agent-practice</module>
-        <module>agent/attach-agent</module>
 
         <module>java/junit-demo</module>
         <module>java/leetcode-practice</module>
@@ -54,10 +49,6 @@
         <module>netty/rpc-netty-server</module>
         <module>netty/rpc-regcenter</module>
 
-        <module>dubbo/dubbo-consumer</module>
-        <module>dubbo/dubbo-provider</module>
-        <module>dubbo/dubbo-common</module>
-        <module>dubbo/rpc-dubbo</module>
         <module>agent/attach-agent</module>
     </modules>
 

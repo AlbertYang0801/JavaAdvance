@@ -6,6 +6,7 @@
         <groupId>com.albert</groupId>
         <artifactId>JavaAdvance</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>es-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -25,17 +26,17 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-                <!--elasticsearch -->
-<!--                <dependency>-->
-<!--                    <groupId>org.elasticsearch</groupId>-->
-<!--                    <artifactId>elasticsearch</artifactId>-->
-<!--                    <version>7.6.2</version>-->
-<!--                </dependency>-->
-<!--                <dependency>-->
-<!--                    <groupId>org.elasticsearch.client</groupId>-->
-<!--                    <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-<!--                    <version>7.6.2</version>-->
-<!--                </dependency>-->
+        <!--elasticsearch -->
+        <!--                <dependency>-->
+        <!--                    <groupId>org.elasticsearch</groupId>-->
+        <!--                    <artifactId>elasticsearch</artifactId>-->
+        <!--                    <version>7.6.2</version>-->
+        <!--                </dependency>-->
+        <!--                <dependency>-->
+        <!--                    <groupId>org.elasticsearch.client</groupId>-->
+        <!--                    <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+        <!--                    <version>7.6.2</version>-->
+        <!--                </dependency>-->
 
         <!--elasticsearch -->
         <dependency>

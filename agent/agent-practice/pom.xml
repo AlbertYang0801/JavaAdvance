@@ -2,15 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>JavaAdvance</artifactId>
-        <groupId>com.albert</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../JavaAdvance</relativePath>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.albert</groupId>
     <artifactId>agent-practice</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -73,6 +68,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
         </dependency>
     </dependencies>
 
@@ -103,7 +99,7 @@
                             <!--设置jar的作者和时间-->
 
                             <!--指定premain方法（静态加载时会调用的方法）的入口类，也就是说告诉jvm， premain方法在哪个类中-->
-<!--                            <Premain-Class>com.albert.agent.AgentMain</Premain-Class>-->
+                            <!--                            <Premain-Class>com.albert.agent.AgentMain</Premain-Class>-->
 
                             <!--该属性设置为 true 时表示：允许已加载的类被重新转换（retransform）。这意味着 Java Agent 可以在运行时修改已经加载的类的字节码，而不需要重新启动应用或 JVM
                             注意，如果此属性设置为 false 在执行main方法且设置-jaavaagent.jar时，将会执行抛出异常 ：java.lang.instrument ASSERTION FAILED ***: "result" with message agent load/premain call failed at src/java.instrument/share/native/libinstrument/JPLISAgent.c line: 422
@@ -140,9 +136,6 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 
 
 </project>
