@@ -1,6 +1,6 @@
 package com.albert.javase.collection;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -15,10 +15,10 @@ public class ListDemo {
     public void arrayListDemo() {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(1);
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
         //只能在已有元素的位置，和末尾+1的位置添加元素。
         list.add(1, 2);
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class ListDemo {
             System.out.println(next);
             list.add("d");
         }
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ListDemo {
         linkedList.add(2);
         linkedList.add(2);
         linkedList.remove(2);
-        System.out.println(JsonUtil.toString(linkedList));
+        System.out.println(JSONUtil.toJsonStr(linkedList));
         Integer integer = linkedList.get(2);
         System.out.println(integer);
         Iterator<Integer> iterator = linkedList.iterator();

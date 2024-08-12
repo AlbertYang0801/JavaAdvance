@@ -2,7 +2,7 @@ package com.albert.javase.collection;
 
 import cn.hutool.core.util.StrUtil;
 import com.albert.javase.collection.bean.Order;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class SetDeom {
         hashSet.add("1");
         hashSet.add("2");
         hashSet.add("3");
-        System.out.println(JsonUtil.toString(hashSet));
+        System.out.println(JSONUtil.toJsonStr(hashSet));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class SetDeom {
         hashSet.add("1");
         hashSet.add("2");
         hashSet.add("3");
-        System.out.println(JsonUtil.toString(hashSet));
+        System.out.println(JSONUtil.toJsonStr(hashSet));
     }
 
     @Test

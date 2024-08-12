@@ -2,7 +2,7 @@ package com.albert.mail.common;
 
 import com.albert.mail.job.SendMailTask;
 import com.albert.mail.utils.ConfUtil;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class MailUtilHandler {
      * @param time         固定的时间间隔之后执行
      */
     public static void addSendMailTask(SendMailTask sendMailTask, Long time) {
-        log.info("添加任务到定时线程池，sendMailTask：{},time:{}", JsonUtil.toString(sendMailTask), time);
+        log.info("添加任务到定时线程池，sendMailTask：{},time:{}", JSONUtil.toJsonStr(sendMailTask), time);
         //添加任务到定时线程池，任务，时间间隔，时间单位
         scheduledExecutorService.schedule(sendMailTask, time, TimeUnit.MILLISECONDS);
     }

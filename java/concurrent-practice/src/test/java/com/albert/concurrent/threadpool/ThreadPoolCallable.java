@@ -1,7 +1,7 @@
 package com.albert.concurrent.threadpool;
 
 import com.albert.concurrent.TestApplication;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class ThreadPoolCallable {
             e.printStackTrace();
         }
         executorService.shutdown();
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
     }
 
     /**
@@ -103,7 +103,7 @@ public class ThreadPoolCallable {
         }
         //6.关闭线程池
         executorService.shutdown();
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
     }
 
 

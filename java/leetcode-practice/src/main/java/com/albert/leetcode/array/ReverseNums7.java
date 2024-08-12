@@ -1,7 +1,7 @@
 package com.albert.leetcode.array;
 
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class ReverseNums7 {
             list.add(x % 10);
             x = x / 10;
         }
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
 
         //将每一位的数据进行累加
         long temp = 0;

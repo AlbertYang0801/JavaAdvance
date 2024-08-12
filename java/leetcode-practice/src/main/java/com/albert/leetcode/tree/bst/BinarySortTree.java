@@ -2,7 +2,7 @@ package com.albert.leetcode.tree.bst;
 
 
 import com.albert.leetcode.tree.Tree;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 
 /**
  * 二叉排序树的实现
@@ -59,7 +59,7 @@ public class BinarySortTree {
 
     public static void main(String[] args) {
         Tree testBinarySortTree = getTestBinarySortTree();
-        System.out.println(JsonUtil.toString(testBinarySortTree));
+        System.out.println(JSONUtil.toJsonStr(testBinarySortTree));
     }
 
 

@@ -1,6 +1,6 @@
 package com.albert.javase.io;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,7 +51,7 @@ public class ObjectStreamTest {
             objectInputStream = new ObjectInputStream(new FileInputStream(path));
             //反序列化
             Person person = (Person) objectInputStream.readObject();
-            System.out.println(JsonUtil.toString(person));
+            System.out.println(JSONUtil.toJsonStr(person));
         } catch (IOException | ClassNotFoundException ioException) {
             ioException.printStackTrace();
         } finally {
@@ -96,7 +96,7 @@ public class ObjectStreamTest {
         try {
             objectInputStream = new ObjectInputStream(new FileInputStream(path));
             OldMan person = (OldMan) objectInputStream.readObject();
-            System.out.println(JsonUtil.toString(person));
+            System.out.println(JSONUtil.toJsonStr(person));
         } catch (IOException | ClassNotFoundException ioException) {
             ioException.printStackTrace();
         } finally {

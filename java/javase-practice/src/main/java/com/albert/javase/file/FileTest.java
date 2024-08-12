@@ -1,6 +1,6 @@
 package com.albert.javase.file;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ public class FileTest {
         //1.绝对路径
         File file = new File("/Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file/");
         System.out.println(file);///Users/yangjunwei/IdeaProjects/JavaAdvance/file-demo/file
-        System.out.println(JsonUtil.toString(file.list()));//["666.xls","CheckTest.py","MySqlTools.py","2222.xls","1111.xls","测试csv.csv"]
+        System.out.println(JSONUtil.toJsonStr(file.list()));//["666.xls","CheckTest.py","MySqlTools.py","2222.xls","1111.xls","测试csv.csv"]
 
         //2.相对路径
         File file1 = new File("../file/data.txt");
@@ -50,7 +50,7 @@ public class FileTest {
 
         //4.启动目录
         File file2 = new File("src/main/java/com/albert/javase/file/");
-        System.out.println(JsonUtil.toString(file2.list()));
+        System.out.println(JSONUtil.toJsonStr(file2.list()));
         System.out.println(file2.getAbsolutePath());
 
     }
@@ -103,10 +103,10 @@ public class FileTest {
         File file2 = new File("src/main/java/com/albert/javase/file/");
         //获取指定文件目录下所有文件或文件目录的名称数组
         String[] list = file2.list();
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
         //获取指定文件目录下所有文件或文件目录的file数组
         File[] files = file2.listFiles();
-        System.out.println(JsonUtil.toString(files));
+        System.out.println(JSONUtil.toJsonStr(files));
     }
 
     /**

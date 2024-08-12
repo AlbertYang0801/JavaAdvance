@@ -1,6 +1,6 @@
 package com.albert.javase.io;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Maps;
 import org.junit.Test;
 
@@ -197,7 +197,7 @@ public class BufferStreamTest {
                     map.put(cValue, 1);
                 }
             }
-            System.out.println(JsonUtil.toString(map));
+            System.out.println(JSONUtil.toJsonStr(map));
             Set<Map.Entry<Character, Integer>> entries = map.entrySet();
             for (Map.Entry<Character, Integer> entry : entries) {
                 Character key = entry.getKey();

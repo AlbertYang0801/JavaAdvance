@@ -1,6 +1,6 @@
 package com.albert.leetcode.tree;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 
 /**
  * 116. 填充每个节点的下一个右侧节点指针
@@ -65,7 +65,7 @@ public class ConnectTree_166 {
         six.val = 6;
 
         Node root = ConnectTree_166.connect(one);
-        System.out.println(JsonUtil.toString(root));
+        System.out.println(JSONUtil.toJsonStr(root));
     }
 
     //---------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 package com.albert.concurrent.basic.create;
 
 import com.albert.concurrent.threadpool.ThreadPoolCreate;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import com.google.common.collect.Lists;
 import lombok.*;
@@ -73,7 +73,7 @@ public class CallableTest {
         Future<UserPO> future = executorService.submit(fillUserCallable);
         //获取返回结果
         UserPO userPO = future.get();
-        System.out.println(JsonUtil.toString(userPO));
+        System.out.println(JSONUtil.toJsonStr(userPO));
         executorService.shutdown();
     }
 
@@ -93,9 +93,9 @@ public class CallableTest {
         Future<UserPO> future = executorService.submit(userPOCallable);
         //获取返回结果
         UserPO userPO = future.get();
-        System.out.println(JsonUtil.toString(userPO));
+        System.out.println(JSONUtil.toJsonStr(userPO));
         executorService.shutdown();
-        log.info("获取Callable接口返回的数据:{}", JsonUtil.toString(userPO));
+        log.info("获取Callable接口返回的数据:{}", JSONUtil.toJsonStr(userPO));
     }
 
     /**
@@ -117,7 +117,7 @@ public class CallableTest {
         //submit执行线程，获取返回结果
         Future<UserPO> submit = executorService.submit(userPOCallable);
         UserPO userPO = submit.get();
-        log.info(JsonUtil.toString(userPO));
+        log.info(JSONUtil.toJsonStr(userPO));
         //关闭线程池
         executorService.shutdown();
     }
@@ -156,7 +156,7 @@ public class CallableTest {
         });
         //7.关闭线程池
         executorService.shutdown();
-        System.out.println(JsonUtil.toString(list));
+        System.out.println(JSONUtil.toJsonStr(list));
     }
 
     /**

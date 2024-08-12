@@ -1,7 +1,7 @@
 package com.albert.leetcode.tree;
 
 import com.albert.leetcode.tree.bst.BinarySortTree;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Lists;
 
 import java.util.List;
@@ -61,7 +61,7 @@ public class MiddleTraverse {
     public static void main(String[] args) {
         //获取一颗二叉平衡树
         Tree testBinarySortTree = BinarySortTree.getTestBinarySortTree();
-        System.out.println("获取到的平衡二叉树为："+JsonUtil.toString(testBinarySortTree));
+        System.out.println("获取到的平衡二叉树为："+JSONUtil.toJsonStr(testBinarySortTree));
         List<Integer> middleTraverseResult = getMiddleTraverseResult(testBinarySortTree);
         System.out.println("中序遍历结果为："+middleTraverseResult);
     }

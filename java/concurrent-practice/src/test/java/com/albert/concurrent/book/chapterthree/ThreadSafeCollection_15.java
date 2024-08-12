@@ -1,7 +1,7 @@
 package com.albert.concurrent.book.chapterthree;
 
 import cn.hutool.json.JSONUtil;
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -39,7 +39,7 @@ public class ThreadSafeCollection_15 {
         Vector<Integer> vector = new Vector<>();
         vector.add(1);
         vector.add(2);
-        System.out.println(JsonUtil.toString(vector));
+        System.out.println(JSONUtil.toJsonStr(vector));
 
 
         CopyOnWriteArrayList<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
@@ -52,7 +52,7 @@ public class ThreadSafeCollection_15 {
         ConcurrentMap<String, String> concurrentMap = Maps.newConcurrentMap();
         //concurrentMap的key或者value==null都会报空指针
         concurrentMap.put("a", null);
-        System.out.println(JsonUtil.toString(concurrentMap));
+        System.out.println(JSONUtil.toJsonStr(concurrentMap));
 
     }
 

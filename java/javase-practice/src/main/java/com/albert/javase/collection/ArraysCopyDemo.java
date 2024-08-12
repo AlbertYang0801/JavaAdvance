@@ -1,6 +1,6 @@
 package com.albert.javase.collection;
 
-import com.albert.utils.jackson.JsonUtil;
+import cn.hutool.json.JSONUtil;
 
 import java.util.Arrays;
 
@@ -19,7 +19,7 @@ public class ArraysCopyDemo {
         arr[4] = 4;
         //对数组进行内部扩容（实际调用了System.arraycopy方法）
         int[] newArr = Arrays.copyOf(arr, 3);
-        System.out.println(JsonUtil.toString(newArr));
+        System.out.println(JSONUtil.toJsonStr(newArr));
     }
 
 

@@ -1,4 +1,4 @@
-package com.albert.utils.file;
+package com.albert.file.utils;
 
 import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Maps;
@@ -51,7 +51,7 @@ public class DocOfConfUtil {
             if (file.exists()) {
                 try {
                     String info = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
-                    infoList = JsonUtil.toList(info, String.class);
+                    infoList = JSONUtil.toList(info, String.class);
                 } catch (IOException e) {
                     log.error("read user message from file error", e);
                 }
@@ -60,48 +60,6 @@ public class DocOfConfUtil {
             log.error("fetch Device from file error", e);
         }
         return infoList;
-    }
-
-    public static void fillCache(String path, Map<String, String> cache) {
-        try {
-            Map<String, Object> infoJson = getJsonMap(path);
-            Set<Map.Entry<String, Object>> entrySet = infoJson.entrySet();
-            for (Map.Entry<String, Object> entry : entrySet) {
-                cache.put(entry.getKey(), String.valueOf(entry.getValue()));
-                log.debug("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
-            }
-        } catch (Exception e) {
-            log.error("fetch Device from file error", e);
-        }
-    }
-
-    public static Map<String, Object> getCache(String path) {
-        Map<String, Object> cache = Maps.newHashMap();
-        try {
-            Map<String, Object> infoJson = getJsonMap(path);
-            Set<Map.Entry<String, Object>> entrySet = infoJson.entrySet();
-            for (Map.Entry<String, Object> entry : entrySet) {
-                cache.put(entry.getKey(), entry.getValue());
-                log.debug("the point_id is {}, the point info is {}", entry.getKey(), entry.getValue());
-            }
-        } catch (Exception e) {
-            log.error("fetch Device from file error", e);
-        }
-        return cache;
-    }
-
-    private static Map<String, Object> getJsonMap(String path) {
-        Map<String, Object> infoJson = null;
-        File file = new File(path);
-        if (file.exists()) {
-            try {
-                String monitoringPointsInfo = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
-                infoJson = JsonUtil.toMap(monitoringPointsInfo, String.class, Object.class);
-            } catch (IOException e) {
-                log.error("read user message from file error", e);
-            }
-        }
-        return infoJson;
     }
 
     /**
