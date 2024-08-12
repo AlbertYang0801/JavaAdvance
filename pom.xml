@@ -35,10 +35,6 @@
         <module>db/mysql-demo</module>
         <module>db/redis-practice</module>
 
-        <module>middleware/es-practice</module>
-        <module>middleware/rocketmq-producer</module>
-        <module>middleware/rocketmq-consumer</module>
-        <module>middleware/zk-demo</module>
         <module>middleware/msg-queue</module>
 
         <module>netty/netty-adv</module>
@@ -50,6 +46,7 @@
         <module>netty/rpc-regcenter</module>
 
         <module>agent/attach-agent</module>
+        <module>moudle-middleware</module>
     </modules>
 
     <properties>

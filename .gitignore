@@ -1,5 +1,6 @@
-/springboot-practice/target/
 /.vscode/
-/agent-practice/
 target
+
 /.idea
+/moudle-middleware/*/target
+/moudle-dubbo/*/target
