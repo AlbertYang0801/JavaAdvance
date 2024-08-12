@@ -53,7 +53,7 @@ public class MailController {
                 "这是一封测试定时发送的邮件",
                 "18438049166@163.com", Lists.newArrayList());
         //指定当前时间间隔之后执行
-        long timeInterval = timestamp - LocalDateTimeUtils.getNowMillis();
+        long timeInterval = timestamp - System.currentTimeMillis();
         //向定时线程池添加任务
         MailUtilHandler.addSendMailTask(sendMailTask, timeInterval);
         return "发送成功";

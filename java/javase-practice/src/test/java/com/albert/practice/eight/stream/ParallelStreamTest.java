@@ -25,15 +25,15 @@ public class ParallelStreamTest {
 
     @Test
     public void parallelTest() {
-        long start = LocalDateTimeUtils.getNowMillis();
+        long start = System.currentTimeMillis();
         //串行流
         long count = IntStream.range(1, 10000000).filter(PrimeUtil::isPrime).count();
-        System.out.println("串行计算结果：" + count + ";耗时：" + (LocalDateTimeUtils.getNowMillis() - start));
+        System.out.println("串行计算结果：" + count + ";耗时：" + (System.currentTimeMillis() - start));
 
-        long parallelStart = LocalDateTimeUtils.getNowMillis();
+        long parallelStart = System.currentTimeMillis();
         //并行流(parallel)
         long parallelCount = IntStream.range(1, 10000000).parallel().filter(PrimeUtil::isPrime).count();
-        System.out.println("并行计算结果：" + parallelCount + ";耗时：" + (LocalDateTimeUtils.getNowMillis() - parallelStart));
+        System.out.println("并行计算结果：" + parallelCount + ";耗时：" + (System.currentTimeMillis() - parallelStart));
     }
 
     @Test

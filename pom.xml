@@ -25,28 +25,12 @@
         <module>java/javase-practice</module>
         <module>java/concurrent-practice</module>
 
-        <module>mybatis/mybatis-demo</module>
-        <module>mybatis/mybatis-plus-demo</module>
-
-        <module>spring/spring-practice</module>
-        <module>spring/springboot-practice</module>
-        <module>spring/springtask-demo</module>
-
         <module>db/mysql-demo</module>
         <module>db/redis-practice</module>
 
-        <module>middleware/msg-queue</module>
-
-        <module>netty/netty-adv</module>
-        <module>netty/netty-practice</module>
-        <module>netty/rpc-client</module>
-        <module>netty/rpc-server</module>
-        <module>netty/rpc-netty-client</module>
-        <module>netty/rpc-netty-server</module>
-        <module>netty/rpc-regcenter</module>
 
         <module>agent/attach-agent</module>
-        <module>moudle-middleware</module>
+        <module>moudle-mybatis</module>
     </modules>
 
     <properties>

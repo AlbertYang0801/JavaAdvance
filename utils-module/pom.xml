@@ -8,6 +8,7 @@
         <version>2.3.3.RELEASE</version>
         <relativePath/>
     </parent>
+
     <groupId>com.albert</groupId>
     <artifactId>utils-module</artifactId>
     <version>0.0.1-SNAPSHOT</version>

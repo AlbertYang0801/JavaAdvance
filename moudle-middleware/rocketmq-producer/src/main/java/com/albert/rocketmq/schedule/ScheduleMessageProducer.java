@@ -1,10 +1,11 @@
 package com.albert.rocketmq.schedule;
 
-import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import lombok.SneakyThrows;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 /**
  * 延时消息
@@ -31,7 +32,7 @@ public class ScheduleMessageProducer {
             //3 = 10s
             message.setDelayTimeLevel(2);
             defaultMQProducer.send(message);
-            System.out.println("发送消息时间：" + LocalDateTimeUtils.getNow());
+            System.out.println("发送消息时间：" + LocalDateTime.now());
         }
         defaultMQProducer.shutdown();
     }

@@ -5,14 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.albert</groupId>
-        <artifactId>moudle-dubbo</artifactId>
+        <artifactId>moudle-netty</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>dubbo-common</artifactId>
+    <artifactId>rpc-server</artifactId>
 
     <dependencies>
-
+        <!--工具类模块-->
+        <dependency>
+            <groupId>com.albert</groupId>
+            <artifactId>utils-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

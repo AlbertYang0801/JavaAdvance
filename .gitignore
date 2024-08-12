@@ -2,5 +2,4 @@
 target
 
 /.idea
-/moudle-middleware/*/target
-/moudle-dubbo/*/target
+/*/*/target

@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -11,40 +10,26 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.albert</groupId>
-    <artifactId>kafka-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>mybatis-plus-demo</artifactId>
 
     <dependencies>
-
-        <!--工具类模块-->
         <dependency>
             <groupId>com.albert</groupId>
             <artifactId>utils-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-        <!--springboot集成kafka-->
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.3.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.12</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
 
     </dependencies>
-
 
 
 </project>

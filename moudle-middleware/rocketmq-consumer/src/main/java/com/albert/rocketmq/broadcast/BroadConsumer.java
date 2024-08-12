@@ -1,6 +1,5 @@
 package com.albert.rocketmq.broadcast;
 
-import com.albert.utils.localdatetime.LocalDateTimeUtils;
 import lombok.SneakyThrows;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -12,6 +11,7 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -37,7 +37,7 @@ public class BroadConsumer implements InitializingBean {
                 for (MessageExt msg : msgs) {
                     String content = String.valueOf(msg.getBody());
                     int queueId = msg.getQueueId();
-                    System.out.println("消费数据时间:" + LocalDateTimeUtils.getNow() + ";内容： " + content + ";queueId:" + queueId);
+                    System.out.println("消费数据时间:" + LocalDateTime.now() + ";内容： " + content + ";queueId:" + queueId);
                 }
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
