@@ -17,6 +17,12 @@
 
     <modules>
         <module>javase-practice</module>
+        <module>leetcode-practice</module>
+        <module>junit-demo</module>
+        <module>mail-demo</module>
+        <module>file-demo</module>
+        <module>cache-practice</module>
+        <module>concurrent-practice</module>
     </modules>
 
 
