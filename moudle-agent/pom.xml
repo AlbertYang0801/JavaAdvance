@@ -15,4 +15,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <modules>
+        <module>agent-practice</module>
+        <module>attach-agent</module>
+    </modules>
+
 </project>

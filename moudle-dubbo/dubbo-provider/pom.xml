@@ -49,7 +49,7 @@
                     <protocArtifact>com.google.protobuf:protoc:3.7.1:exe:${os.detected.classifier}
                     </protocArtifact>
 
-                    <outputDirectory>build/generated/source/proto/main/java</outputDirectory>
+                    <outputDirectory>src/main/java/proto/main/java</outputDirectory>
                     <clearOutputDirectory>false</clearOutputDirectory>
                     <protocPlugins>
                         <protocPlugin>
@@ -83,7 +83,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>build/generated/source/proto/main/java</source>
+                                <source>src/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
