@@ -23,6 +23,7 @@
         <module>file-demo</module>
         <module>cache-practice</module>
         <module>concurrent-practice</module>
+        <module>grpc-demo</module>
     </modules>
 
 

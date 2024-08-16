@@ -29,6 +29,7 @@
 1. Java集合
 2. 高并发
 3. Agent技术
+4. 反射
 4. JVM
 5. IO 
 6. Junit
@@ -39,6 +40,8 @@
 8. Guava 
 9. Esper 
 10. 日志结合trace
+11. protobuf编译
+12. grpc
 
 ### 数据结构与算法
 

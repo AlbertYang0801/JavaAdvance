@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.albert.grpc.proto";
+option java_outer_classname = "CalculatorProto";
+
+service Calculator {
+  rpc Add (AddRequest) returns (AddResponse);
+}
+
+message AddRequest {
+  int32 number1 = 1;
+  int32 number2 = 2;
+}
+
+message AddResponse {
+  int32 result = 1;
+}
