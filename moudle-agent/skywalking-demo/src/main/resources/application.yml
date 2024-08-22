@@ -1,0 +1,31 @@
+server:
+  port: 9999
+
+
+
+spring:
+  application:
+    name: log-demo
+
+  # datasource 数据源配置内容
+  datasource:
+    url: jdbc:mysql://10.10.102.83:3306/skywalking_demo?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: buynow
+    password: buynow
+
+
+  # 对应 RedisProperties 类
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: # Redis 服务器密码，默认为空。生产中，一定要设置 Redis 密码！
+    database: 0 # Redis 数据库号，默认为 0 。
+    timeout: 0 # Redis 连接超时时间，单位：毫秒。
+    # 对应 RedisProperties.Jedis 内部类
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数，默认为 8 。使用负数表示没有限制。
+        max-idle: 8 # 默认连接数最小空闲的连接数，默认为 8 。使用负数表示没有限制。
+        min-idle: 0 # 默认连接池最小空闲的连接数，默认为 0 。允许设置 0 和 正数。
+        max-wait: -1 # 连接池最大阻塞等待时间，单位：毫秒。默认为 -1 ，表示不限制。

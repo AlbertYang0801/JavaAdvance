@@ -2,6 +2,8 @@ package com.albert.spring.bean;
 
 import cn.hutool.extra.spring.SpringUtil;
 import com.albert.spring.AbstractBaseTest;
+import com.albert.spring.entity.bean.StudentService;
+import com.albert.spring.entity.bean.StudentServiceProxy;
 import org.junit.Assert;
 import org.junit.Test;
 

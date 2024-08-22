@@ -18,6 +18,7 @@
     <modules>
         <module>agent-practice</module>
         <module>attach-agent</module>
+        <module>skywalking-demo</module>
     </modules>
 
 </project>
