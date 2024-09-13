@@ -1,4 +1,4 @@
-package com.albert.spring.filtermoudle.conf;
+package com.albert.spring.filter.conf;
 
 /**
  * 第二种过滤器配置方式：配置类
