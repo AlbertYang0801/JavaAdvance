@@ -1,0 +1,13 @@
+filebeat.config:
+  inputs:
+    enabled: true
+    path: inputs.d/*.yml
+    reload.enabled: true
+    reload.period: 10s
+  harvester_limit: 200
+output.kafka:
+  version: 0.10.2.0
+  hosts: [ "10.10.102.83:9404" ]
+  topic: apmserver
+  required_acks: 1
+  keep_alive: 10s

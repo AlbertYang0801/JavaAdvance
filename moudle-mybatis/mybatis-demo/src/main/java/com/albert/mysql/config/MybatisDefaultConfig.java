@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  */
 @Primary
 @Configuration
-@MapperScan(basePackages = {"com.albert.mybatis.*.mapper"}, sqlSessionFactoryRef = "sqlSessionFactory1")
+@MapperScan(basePackages = {"com.albert.mysql.*.mapper"}, sqlSessionFactoryRef = "sqlSessionFactory1")
 public class MybatisDefaultConfig {
 
     @Resource

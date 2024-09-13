@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  * @author Albert
  */
 @Configuration
-@MapperScan(basePackages = {"com.albert.mybatis.other.mapper"}, sqlSessionFactoryRef = "sqlSessionFactory2")
+@MapperScan(basePackages = {"com.albert.mysql.other.mapper"}, sqlSessionFactoryRef = "sqlSessionFactory2")
 public class MybatisAlbertConfig {
 
     @Resource

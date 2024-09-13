@@ -11,6 +11,7 @@
 
     <modules>
         <module>es-practice</module>
+        <module>kafka-producer</module>
         <module>rocketmq-consumer</module>
         <module>rocketmq-producer</module>
         <module>zk-demo</module>
