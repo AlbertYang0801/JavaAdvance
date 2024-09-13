@@ -20,10 +20,10 @@ import java.util.List;
 @Component
 public class MyConsumer implements InitializingBean {
 
-
     @SneakyThrows
     public void test() {
         System.out.println("开启消费者");
+        //手动消费
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("PUSH_CONSUMER");
         consumer.setNamesrvAddr("10.10.102.83:9876");
         consumer.subscribe("TopicTest", "*");

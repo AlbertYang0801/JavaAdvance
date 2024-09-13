@@ -85,5 +85,29 @@ public class OrderMsgProducer {
         }
     }
 
+    /**
+     * 有序发送
+     */
+    @SneakyThrows
+    @Test
+    public void orderSendMsg() {
+        try {
+            DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
+            producer.setNamesrvAddr(nameServer);
+            producer.start();
+            for (int j = 0; j <= 1000; j++) {
+                Message msg =
+                        //相同tag
+                        new Message("order", ("order_" + " step " + j).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                SendResult sendResult = producer.send(msg);
+                System.out.printf("%s%n", sendResult);
+                Thread.sleep(10000);
+            }
+            producer.shutdown();
+        } catch (MQClientException | RemotingException | MQBrokerException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
