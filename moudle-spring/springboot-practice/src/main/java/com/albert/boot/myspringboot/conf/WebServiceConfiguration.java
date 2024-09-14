@@ -25,8 +25,8 @@ public class WebServiceConfiguration {
         return new TomcatWebServer();
     }
 
-    @Bean
-    @MyContationalOnClass(className = "org.eclipse.jetty.server.jetty")
+    //@Bean
+    //@MyContationalOnClass(className = "org.eclipse.jetty.server.jetty")
     public JettyWebServer jettyWebServer() {
         return new JettyWebServer();
     }
