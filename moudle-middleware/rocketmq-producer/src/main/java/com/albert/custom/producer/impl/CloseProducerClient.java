@@ -1,7 +1,7 @@
 package com.albert.custom.producer.impl;
 
-import com.albert.custom.annotations.ConditionalGlobalMessageOnClose;
 import com.albert.custom.producer.ProducerClientTemplate;
+import com.albert.message.db.annotations.ConditionalGlobalMessageOnClose;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

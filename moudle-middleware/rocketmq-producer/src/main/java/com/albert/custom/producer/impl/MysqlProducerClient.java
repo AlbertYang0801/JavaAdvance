@@ -1,8 +1,8 @@
 package com.albert.custom.producer.impl;
 
 import cn.hutool.core.lang.UUID;
-import com.albert.custom.annotations.ConditionalGlobalMessageOnMysql;
 import com.albert.custom.producer.ProducerClientTemplate;
+import com.albert.message.db.annotations.ConditionalGlobalMessageOnMysql;
 import com.albert.message.db.entiry.MessagesDo;
 import com.albert.message.db.enums.MessagesStatusEnum;
 import com.albert.message.db.service.MessagesTemplate;
