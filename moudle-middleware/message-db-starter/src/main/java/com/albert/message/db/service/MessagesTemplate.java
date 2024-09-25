@@ -17,6 +17,7 @@ public class MessagesTemplate {
 
     private MessagesMapper messagesMapper;
 
+
     public MessagesTemplate(MessagesMapper messagesMapper) {
         this.messagesMapper = messagesMapper;
     }
