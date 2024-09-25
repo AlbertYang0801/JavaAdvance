@@ -10,7 +10,6 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <jdk.home>/Users/admin/Java/jdk1.8.0_411.jdk/Contents/Home</jdk.home>
     </properties>
 
     <dependencies>
@@ -27,14 +26,6 @@
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
-            <version>1.8</version>
-            <scope>system</scope>
-            <systemPath>${jdk.home}/lib/tools.jar</systemPath>
         </dependency>
 
         <!-- aspectj -->

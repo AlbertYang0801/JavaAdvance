@@ -1,6 +1,6 @@
 package com.albert.custom.config;
 
-import com.albert.custom.annotations.ConditionalGlobalMessageOnMysql;
+import com.albert.message.db.annotations.ConditionalGlobalMessageOnMysql;
 import com.albert.message.db.config.MessageMysqlAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
