@@ -12,9 +12,11 @@ public class ReflecTest {
 
     @SneakyThrows
     public static void main(String[] args) {
+        //方法名存在，输出参数值123
         IA ia = (IA) createObject(IA.class.getName() + "$getHelloName=123");
         System.out.println(ia.getHelloName());
 
+        //方法名不存在，输出null
         ia = (IA) createObject(IA.class.getName() + "$getTest=123");
         System.out.println(ia.getHelloName());
     }

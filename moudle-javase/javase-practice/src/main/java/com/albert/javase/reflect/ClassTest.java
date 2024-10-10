@@ -1,4 +1,4 @@
-package com.albert.javase.reflex;
+package com.albert.javase.reflect;
 
 import org.junit.Test;
 
