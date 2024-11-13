@@ -2,7 +2,9 @@ package com.albert.spring.bytebuddy;
 
 import com.albert.spring.aop.bytebuddy.OriginBean;
 import com.albert.spring.aop.bytebuddy.PoliteInvocationHandler;
+import com.albert.spring.aop.bytebuddy.PromClientProxy;
 import com.albert.spring.aop.bytebuddy.ProxyResolver;
+import com.albert.spring.aop.bytebuddy.service.PromClient;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +29,16 @@ public class ByteBuddyTest {
         //代理类的属性为空，只是调用了代理类的方法。原始Bean里面的字段不为空。
         Assert.assertNull(proxy.name);
         Assert.assertNotNull(originBean.name);
+    }
+
+    @Test
+    public void testClient() {
+        PromClient promClient = new PromClient("url");
+
+        PromClient proxy = new ProxyResolver().createProxyPromClient(promClient, new PromClientProxy(),"url");
+
+        System.out.println(proxy.query("123"));
+        System.out.println(proxy.query2("123","456"));
     }
 
 

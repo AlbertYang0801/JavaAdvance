@@ -73,6 +73,11 @@ public class ListDemo {
 //        System.out.println(s);
 //    }
 
+    @Test
+    public void testPeek(){
+        System.out.println(1);
+    }
+
 
 
 }

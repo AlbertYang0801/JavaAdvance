@@ -21,11 +21,10 @@ public class SystemController {
     SystemService systemService;
 
     @GetMapping("/add")
-    @AuditLogAspect(oper = "add",methodName = "addSystem")
-    public void add(){
+    @AuditLogAspect(oper = "add", methodName = "addSystem")
+    public void add() {
         systemService.addSystem();
     }
-
 
 
 

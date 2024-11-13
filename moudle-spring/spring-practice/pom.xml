@@ -21,10 +21,21 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--lombok依赖-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
             <version>2.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
         </dependency>
 
         <!--动态代理，字节码增强技术，CgLib的替代品-->
@@ -55,6 +66,37 @@
 
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <verbose>true</verbose>
+                    <Xlint>ignore</Xlint>
+                    <complianceLevel>1.8</complianceLevel>
+                    <encoding>UTF-8</encoding>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

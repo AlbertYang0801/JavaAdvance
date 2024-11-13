@@ -10,5 +10,9 @@ public class UserService {
         System.out.println("新增系统");
     }
 
+    public static void say(){
+        System.out.println("say");
+    }
+
 
 }

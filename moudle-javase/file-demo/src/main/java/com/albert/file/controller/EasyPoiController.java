@@ -1,11 +1,7 @@
 package com.albert.file.controller;
 
-import cn.afterturn.easypoi.excel.ExcelExportUtil;
-import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.support.ExcelTypeEnum;
-import com.google.common.collect.Maps;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.assertj.core.util.Lists;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author yangjunwei
