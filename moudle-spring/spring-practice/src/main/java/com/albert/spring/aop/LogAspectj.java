@@ -1,6 +1,7 @@
 package com.albert.spring.aop;
 
 
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -48,6 +49,22 @@ public class LogAspectj {
         System.out.println("controller before");
     }
 
+    @AfterReturning(pointcut = "logAspectPointcut()", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        AuditLogAspect logOperation = getAnnotation(joinPoint);
+        if (logOperation != null) {
+            String methodName = joinPoint.getSignature().getName();
+            //入参
+            Object[] args = joinPoint.getArgs();
+
+            log.info("方法:",methodName);
+            log.info("注解内容1：", logOperation.oper());
+            log.info("注解内容2：", logOperation.methodName());
+            log.info("入参:", JSONUtil.toJsonStr(args));
+            log.info("出参:", result);
+        }
+    }
+
     /**
      * 环绕通知-指定切点
      * 解析注解
@@ -59,6 +76,8 @@ public class LogAspectj {
         log.info("执行了 {} 方法",auditLogAspect.methodName());
         log.info("执行了 {} 操作",auditLogAspect.oper());
     }
+
+
 
     @After("logAspectPointcut()")
     public void controllerAfter(JoinPoint joinPoint){
@@ -78,6 +97,14 @@ public class LogAspectj {
     @After("servicePointcut()")
     public void svcAfter2(JoinPoint joinPoint){
         System.out.println("svc after 2 ");
+    }
+
+
+
+
+
+    private AuditLogAspect getAnnotation(JoinPoint joinPoint) {
+        return ((org.aspectj.lang.reflect.MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(AuditLogAspect.class);
     }
 
 

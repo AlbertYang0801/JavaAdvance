@@ -1,10 +1,16 @@
 package com.albert.spring.aop.controller;
 
 import com.albert.spring.aop.AuditLogAspect;
+import com.albert.spring.aop.log.LogOperation;
 import com.albert.spring.aop.service.SystemService;
+import com.albert.spring.entity.req.SystemRequest;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +32,12 @@ public class SystemController {
         systemService.addSystem();
     }
 
-
+    @PostMapping("/update/abc")
+    @LogOperation(value = "updateSystem")
+    public SystemRequest update(@RequestBody SystemRequest systemRequest) {
+        systemService.addSystem();
+        return systemRequest;
+    }
 
 }
 

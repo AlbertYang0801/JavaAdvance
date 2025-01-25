@@ -12,7 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public abstract class AbstractBaseTest {
 
-
-
+    public static void main(String[] args) {
+        System.out.println("hello world");
+    }
 
 }
