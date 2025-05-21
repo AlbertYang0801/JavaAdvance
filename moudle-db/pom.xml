@@ -18,6 +18,7 @@
     <modules>
         <module>mysql-demo</module>
         <module>redis-practice</module>
+        <module>canal-demo</module>
     </modules>
 
 </project>

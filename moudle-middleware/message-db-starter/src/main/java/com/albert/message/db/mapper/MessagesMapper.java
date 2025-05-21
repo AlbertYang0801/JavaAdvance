@@ -49,5 +49,11 @@ public interface MessagesMapper extends BaseMapper<MessagesDo> {
     @Select("select * from messages where id = #{id} and status = 'PENDING' for update")
     MessagesDo lockPendingMessage(@Param("id") Long id);
 
+    @Update("update messages set retry_count = retry_count + 1 where id in " +
+            "<foreach item='item' index='index' collection='list' open='(' separator=',' close=')'>" +
+            "#{item}" +
+            "</foreach>")
+    void incrRetryCountByIds(List<Long> retryMessageIds);
+
 
 }

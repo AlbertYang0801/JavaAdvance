@@ -1,8 +1,8 @@
 package com.albert.middleware.mysql.impl;
 
+import com.albert.message.db.entiry.MessagesDo;
 import com.albert.middleware.annotations.ConditionalGlobalMessageOnMysql;
 import com.albert.middleware.mysql.AbstractConsumer;
-import com.albert.db.entiry.MessagesDo;
 import org.springframework.stereotype.Component;
 
 /**

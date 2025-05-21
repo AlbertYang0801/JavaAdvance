@@ -1,7 +1,7 @@
 package com.albert.middleware.mysql;
 
-import com.albert.db.entiry.MessagesDo;
-import com.albert.db.service.IMessagesService;
+import com.albert.message.db.entiry.MessagesDo;
+import com.albert.message.db.service.MessagesTemplate;
 import com.albert.middleware.enums.MessagesStatusEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public abstract class AbstractConsumer {
 
     @Resource
-    IMessagesService messagesService;
+    MessagesTemplate messagesTemplate;
 
     public String topicName;
 
@@ -62,7 +62,7 @@ public abstract class AbstractConsumer {
      */
     public List<MessagesDo> queryMessages() {
         //查询到期消息
-        return messagesService.queryPendingMessages(topicName, System.currentTimeMillis());
+        return messagesTemplate.queryPendingMessages(topicName, System.currentTimeMillis());
     }
 
     /**
@@ -73,16 +73,16 @@ public abstract class AbstractConsumer {
     public void updateMessages(List<MessagesDo> messagesDOS) {
         //处理成功
         List<MessagesDo> successMessages = messagesDOS.stream().filter(message -> Objects.equals(message.getStatus(), MessagesStatusEnum.SUCCEEDED.name())).collect(Collectors.toList());
-        messagesService.updateMessageStatus(successMessages);
+        messagesTemplate.updateMessageStatuss(successMessages);
 
         //处理失败，超过重试次数
         List<MessagesDo> failedMessages = messagesDOS.stream().filter(message -> Objects.equals(message.getStatus(), MessagesStatusEnum.FAILED.name())).collect(Collectors.toList());
-        messagesService.updateMessageStatus(failedMessages);
+        messagesTemplate.updateMessageStatuss(failedMessages);
 
         //处理失败，未超过重试次数，retryCount++
         List<Long> retryMessageIds = messagesDOS.stream().filter(message -> Objects.equals(message.getStatus(), MessagesStatusEnum.PENDING.name()))
                 .map(MessagesDo::getId).collect(Collectors.toList());
-        messagesService.incrRetryCountByIds(retryMessageIds);
+        messagesTemplate.incrRetryCountByIds(retryMessageIds);
     }
 
 

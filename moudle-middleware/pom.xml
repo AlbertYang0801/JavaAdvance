@@ -17,6 +17,7 @@
         <module>zk-demo</module>
         <module>kafka-demo</module>
         <module>message-db-starter</module>
+        <module>rocketmq-ons-client</module>
     </modules>
 
     <build>
