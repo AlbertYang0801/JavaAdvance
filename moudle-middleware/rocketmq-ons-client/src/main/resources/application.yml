@@ -1,0 +1,19 @@
+server:
+  port: 8032
+  tomcat:
+    max-connections: 20000
+
+aliyunmq:
+  accessKey: xxxx
+  secretKey: xxxx
+  type: rocket
+  rocketmq:
+    namesrvAddr: http://xxx
+    groupId: GID_command
+    messageModel: CLUSTERING
+    topic:
+      name: command_reply
+      dev: true
+      env: dev
+      tags:
+        test: test
